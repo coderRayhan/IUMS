@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace UEMS.Application.Features.Academic.Session.Queries
+namespace IUMS.Application.Features.Academic
 {
     public class GetAllSessionResponse
     {

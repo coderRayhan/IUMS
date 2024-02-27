@@ -1,6 +1,5 @@
 using AspNetCoreHero.Boilerplate.Application.Extensions;
-using AspNetCoreHero.Boilerplate.Infrastructure.Extensions;
-using AspNetCoreHero.Boilerplate.Web.Abstractions;
+using IUMS.Infrastructure.Extensions;
 using AspNetCoreHero.Boilerplate.Web.Extensions;
 using AspNetCoreHero.Boilerplate.Web.Permission;
 using AspNetCoreHero.Boilerplate.Web.Services;
@@ -8,6 +7,7 @@ using AspNetCoreHero.ToastNotification;
 using AspNetCoreHero.ToastNotification.Extensions;
 using AutoMapper;
 using FluentValidation.AspNetCore;
+using IUMS.Web.Abstractions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

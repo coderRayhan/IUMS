@@ -701,6 +701,17 @@
 
         public static class QUERIES
         {
+
+            public const string GET_ALL_SESSION = "SELECT Id, SessionName,SessionNameBN, StartDate, EndDate, SessionCode, CONVERT(VARCHAR, StartDate, 107) AS SessionStartDate, CONVERT(VARCHAR, EndDate, 107) AS SessionEndDate, Status = IIF(Status = 'Inactive', 'Inactive', CASE WHEN CAST( GETDATE() AS date) >= StartDate AND CAST( GETDATE() AS date) <= EndDate THEN 'Running' WHEN CAST( GETDATE() AS date) >= EndDate THEN 'Completed' WHEN CAST( GETDATE() AS date) <= StartDate THEN 'Active' ELSE 'Inactive' END) FROM Aca_Sessions ";
+
+            public const string GET_SESSION_BY_ID = "SELECT Id, SessionName,SessionNameBN, StartDate, EndDate, SessionCode, CONVERT(VARCHAR, StartDate, 107) AS SessionStartDate, CONVERT(VARCHAR, EndDate, 107) AS SessionEndDate FROM Aca_Sessions WHERE Id = @Id";
+
+            public const string GET_All_FACULTY = "SELECT Fac.Id, Fac.FacultyName, Fac.FacultyNameBN, fac.Code, Fac.Description FROM dbo.Aca_Faculties AS Fac";
+
+            public const string GET_All_DEPARTMENT = "SELECT Dept.Id, Dept.DepartmentName, Dept.DepartmentNameBN, Dept.Code, Dept.Description , Fac.FacultyName, Fac.FacultyNameBN FROM dbo.Aca_Departments AS Dept  INNER JOIN dbo.Aca_Faculties AS Fac ON Dept.FacultyId = Fac.Id ORDER BY  Dept.Id  DESC";
+
+            public const string GET_DEPT_BY_FACULTY_FOR_DROPDOWN = "SELECT Id, DepartmentName, DepartmentNameBN, FacultyId FacultyId FROM Aca_Departments WHERE FacultyId = @FacultyId";
+
             public const string CHECK_MENUITEM = " [dbo].[MenuItems] ";
             public const string CHECK_MENUITEM_WHERE = " id  IN ({0}) ";
 

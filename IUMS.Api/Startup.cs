@@ -1,7 +1,7 @@
 using AspNetCoreHero.Boilerplate.Api.Extensions;
 using AspNetCoreHero.Boilerplate.Api.Middlewares;
 using AspNetCoreHero.Boilerplate.Application.Extensions;
-using AspNetCoreHero.Boilerplate.Infrastructure.Extensions;
+using IUMS.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

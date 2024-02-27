@@ -1,5 +1,4 @@
 ﻿using AspNetCoreHero.Boilerplate.Application.Interfaces.Repositories;
-using AspNetCoreHero.Boilerplate.Domain.Entities.Catalog;
 using IUMS.Application.Interfaces.Repositories.Academic;
 using IUMS.Domain.Entities.Academic;
 using Microsoft.EntityFrameworkCore;
@@ -8,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AspNetCoreHero.Boilerplate.Infrastructure.Repositories.Academic
+namespace IUMS.Infrastructure.Repositories.Academic
 {
     public class SessionRepository : ISessionRepository
     {

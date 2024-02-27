@@ -4,6 +4,7 @@ using AspNetCoreHero.Boilerplate.Infrastructure.DbContexts;
 using AspNetCoreHero.Boilerplate.Infrastructure.Identity.Models;
 using AspNetCoreHero.Boilerplate.Infrastructure.Shared.Services;
 using AspNetCoreHero.Boilerplate.Web.Services;
+using IUMS.Web;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;

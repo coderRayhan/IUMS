@@ -1,8 +1,8 @@
 ﻿using AspNetCoreHero.Boilerplate.Application.Constants;
 using AspNetCoreHero.Boilerplate.Application.Enums;
 using AspNetCoreHero.Boilerplate.Infrastructure.Identity.Models;
-using AspNetCoreHero.Boilerplate.Web.Abstractions;
 using AspNetCoreHero.Boilerplate.Web.Areas.Admin.Models;
+using IUMS.Web.Abstractions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

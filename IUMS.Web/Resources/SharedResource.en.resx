@@ -117,26 +117,590 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Actions" xml:space="preserve">
+  <data name="Academic" xml:space="preserve">
+    <value>Academic</value>
+  </data>
+  <data name="ACADEMIC_CALENDAR_DETAIL_SETUP" xml:space="preserve">
+    <value>Academic Calendar Detail Setup</value>
+  </data>
+  <data name="ACADEMIC_YEAR" xml:space="preserve">
+    <value>Admission Year</value>
+  </data>
+  <data name="ACTIONS" xml:space="preserve">
     <value>Actions</value>
+  </data>
+  <data name="ACTIVE" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="ACTIVEDATE_IS_REQUIRED" xml:space="preserve">
+    <value>Active date is required</value>
+  </data>
+  <data name="ADDRESS" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="ADDRESS_IS_REQUIRED" xml:space="preserve">
+    <value>Address is required.</value>
+  </data>
+  <data name="ADDRESS_MUST_NOT_EXCEED_50_CHARACTERS" xml:space="preserve">
+    <value>Address must not exceed 50 characters.</value>
+  </data>
+  <data name="ADD_NEW_LOOKUP" xml:space="preserve">
+    <value>Add New Lookup</value>
+  </data>
+  <data name="ADD_NEW_LOOKUP_DETAIL" xml:space="preserve">
+    <value>Add New Lookup Details</value>
+  </data>
+  <data name="ADMISSION" xml:space="preserve">
+    <value>Admission</value>
+  </data>
+  <data name="ADMISSION_DATE" xml:space="preserve">
+    <value>Admission Date</value>
+  </data>
+  <data name="ADMISSION_DETAIL" xml:space="preserve">
+    <value>Admission Detail Setup</value>
+  </data>
+  <data name="ADMISSION_Doc_Upload" xml:space="preserve">
+    <value>Admission Document Upload</value>
+  </data>
+  <data name="ADMISSION_REFERENCE" xml:space="preserve">
+    <value>Admission Reference</value>
+  </data>
+  <data name="ADMISSION_REFERENCE_IS_REQUIRED" xml:space="preserve">
+    <value>Admission Reference is required.</value>
+  </data>
+  <data name="ADMISSION_REFERENCE_MUST_NOT_EXCEED_50_CHARACTERS" xml:space="preserve">
+    <value>Admission Reference must not exceed 50 characters.</value>
+  </data>
+  <data name="ADMISSION_RESULT_PROCESS" xml:space="preserve">
+    <value>Admission Result Process</value>
+  </data>
+  <data name="ADMISSION_RESULT_UPLOAD" xml:space="preserve">
+    <value>Admission Result Upload</value>
+  </data>
+  <data name="ADMISSION_TEST_SETUP" xml:space="preserve">
+    <value>Admission Test Setup</value>
+  </data>
+  <data name="Admit Card" xml:space="preserve">
+    <value>Admit Card</value>
+  </data>
+  <data name="ADMITTED_PROGRAM" xml:space="preserve">
+    <value>Admitted Program</value>
+  </data>
+  <data name="ADMIT_CARD_ENABLE_FORM" xml:space="preserve">
+    <value>Admit Card Enable Form</value>
+  </data>
+  <data name="ADVISER_COURSE_CONFIRM_FORM" xml:space="preserve">
+    <value>Adviser Course Confirm Form</value>
+  </data>
+  <data name="ADVISOR" xml:space="preserve">
+    <value>Adviser</value>
+  </data>
+  <data name="ALL" xml:space="preserve">
+    <value>All</value>
   </data>
   <data name="Already have an account? Login!" xml:space="preserve">
     <value>Already have an account? Login!</value>
   </data>
+  <data name="APPLICANT_INFO" xml:space="preserve">
+    <value>Applicant Information</value>
+  </data>
+  <data name="APPLICATION_FEE" xml:space="preserve">
+    <value>Application Fee</value>
+  </data>
+  <data name="APPLICATION_FEE_SETUP" xml:space="preserve">
+    <value>Application Fee Setup</value>
+  </data>
+  <data name="APPLICATION_FORM_CONFIG" xml:space="preserve">
+    <value>Applicaion Form Config</value>
+  </data>
+  <data name="APPLICATION_ID" xml:space="preserve">
+    <value>Application Id</value>
+  </data>
+  <data name="APPLICATION_USER" xml:space="preserve">
+    <value>Approval key</value>
+  </data>
+  <data name="APPLICATION_USER_REQUIRED" xml:space="preserve">
+    <value>Application user required</value>
+  </data>
+  <data name="APPLIED_DATE_IS_REQUIRED" xml:space="preserve">
+    <value>Applied Date is required</value>
+  </data>
+  <data name="ASSIGN_COURSE" xml:space="preserve">
+    <value>Assign Course</value>
+  </data>
+  <data name="ASSIGN_DATE" xml:space="preserve">
+    <value>Assign Date</value>
+  </data>
+  <data name="Attendance Entry" xml:space="preserve">
+    <value>Attendance Entry</value>
+  </data>
+  <data name="ATTENDANCE_DATE" xml:space="preserve">
+    <value>Attendance Date</value>
+  </data>
+  <data name="ATTENDANCE_INFO" xml:space="preserve">
+    <value>Attendance</value>
+  </data>
+  <data name="BANGLA" xml:space="preserve">
+    <value>Bangla</value>
+  </data>
+  <data name="BANGLA_NAME" xml:space="preserve">
+    <value>Bangla Name</value>
+  </data>
+  <data name="BANGLENAME_IS_REQUIRED" xml:space="preserve">
+    <value>Bangla name is required</value>
+  </data>
+  <data name="BANK_COLLECTION_DATE" xml:space="preserve">
+    <value>Bank Date</value>
+  </data>
+  <data name="BASIC_INFORMATION" xml:space="preserve">
+    <value>Basic Information</value>
+  </data>
+  <data name="BATCH" xml:space="preserve">
+    <value>Batch</value>
+  </data>
+  <data name="BIRTH_CERTIFICATE_NO_IS_REQUIRED" xml:space="preserve">
+    <value>Birth Certificate Number is required.</value>
+  </data>
+  <data name="BIRTH_CER_NO" xml:space="preserve">
+    <value>Birth Certificate No</value>
+  </data>
+  <data name="BIRTH_DATE" xml:space="preserve">
+    <value>Date of Birth</value>
+  </data>
+  <data name="BIRTH_DATE_IS_REQUIRED" xml:space="preserve">
+    <value>Birth Date is required.</value>
+  </data>
+  <data name="Blood Group" xml:space="preserve">
+    <value>BloodGroup</value>
+  </data>
+  <data name="BLOOD_GROUP" xml:space="preserve">
+    <value>Blood Group</value>
+  </data>
+  <data name="BLOOD_GROUP_IS_REQUIRED" xml:space="preserve">
+    <value>Blood Group is required.</value>
+  </data>
+  <data name="BOTH" xml:space="preserve">
+    <value>Both</value>
+  </data>
+  <data name="BUILDING" xml:space="preserve">
+    <value>Building</value>
+  </data>
+  <data name="BUILDING_ID_IS_REQUIRED" xml:space="preserve">
+    <value>Building Id is required</value>
+  </data>
+  <data name="BUILDING_INFORMATION_SETUP" xml:space="preserve">
+    <value>Building Information Setup</value>
+  </data>
+  <data name="BUILDING_NAME" xml:space="preserve">
+    <value>Building Name</value>
+  </data>
+  <data name="BUTTON_CANCEL" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="BUTTON_CREATE" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="BUTTON_DELETE" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="BUTTON_EDIT" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="BUTTON_RELOAD" xml:space="preserve">
+    <value>Reload</value>
+  </data>
+  <data name="BUTTON_SAVE" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="CALENDAR_YEAR" xml:space="preserve">
+    <value>Calendar Year</value>
+  </data>
+  <data name="CALENDAR_YEAR_IS_REQUIRED" xml:space="preserve">
+    <value>Calendar Year is Required</value>
+  </data>
+  <data name="Campus" xml:space="preserve">
+    <value>Campus</value>
+  </data>
+  <data name="CAMPUSNAME_IS_REQUIRED" xml:space="preserve">
+    <value>CampusName is required.</value>
+  </data>
+  <data name="CAMPUSNAME_MUST_NOT_EXCEED_50_CHARACTERS" xml:space="preserve">
+    <value>CampusName must not exceed 50 characters.</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
+  </data>
+  <data name="CANCELATION_FORM_CONFIG" xml:space="preserve">
+    <value>Cancelation Form Config</value>
+  </data>
+  <data name="CANCELLATION_APPLICATION" xml:space="preserve">
+    <value>Cancellation Application</value>
+  </data>
+  <data name="CANCELLATION_APPLICATION_LIST" xml:space="preserve">
+    <value>Cancellation Application List</value>
+  </data>
+  <data name="CANCELLATION_REASON" xml:space="preserve">
+    <value>Cancellation Reason</value>
+  </data>
+  <data name="CAPACITY" xml:space="preserve">
+    <value>Capacity</value>
+  </data>
+  <data name="CASH" xml:space="preserve">
+    <value>Cash</value>
+  </data>
+  <data name="CATEGORY_IS_REQUIRED" xml:space="preserve">
+    <value>Category is Required.</value>
+  </data>
+  <data name="CAUSE_OF_PUNISHMENT" xml:space="preserve">
+    <value>Cause of Punishment</value>
+  </data>
+  <data name="CENTER" xml:space="preserve">
+    <value>Center</value>
+  </data>
+  <data name="CENTER_ID_IS_REQUIRED" xml:space="preserve">
+    <value>Center Id is required</value>
+  </data>
+  <data name="CENTER_NAME" xml:space="preserve">
+    <value>Center Name</value>
+  </data>
+  <data name="CHOOSE_OPTION" xml:space="preserve">
+    <value>Choose Option</value>
+  </data>
+  <data name="CLASS_MANAGEMENT" xml:space="preserve">
+    <value>Class Management</value>
+  </data>
+  <data name="CLASS_ROLL" xml:space="preserve">
+    <value>Class Roll</value>
+  </data>
+  <data name="CLASS_ROLL_CONFIGURATION_SETUP" xml:space="preserve">
+    <value>Class Roll Configuration Setup</value>
+  </data>
+  <data name="CLEAR" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="CLEARANCE" xml:space="preserve">
+    <value>Clearance</value>
+  </data>
+  <data name="CLEARANCE_TYPE" xml:space="preserve">
+    <value>Clearance Type</value>
+  </data>
+  <data name="CLOSED" xml:space="preserve">
+    <value>Closed</value>
+  </data>
+  <data name="CODE" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="CODE_IS_REQUIRED" xml:space="preserve">
+    <value>Code is required</value>
+  </data>
+  <data name="CODE_MUST_BE_AT_LEAST_2_CHARACTERS" xml:space="preserve">
+    <value>Code must be at least 2 characters.</value>
+  </data>
+  <data name="CODE_MUST_BE_AT_LEAST_4_CHARACTERS" xml:space="preserve">
+    <value>Code must be at least 4 characters.</value>
+  </data>
+  <data name="CODE_MUST_NOT_EXCEED_2_CHARACTERS" xml:space="preserve">
+    <value>Code must not exceed 2 characters.</value>
+  </data>
+  <data name="CODE_MUST_NOT_EXCEED_4_CHARACTERS" xml:space="preserve">
+    <value>Code must not exceed 4 characters.</value>
+  </data>
+  <data name="COLLECTION_REPORT_SUMMARY" xml:space="preserve">
+    <value>Collection Report Summary</value>
+  </data>
+  <data name="COMMENTS" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="COMMITTEE_MEMBER" xml:space="preserve">
+    <value>Committee Member</value>
+  </data>
+  <data name="COMMITTEE_NAME" xml:space="preserve">
+    <value>Committee Name</value>
+  </data>
+  <data name="COMMITTEE_NAME_IS_REQUIRED" xml:space="preserve">
+    <value>Committee Name is Required.</value>
+  </data>
+  <data name="CONFIGURE_NEW_APPLICATION_PREREQUISITE" xml:space="preserve">
+    <value>Configure New Application Prerequisite</value>
   </data>
   <data name="ConfirmPassword" xml:space="preserve">
     <value>Confirm Password</value>
   </data>
+  <data name="CONTACT" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="CONTACT_INFO" xml:space="preserve">
+    <value>Contact Information</value>
+  </data>
+  <data name="CONTACT_INFORMATION" xml:space="preserve">
+    <value>Contact Information</value>
+  </data>
+  <data name="CONTINUOUS_ASSESMENT" xml:space="preserve">
+    <value>Continuous Assesment</value>
+  </data>
+  <data name="COURSE" xml:space="preserve">
+    <value>Course</value>
+  </data>
+  <data name="Course Assign" xml:space="preserve">
+    <value>Course Assign</value>
+  </data>
+  <data name="Course Teacher Assign" xml:space="preserve">
+    <value>Course Teacher Assign</value>
+  </data>
+  <data name="Course Teacher List" xml:space="preserve">
+    <value>Course Teacher List</value>
+  </data>
+  <data name="COURSECODE_IS_REQUIRED" xml:space="preserve">
+    <value>CourseCode is required.</value>
+  </data>
+  <data name="COURSETITLE_IS_REQUIRED" xml:space="preserve">
+    <value>CourseTitle is required.</value>
+  </data>
+  <data name="COURSETITLE_MUST_NOT_EXCEED_50_CHARACTERS" xml:space="preserve">
+    <value>CourseTitle must not exceed 50 characters.</value>
+  </data>
+  <data name="COURSE_CODE" xml:space="preserve">
+    <value>Course Code</value>
+  </data>
+  <data name="COURSE_DETAILS" xml:space="preserve">
+    <value>Course Details</value>
+  </data>
+  <data name="COURSE_REGISTRATION" xml:space="preserve">
+    <value>Course Registration</value>
+  </data>
+  <data name="COURSE_TEACHER" xml:space="preserve">
+    <value>Course Teacher</value>
+  </data>
+  <data name="COURSE_TITLE" xml:space="preserve">
+    <value>Course Title</value>
+  </data>
+  <data name="COURSE_TYPE" xml:space="preserve">
+    <value>Course Type</value>
+  </data>
+  <data name="COUSECODE_MUST_NOT_EXCEED_10_CHARACTERS" xml:space="preserve">
+    <value>CourseCode must not exceed 10 characters.</value>
+  </data>
   <data name="Create an Account!" xml:space="preserve">
     <value>Create an Account!</value>
+  </data>
+  <data name="CREATE_ACADEMIC_CALENDAR" xml:space="preserve">
+    <value>Create Academic Calendar</value>
+  </data>
+  <data name="CREATE_ADMISSION" xml:space="preserve">
+    <value>Create Admission</value>
+  </data>
+  <data name="CREATE_ADMISSION_TEST_SETUP" xml:space="preserve">
+    <value>Setup New Exam</value>
+  </data>
+  <data name="CREATE_APPLICATION_USER" xml:space="preserve">
+    <value>Create Application User</value>
+  </data>
+  <data name="CREATE_BATCH" xml:space="preserve">
+    <value>Add New Batch</value>
+  </data>
+  <data name="CREATE_CAMPUS" xml:space="preserve">
+    <value>Create Campus</value>
+  </data>
+  <data name="CREATE_CLASS_ROLL_CONFIGURATION" xml:space="preserve">
+    <value>Create Roll Prefix</value>
+  </data>
+  <data name="CREATE_CLASS_ROUTINE" xml:space="preserve">
+    <value>Create Class Routine</value>
+  </data>
+  <data name="CREATE_COURSE" xml:space="preserve">
+    <value>Create Course</value>
+  </data>
+  <data name="CREATE_DEPARTMENT" xml:space="preserve">
+    <value>Create Department</value>
+  </data>
+  <data name="CREATE_FACULTY" xml:space="preserve">
+    <value>Create Faculty</value>
+  </data>
+  <data name="CREATE_FEES_HEAD" xml:space="preserve">
+    <value>Create Fees Head</value>
+  </data>
+  <data name="CREATE_FEES_PROCESS_SETUP" xml:space="preserve">
+    <value>Create Fees Process Setup</value>
+  </data>
+  <data name="CREATE_HALL" xml:space="preserve">
+    <value>Create Hall</value>
+  </data>
+  <data name="CREATE_MENU" xml:space="preserve">
+    <value>Create Menu</value>
+  </data>
+  <data name="CREATE_MENU_URL" xml:space="preserve">
+    <value>Create Menu Url</value>
+  </data>
+  <data name="CREATE_NOTICE" xml:space="preserve">
+    <value>Create Notice</value>
+  </data>
+  <data name="CREATE_PROGRAM" xml:space="preserve">
+    <value>Create Program</value>
+  </data>
+  <data name="CREATE_ACADEMIC_YEAR" xml:space="preserve">
+    <value>Create Academic Year</value>
+  </data>
+  <data name="CREATE_STUDY_BOARD" xml:space="preserve">
+    <value>Create Study Board</value>
+  </data>
+  <data name="CREATE_YEAR" xml:space="preserve">
+    <value>Create Year</value>
+  </data>
+  <data name="CREDEITPOINTS_MUST_BE_GREATER_THAN_0" xml:space="preserve">
+    <value>CreditPoints must be greater than 0</value>
+  </data>
+  <data name="CREDITHOUR" xml:space="preserve">
+    <value>Credit</value>
+  </data>
+  <data name="CREDIT_POINTS" xml:space="preserve">
+    <value>Course Credit</value>
   </data>
   <data name="Dark Mode" xml:space="preserve">
     <value>Dark Mode</value>
   </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="DATA_EXISTS" xml:space="preserve">
+    <value>Data Exists</value>
+  </data>
+  <data name="DATE" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Date of Birth" xml:space="preserve">
+    <value>Date of Birth</value>
+  </data>
+  <data name="DATEWISE_COLLECTION_SUMMARY" xml:space="preserve">
+    <value>Date Wise Collection Report</value>
+  </data>
+  <data name="DAY_TYPE" xml:space="preserve">
+    <value>Day Type</value>
+  </data>
   <data name="Default Credentials" xml:space="preserve">
     <value>Default Credentials</value>
+  </data>
+  <data name="DELETE" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="DELETE_MSG" xml:space="preserve">
+    <value>Deleted</value>
+  </data>
+  <data name="DEPARTMENT" xml:space="preserve">
+    <value>Department</value>
+  </data>
+  <data name="DEPARTMENT_CODE_IS_REQUIRED" xml:space="preserve">
+    <value>Department Code is required.</value>
+  </data>
+  <data name="DEPARTMENT_CODE_MUST_NOT_EXCEED_10_CHARACTERS" xml:space="preserve">
+    <value>Department Code must not exceed 10 characters.</value>
+  </data>
+  <data name="DEPARTMENT_IS_REQUIRED" xml:space="preserve">
+    <value>Department is required.</value>
+  </data>
+  <data name="DEPARTMENT_MUST_NOT_EXCEED_50_CHARACTERS" xml:space="preserve">
+    <value>Department must not exceed 50 characters.</value>
+  </data>
+  <data name="dept_req" xml:space="preserve">
+    <value>Department is Required</value>
+  </data>
+  <data name="DESCRIPTION" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="DESCRIPTION_MUST_NOT_EXCEED_500_CHARACTERS" xml:space="preserve">
+    <value>Description must not exceed 500 characters.</value>
+  </data>
+  <data name="DESIGNATION" xml:space="preserve">
+    <value>Designation</value>
+  </data>
+  <data name="DESIGNATION_IS_REQUIRED" xml:space="preserve">
+    <value>Designation is required</value>
+  </data>
+  <data name="DESIGNATION_ORDER" xml:space="preserve">
+    <value>Designation Order</value>
+  </data>
+  <data name="DISCOUNT_AMOUNT" xml:space="preserve">
+    <value>Discount Amount</value>
+  </data>
+  <data name="DISPLAYNAME_IS_REQUIRED" xml:space="preserve">
+    <value>Display name is required</value>
+  </data>
+  <data name="DISTRICT" xml:space="preserve">
+    <value>District</value>
+  </data>
+  <data name="DISTRICT_IS_REQUIRED" xml:space="preserve">
+    <value>District is Required.</value>
+  </data>
+  <data name="DOCUMENT" xml:space="preserve">
+    <value>Document</value>
+  </data>
+  <data name="DOWNLOAD" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="DRAFT" xml:space="preserve">
+    <value>Draft</value>
+  </data>
+  <data name="DUE_AMOUNT" xml:space="preserve">
+    <value>Due Amount</value>
+  </data>
+  <data name="DUE_DATE" xml:space="preserve">
+    <value>Due Date</value>
+  </data>
+  <data name="DUE_DATE_IS_REQUIRED" xml:space="preserve">
+    <value>Due Date is required</value>
+  </data>
+  <data name="DUE_REPORT_SUMMARY" xml:space="preserve">
+    <value>Due Report Summary</value>
+  </data>
+  <data name="DURATION" xml:space="preserve">
+    <value>Duration</value>
+  </data>
+  <data name="DURATION_IS_REQUIED" xml:space="preserve">
+    <value>Duration is required.</value>
+  </data>
+  <data name="DURATION_MONTH" xml:space="preserve">
+    <value>Duration (Months)</value>
+  </data>
+  <data name="DURATION_YEAR" xml:space="preserve">
+    <value>Year Duration</value>
+  </data>
+  <data name="EDIT" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Edit Employee Profile" xml:space="preserve">
+    <value>Edit Employee Profile</value>
+  </data>
+  <data name="Edit External Teacher Profile" xml:space="preserve">
+    <value>Edit Guest Teacher Profile</value>
+  </data>
+  <data name="Edit Student Profile" xml:space="preserve">
+    <value>Edit Student Profile</value>
+  </data>
+  <data name="EDIT_ADMISSION_REFERENCE_DETAILS" xml:space="preserve">
+    <value>Edit Admission Reference Details</value>
+  </data>
+  <data name="EDIT_EXAM_ROOM_SETUP" xml:space="preserve">
+    <value>Edit Exam Room Setup</value>
+  </data>
+  <data name="EDIT_EXAM_SEAT_SETUP" xml:space="preserve">
+    <value>Edit Exam Seat Setup</value>
+  </data>
+  <data name="EDIT_GRADE_POLICY" xml:space="preserve">
+    <value>Edit Grade Policy</value>
+  </data>
+  <data name="EDIT_LOOKUP" xml:space="preserve">
+    <value>Edit Lookup</value>
+  </data>
+  <data name="EDIT_LOOKUP_DETAIL" xml:space="preserve">
+    <value>Edit Lookup Detail</value>
+  </data>
+  <data name="EDIT_NOTICE" xml:space="preserve">
+    <value>Edit Notice</value>
+  </data>
+  <data name="EDIT_STUDY_BOARD" xml:space="preserve">
+    <value>Edit Study Board</value>
+  </data>
+  <data name="EFFECTIVE_FROM" xml:space="preserve">
+    <value>Effective From</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
@@ -144,14 +708,431 @@
   <data name="Email Address" xml:space="preserve">
     <value>Email Address</value>
   </data>
+  <data name="EMAIL_IS_REQUIRED" xml:space="preserve">
+    <value>Email is required.</value>
+  </data>
+  <data name="EMAIL_VALIDATION" xml:space="preserve">
+    <value>Please enter a valid email.</value>
+  </data>
+  <data name="Emergency Contact No" xml:space="preserve">
+    <value>Emergency Contact No</value>
+  </data>
+  <data name="EMERGENCYCONTACT_NO_IS_REQUIRED" xml:space="preserve">
+    <value>Emergency Contact Number is required.</value>
+  </data>
+  <data name="Employee" xml:space="preserve">
+    <value>Employee</value>
+  </data>
+  <data name="Employee Designation" xml:space="preserve">
+    <value>Employee Designation</value>
+  </data>
+  <data name="Employee Details" xml:space="preserve">
+    <value>Employee Details</value>
+  </data>
+  <data name="Employee List" xml:space="preserve">
+    <value>Employee List</value>
+  </data>
+  <data name="Employee Quick Add" xml:space="preserve">
+    <value>Employee Quick Add</value>
+  </data>
+  <data name="EMPLOYEENAME_IS_REQUIRED" xml:space="preserve">
+    <value>Employee Name not exceed 50 characters.</value>
+  </data>
+  <data name="EMPLOYEENAME_MUST_NOT_EXCEED_50_CHARACTERS" xml:space="preserve">
+    <value>Employee Name is Required.</value>
+  </data>
+  <data name="EMPLOYEE_CATEGORY" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="EMPLOYEE_CATEGORY_IS_REQUIRED" xml:space="preserve">
+    <value>Employee Category Type is Required.</value>
+  </data>
+  <data name="EMPLOYEE_DESIGNATION_IS_REQUIRED" xml:space="preserve">
+    <value>Employee Designation is required.</value>
+  </data>
+  <data name="EMPLOYEE_ID" xml:space="preserve">
+    <value>Employee ID</value>
+  </data>
+  <data name="EMPLOYEE_ID_IS_REQUIRED" xml:space="preserve">
+    <value>Employee ID is required.</value>
+  </data>
+  <data name="EMPLOYEE_ID_MUST_NOT_EXCEED_50_CHARACTERS" xml:space="preserve">
+    <value>Employee ID must not exceed 50 characters.</value>
+  </data>
+  <data name="EMPLOYEE_INFO" xml:space="preserve">
+    <value>Employee Information</value>
+  </data>
+  <data name="EMPLOYEE_NAME" xml:space="preserve">
+    <value>Employee Name</value>
+  </data>
+  <data name="EMPLOYEE_NOTICE_BOARD" xml:space="preserve">
+    <value>Employee Notice Board</value>
+  </data>
+  <data name="EMPLOYMENT_TYPE" xml:space="preserve">
+    <value>Employment Type</value>
+  </data>
+  <data name="EMPLOYMENT_TYPE_IS_REQUIRED" xml:space="preserve">
+    <value>Employement Type is Required.</value>
+  </data>
+  <data name="EMP_CATEGORY_EMPLOYEE" xml:space="preserve">
+    <value>Employee</value>
+  </data>
+  <data name="EMP_CATEGORY_STAFF" xml:space="preserve">
+    <value>Staff</value>
+  </data>
+  <data name="EMP_CATEGORY_TEACHER" xml:space="preserve">
+    <value>Teacher</value>
+  </data>
+  <data name="EMP_DESIGNATION_IS_REQUIRED" xml:space="preserve">
+    <value>Employee Designation is required.</value>
+  </data>
+  <data name="EMP_DESIGNATION_MUST_NOT_EXCEED_50_CHARACTERS" xml:space="preserve">
+    <value>Employee Designation  must not exceed 50 characters.</value>
+  </data>
+  <data name="EMP_DESIGNATION_ORDER_IS_REQUIRED" xml:space="preserve">
+    <value>Employee Designation Order is required.</value>
+  </data>
+  <data name="EMP_DESIGNATION_ORDER_MUST_BE_GREATER_THAN_ZERO" xml:space="preserve">
+    <value>Employee Designation Duration must be greater than 0</value>
+  </data>
+  <data name="ENDDATE_MUST_BE_GREATER_THAN_STARTDATE" xml:space="preserve">
+    <value>End date must be greater than start date.</value>
+  </data>
+  <data name="END_DATE" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="END_DATE_IS_REQUIRED" xml:space="preserve">
+    <value>End Date is required</value>
+  </data>
+  <data name="END_ROLL" xml:space="preserve">
+    <value>End Roll</value>
+  </data>
+  <data name="END_ROLL_IS_REQUIRED" xml:space="preserve">
+    <value>End Roll is required.</value>
+  </data>
+  <data name="END_TIME" xml:space="preserve">
+    <value>End Time</value>
+  </data>
+  <data name="ENGLISH" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="ENROLL_COURSE_LIST" xml:space="preserve">
+    <value>Enroll Course List</value>
+  </data>
+  <data name="EXAM" xml:space="preserve">
+    <value>Exam</value>
+  </data>
+  <data name="Exam Committee" xml:space="preserve">
+    <value>Exam Committee</value>
+  </data>
+  <data name="Exam Result Process" xml:space="preserve">
+    <value>Exam Result Process</value>
+  </data>
+  <data name="EXAMINER" xml:space="preserve">
+    <value>Examiner</value>
+  </data>
+  <data name="EXAM_DATE" xml:space="preserve">
+    <value>Exam Date</value>
+  </data>
+  <data name="EXAM_IS_REQUIRED" xml:space="preserve">
+    <value>Exam is requried.</value>
+  </data>
+  <data name="EXAM_NAME" xml:space="preserve">
+    <value>Exam Name</value>
+  </data>
+  <data name="EXAM_PAPER_ASSIGN" xml:space="preserve">
+    <value>Exam Paper Assign</value>
+  </data>
+  <data name="EXAM_ROOM_SETUP" xml:space="preserve">
+    <value>Exam Room Setup</value>
+  </data>
+  <data name="EXAM_SEAT_SETUP" xml:space="preserve">
+    <value>Exam Seat Setup</value>
+  </data>
+  <data name="EXAM_SETUP" xml:space="preserve">
+    <value>Exam Setup</value>
+  </data>
+  <data name="EXAM_TYPE" xml:space="preserve">
+    <value>Exam Type</value>
+  </data>
+  <data name="EXAM_TYPE_IS_REQUIRED" xml:space="preserve">
+    <value>Exam type is required.</value>
+  </data>
+  <data name="EXAM_YEAR" xml:space="preserve">
+    <value>Exam Year</value>
+  </data>
+  <data name="EXCEL" xml:space="preserve">
+    <value>Excel</value>
+  </data>
+  <data name="EXPEL" xml:space="preserve">
+    <value>Expel</value>
+  </data>
+  <data name="EXPELLED_STUDENTS_INFO" xml:space="preserve">
+    <value>Expelled Student's Info</value>
+  </data>
+  <data name="EXPELLED_STUDENT_LIST" xml:space="preserve">
+    <value>Expel Student List</value>
+  </data>
+  <data name="EXPEL_STUDENT" xml:space="preserve">
+    <value>Expel Student</value>
+  </data>
+  <data name="EXPIRE_DATE" xml:space="preserve">
+    <value>Expire Date</value>
+  </data>
+  <data name="EXPIRE_DATE_IS_REQUIRED" xml:space="preserve">
+    <value>Expire Date is required</value>
+  </data>
+  <data name="Ext Teacher Quick Add" xml:space="preserve">
+    <value>Guest Teacher Quick Add</value>
+  </data>
+  <data name="External Teacher Details" xml:space="preserve">
+    <value>Guest Teacher Details</value>
+  </data>
+  <data name="External Teacher List" xml:space="preserve">
+    <value>Guest Teacher List</value>
+  </data>
+  <data name="External Teacher Quick Add" xml:space="preserve">
+    <value>Guest Teacher Quick Add</value>
+  </data>
+  <data name="FACULTY" xml:space="preserve">
+    <value>Faculty</value>
+  </data>
+  <data name="FACULTY_CODE_IS_REQUIRED" xml:space="preserve">
+    <value>Faculty Code is required.</value>
+  </data>
+  <data name="FACULTY_CODE_MUST_NOT_EXCEED_10_CHARACTERS" xml:space="preserve">
+    <value>Faculty Code must not exceed 10 characters.</value>
+  </data>
+  <data name="FACULTY_IS_REQUIRED" xml:space="preserve">
+    <value>Faculty is required.</value>
+  </data>
+  <data name="FACULTY_MUST_NOT_EXCEED_200_CHARACTERS" xml:space="preserve">
+    <value>Faculty must not exceed 200 characters.</value>
+  </data>
+  <data name="Father Name" xml:space="preserve">
+    <value>Father Name</value>
+  </data>
+  <data name="FATHERCONTACT_IS_REQUIRED" xml:space="preserve">
+    <value>Father Contact is required.</value>
+  </data>
+  <data name="FATHERNAME_IS_REQUIRED" xml:space="preserve">
+    <value>Father Name is required.</value>
+  </data>
+  <data name="FATHERNAME_MUST_NOT_EXCEED_50_CHARACTERS" xml:space="preserve">
+    <value>Father Name must not exceed 50 characters.</value>
+  </data>
+  <data name="FATHER_CONTACT" xml:space="preserve">
+    <value>Father Contact</value>
+  </data>
+  <data name="FATHER_INFORMATION" xml:space="preserve">
+    <value>Father Information</value>
+  </data>
+  <data name="FATHER_NAME" xml:space="preserve">
+    <value>Father Name</value>
+  </data>
+  <data name="FATHER_PHOTO" xml:space="preserve">
+    <value>Father Photo</value>
+  </data>
+  <data name="FATHER_PROFESSION" xml:space="preserve">
+    <value>Father Profession</value>
+  </data>
+  <data name="FATHER_QUALIFICATION" xml:space="preserve">
+    <value>Father Qualification</value>
+  </data>
+  <data name="Fees" xml:space="preserve">
+    <value>Fees</value>
+  </data>
+  <data name="Fees Collection" xml:space="preserve">
+    <value>Fees Collection</value>
+  </data>
+  <data name="Fees Head" xml:space="preserve">
+    <value>Fees Head</value>
+  </data>
+  <data name="Fees Head Config" xml:space="preserve">
+    <value>Fees Head Config</value>
+  </data>
+  <data name="Fees Process" xml:space="preserve">
+    <value>Fees Process</value>
+  </data>
+  <data name="FEES_BOOK" xml:space="preserve">
+    <value>Fees book</value>
+  </data>
+  <data name="FEES_COLLECTION" xml:space="preserve">
+    <value>Fees Collection</value>
+  </data>
+  <data name="FEES_CONFIG" xml:space="preserve">
+    <value>Fees Config</value>
+  </data>
+  <data name="FEES_MODIFY_REPORT" xml:space="preserve">
+    <value>Fees Modify Report</value>
+  </data>
+  <data name="FEES_PROCESS_CONFIG" xml:space="preserve">
+    <value>Fees Process Config</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>Female</value>
+  </data>
+  <data name="FILE" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="FILE_IS_REQUIRED" xml:space="preserve">
+    <value>File is required</value>
+  </data>
+  <data name="FINAL_DUE_DATE_EXPIRED" xml:space="preserve">
+    <value>Final Due Date Expired</value>
+  </data>
+  <data name="FINAL_FEE" xml:space="preserve">
+    <value>Final Fee</value>
+  </data>
+  <data name="FINAL_FEE_IS_REQUIRED" xml:space="preserve">
+    <value>Final Fee is required</value>
+  </data>
   <data name="First Name" xml:space="preserve">
     <value>First Name</value>
   </data>
   <data name="FirstName" xml:space="preserve">
     <value>First Name</value>
   </data>
+  <data name="FIRST_EXAMINER" xml:space="preserve">
+    <value>First Examiner</value>
+  </data>
+  <data name="FLOOR" xml:space="preserve">
+    <value>Floor</value>
+  </data>
+  <data name="FLOOR_ID_IS_REQUIRED" xml:space="preserve">
+    <value>Floor Id is required</value>
+  </data>
+  <data name="FLOOR_NUMBER" xml:space="preserve">
+    <value>Floor Number</value>
+  </data>
   <data name="Forgot Password?" xml:space="preserve">
     <value>Forgot Password?</value>
+  </data>
+  <data name="FORM_NO" xml:space="preserve">
+    <value>Form No</value>
+  </data>
+  <data name="FROM_DATE" xml:space="preserve">
+    <value>From Date</value>
+  </data>
+  <data name="FROM_DATE_IS_REQUIRED" xml:space="preserve">
+    <value>From Date is required.</value>
+  </data>
+  <data name="FROM_MARKS" xml:space="preserve">
+    <value>From Marks</value>
+  </data>
+  <data name="FROM_YEAR" xml:space="preserve">
+    <value>From Year</value>
+  </data>
+  <data name="FULLMARKS_MUST_BE_GREATER_THAN_0" xml:space="preserve">
+    <value>FullMarks must be greater than 0</value>
+  </data>
+  <data name="FULL_MARKS" xml:space="preserve">
+    <value>Full Marks</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>Gender</value>
+  </data>
+  <data name="GENDER_IS_REQUIRED" xml:space="preserve">
+    <value>Gender is required.</value>
+  </data>
+  <data name="Generate Report" xml:space="preserve">
+    <value>Generate Report</value>
+  </data>
+  <data name="GPA" xml:space="preserve">
+    <value>GPA</value>
+  </data>
+  <data name="GRADE" xml:space="preserve">
+    <value>Grade</value>
+  </data>
+  <data name="GRADE_POINT" xml:space="preserve">
+    <value>Grade Point</value>
+  </data>
+  <data name="GRADE_POLICY" xml:space="preserve">
+    <value>Grade Policy</value>
+  </data>
+  <data name="GRADING_SYSTEM" xml:space="preserve">
+    <value>Grading System</value>
+  </data>
+  <data name="Hall" xml:space="preserve">
+    <value>Hall</value>
+  </data>
+  <data name="HALLNAME_IS_REQUIRED" xml:space="preserve">
+    <value>Hall is Required.</value>
+  </data>
+  <data name="HALLNAME_MUST_NOT_EXCEED_50_CHARACTERS" xml:space="preserve">
+    <value>Hall Name must not exceed 50 characters.</value>
+  </data>
+  <data name="HALL_CLEARANCE" xml:space="preserve">
+    <value>Hall Clearance</value>
+  </data>
+  <data name="HALL_CLEARANCE_REPORT" xml:space="preserve">
+    <value>Hall Clearance Report</value>
+  </data>
+  <data name="HALL_HEADER" xml:space="preserve">
+    <value>Hall</value>
+  </data>
+  <data name="HEADWISE_COLLECTION_SUMMARY" xml:space="preserve">
+    <value>Head Wise Collection Summary</value>
+  </data>
+  <data name="HEAD_CODE" xml:space="preserve">
+    <value>Head Code</value>
+  </data>
+  <data name="HEAD_NAME" xml:space="preserve">
+    <value>Head Name</value>
+  </data>
+  <data name="HOLIDAY_NAME" xml:space="preserve">
+    <value>Holiday Name</value>
+  </data>
+  <data name="HOME_CONTACT_NO" xml:space="preserve">
+    <value>Home Contact No.</value>
+  </data>
+  <data name="ID" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="IMPROVEMENT" xml:space="preserve">
+    <value>Improvement</value>
+  </data>
+  <data name="INACTIVE" xml:space="preserve">
+    <value>InActive</value>
+  </data>
+  <data name="INACTIVE_DATE" xml:space="preserve">
+    <value>Inactive Date</value>
+  </data>
+  <data name="Individual Fees Process" xml:space="preserve">
+    <value>Individual Fees Process</value>
+  </data>
+  <data name="INITIAL_DUE_DATE_EXPIRED" xml:space="preserve">
+    <value>Initial Due Date Expired</value>
+  </data>
+  <data name="INITIAL_FEE" xml:space="preserve">
+    <value>Initial Fee</value>
+  </data>
+  <data name="INITIAL_FEE_IS_REQUIRED" xml:space="preserve">
+    <value>Initial Fee is required</value>
+  </data>
+  <data name="INSERT" xml:space="preserve">
+    <value>Insert</value>
+  </data>
+  <data name="INSID_CODE" xml:space="preserve">
+    <value>Academic Year Code</value>
+  </data>
+  <data name="INSID_IS_REQUIRED" xml:space="preserve">
+    <value>Institution ID is required.</value>
+  </data>
+  <data name="INSTITUTE_NAME_IS_REQUIRED" xml:space="preserve">
+    <value>Institute Name is required.</value>
+  </data>
+  <data name="InstitutionName" xml:space="preserve">
+    <value>Bangabandhu Sheikh Mujibur Rahman Aviation and Aerospace University</value>
+  </data>
+  <data name="INSTITUTION_CODE_IS_REQUIRED" xml:space="preserve">
+    <value>Academic Year Code is required.</value>
+  </data>
+  <data name="JOINING_DATE" xml:space="preserve">
+    <value>Joining Date</value>
+  </data>
+  <data name="JOINING_DATE_IS_REQUIRED" xml:space="preserve">
+    <value>Joining Date is required.</value>
   </data>
   <data name="Last Name" xml:space="preserve">
     <value>Last Name</value>
@@ -159,20 +1140,644 @@
   <data name="LastName" xml:space="preserve">
     <value>Last Name</value>
   </data>
+  <data name="LETTER_GRADE" xml:space="preserve">
+    <value>Letter Grade</value>
+  </data>
+  <data name="LIBRARY_CLEARANCE" xml:space="preserve">
+    <value>Library Clearance</value>
+  </data>
+  <data name="LIBRARY_CLEARANCE_REPORT" xml:space="preserve">
+    <value>Library Clearance Report</value>
+  </data>
   <data name="Login" xml:space="preserve">
     <value>Login</value>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>Logout</value>
   </data>
+  <data name="Male" xml:space="preserve">
+    <value>Male</value>
+  </data>
+  <data name="Marital Status" xml:space="preserve">
+    <value>Marital Status</value>
+  </data>
+  <data name="MARKS" xml:space="preserve">
+    <value>Marks</value>
+  </data>
+  <data name="Marks Entry" xml:space="preserve">
+    <value>Marks Entry</value>
+  </data>
+  <data name="MASTERS_NAME" xml:space="preserve">
+    <value>Master's Name</value>
+  </data>
+  <data name="MASTERS_NAME_IS_REQUIRED" xml:space="preserve">
+    <value>Master's name is required</value>
+  </data>
+  <data name="MAX_INVIGILATOR" xml:space="preserve">
+    <value>Maximum Invigilator</value>
+  </data>
+  <data name="MEETING_DATE" xml:space="preserve">
+    <value>Meeting Date</value>
+  </data>
+  <data name="MEETING_NUMBER" xml:space="preserve">
+    <value>Meeting Number</value>
+  </data>
+  <data name="MEETING_TIME" xml:space="preserve">
+    <value>Meeting Time</value>
+  </data>
+  <data name="men" xml:space="preserve">
+    <value>Absent</value>
+  </data>
+  <data name="MENU" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="MENU_ACADEMIC" xml:space="preserve">
+    <value>Academic</value>
+  </data>
+  <data name="MENU_ADMIN" xml:space="preserve">
+    <value>Admin</value>
+  </data>
+  <data name="MENU_ADMIN_SETTINGS" xml:space="preserve">
+    <value>Admin Settings</value>
+  </data>
+  <data name="MENU_ADMIN_SYSTEM" xml:space="preserve">
+    <value>System Admin</value>
+  </data>
+  <data name="MENU_ADMISSION" xml:space="preserve">
+    <value>Admission</value>
+  </data>
+  <data name="MENU_ADMISSION_DETAILS" xml:space="preserve">
+    <value>Admission Detail</value>
+  </data>
+  <data name="MENU_ADMISSION_FORM" xml:space="preserve">
+    <value>Admission Form</value>
+  </data>
+  <data name="MENU_ADMISSION_TEST_ELIGIBLE_LIST" xml:space="preserve">
+    <value>Admission Test Eligible List</value>
+  </data>
+  <data name="MENU_ADMIT_CARD_ENABLE_FORM" xml:space="preserve">
+    <value>Admit Card Enable Form</value>
+  </data>
+  <data name="MENU_APPLICATION_FEE" xml:space="preserve">
+    <value>Application Fee</value>
+  </data>
+  <data name="MENU_ATTENDANCE_ENTRY" xml:space="preserve">
+    <value>Attendance Entry</value>
+  </data>
+  <data name="MENU_BATCH" xml:space="preserve">
+    <value>Batch</value>
+  </data>
+  <data name="MENU_CALENDAR_SETUP" xml:space="preserve">
+    <value>Academic Calendar</value>
+  </data>
+  <data name="MENU_CAMPUS" xml:space="preserve">
+    <value>Campus</value>
+  </data>
+  <data name="MENU_CANCELLATION_APPROVAL" xml:space="preserve">
+    <value>Cancellation Approval</value>
+  </data>
+  <data name="MENU_CLASS_ROLL_CONFIGURATION" xml:space="preserve">
+    <value>Class Roll Setup</value>
+  </data>
+  <data name="MENU_COMMON_LOOKUP" xml:space="preserve">
+    <value>Common Lookup</value>
+  </data>
+  <data name="MENU_COMMON_LOOKUP_DETAILS" xml:space="preserve">
+    <value>Common Lookup Details</value>
+  </data>
+  <data name="MENU_COURES_ASSIGN_ATTENDANCE" xml:space="preserve">
+    <value>Coures Wise Student Attendance</value>
+  </data>
+  <data name="MENU_COURSE" xml:space="preserve">
+    <value>Course</value>
+  </data>
+  <data name="MENU_COURSE_ASSIGN" xml:space="preserve">
+    <value>Course Assign Form</value>
+  </data>
+  <data name="MENU_COURSE_TEACHER_ASSIGN" xml:space="preserve">
+    <value>Examiner Assign</value>
+  </data>
+  <data name="MENU_DASHBOARD" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="MENU_DEPARTMENT" xml:space="preserve">
+    <value>Department</value>
+  </data>
+  <data name="MENU_EMPLOYEE" xml:space="preserve">
+    <value>Employee</value>
+  </data>
+  <data name="MENU_EMPLOYEE_DESIGNATION" xml:space="preserve">
+    <value>Designation</value>
+  </data>
+  <data name="MENU_EMPLOYEE_LIST" xml:space="preserve">
+    <value>Employee List</value>
+  </data>
+  <data name="MENU_EMPLOYEE_PROFILE" xml:space="preserve">
+    <value>Employee Profile</value>
+  </data>
+  <data name="MENU_EMPLOYEE_QUICK_ADD" xml:space="preserve">
+    <value>Employee Quick Add</value>
+  </data>
+  <data name="MENU_EMP_COURSE_ASSIGN" xml:space="preserve">
+    <value>Employee Course Assign</value>
+  </data>
+  <data name="MENU_Emp_Notice" xml:space="preserve">
+    <value>Employee Notice</value>
+  </data>
+  <data name="MENU_EXAM" xml:space="preserve">
+    <value>Exam</value>
+  </data>
+  <data name="MENU_EXAM_COMMITTEE" xml:space="preserve">
+    <value>Exam Committee</value>
+  </data>
+  <data name="MENU_EXAM_MEETING" xml:space="preserve">
+    <value>Exam Meeting</value>
+  </data>
+  <data name="MENU_EXAM_RESULT_PROCESS" xml:space="preserve">
+    <value>Result Processing Form</value>
+  </data>
+  <data name="MENU_EXAM_ROOM_SETUP" xml:space="preserve">
+    <value>Exam Room Setup</value>
+  </data>
+  <data name="MENU_EXAM_SEAT_SETUP" xml:space="preserve">
+    <value>Exam Seat Setup</value>
+  </data>
+  <data name="MENU_EXAM_SETUP" xml:space="preserve">
+    <value>Exam Setup</value>
+  </data>
+  <data name="MENU_EXT_TEACHER" xml:space="preserve">
+    <value>Guest Teacher</value>
+  </data>
+  <data name="MENU_EXT_TEACHER_LIST" xml:space="preserve">
+    <value>Guest Teacher List</value>
+  </data>
+  <data name="MENU_EXT_TEACHER_QUICK_ADD" xml:space="preserve">
+    <value>Guest Teacher Quick Add</value>
+  </data>
+  <data name="MENU_FACULTY" xml:space="preserve">
+    <value>Faculty</value>
+  </data>
+  <data name="MENU_FEES" xml:space="preserve">
+    <value>Fees</value>
+  </data>
+  <data name="MENU_FEES_HEAD" xml:space="preserve">
+    <value>Fees Head</value>
+  </data>
+  <data name="MENU_FEES_HEAD_CONFIG" xml:space="preserve">
+    <value>Fees Head Config</value>
+  </data>
+  <data name="MENU_FEES_PROCESS" xml:space="preserve">
+    <value>Fees Process</value>
+  </data>
+  <data name="MENU_FEES_PROCESS_SETUP" xml:space="preserve">
+    <value>Fees Process Setup</value>
+  </data>
+  <data name="MENU_GENERATE_FAIL_REPORT" xml:space="preserve">
+    <value>Generate Fail Report</value>
+  </data>
+  <data name="MENU_GENERATE_REPORT" xml:space="preserve">
+    <value>Generate Report</value>
+  </data>
+  <data name="MENU_GRADING_SYSTEM" xml:space="preserve">
+    <value>Grading System</value>
+  </data>
+  <data name="MENU_HALL" xml:space="preserve">
+    <value>Hall</value>
+  </data>
+  <data name="MENU_ITEM" xml:space="preserve">
+    <value>Menu Item</value>
+  </data>
+  <data name="MENU_ITEM_URL" xml:space="preserve">
+    <value>Menu Item URL</value>
+  </data>
+  <data name="MENU_MARKS_ENTRY" xml:space="preserve">
+    <value>Marks Entry</value>
+  </data>
+  <data name="MENU_MIGRATION_APPROVAL" xml:space="preserve">
+    <value>Migration Approval</value>
+  </data>
+  <data name="MENU_MODIFY_PROCESSED_FEES" xml:space="preserve">
+    <value>Modify Processed Fees</value>
+  </data>
+  <data name="MENU_NOTICE" xml:space="preserve">
+    <value>Notice</value>
+  </data>
+  <data name="MENU_NOTICE_TYPE" xml:space="preserve">
+    <value>Notice Type</value>
+  </data>
+  <data name="MENU_PAYMENT_VERIFICATION_AND_APPROVAL" xml:space="preserve">
+    <value>Payment Approval</value>
+  </data>
+  <data name="MENU_PROGRAM" xml:space="preserve">
+    <value>Program</value>
+  </data>
+  <data name="MENU_REPORT" xml:space="preserve">
+    <value>Report</value>
+  </data>
+  <data name="MENU_RESULT" xml:space="preserve">
+    <value>Result</value>
+  </data>
+  <data name="MENU_RETAKE_RESULT_PROCESS" xml:space="preserve">
+    <value>Make Result for Retake</value>
+  </data>
+  <data name="MENU_ROLES" xml:space="preserve">
+    <value>Roles</value>
+  </data>
+  <data name="MENU_RPT_COURSE_TEACHER_ASSIGN" xml:space="preserve">
+    <value>Course Teacher Assign</value>
+  </data>
+  <data name="MENU_ACADEMIC_YEAR" xml:space="preserve">
+    <value>Academic Year</value>
+  </data>
+  <data name="MENU_SETUP" xml:space="preserve">
+    <value>Setup</value>
+  </data>
+  <data name="MENU_STUDENT" xml:space="preserve">
+    <value>Student</value>
+  </data>
+  <data name="MENU_STUDENTS_ADVISER_SETUP" xml:space="preserve">
+    <value>Adviser Setup</value>
+  </data>
+  <data name="MENU_STUDENT_ADMIT_CARD" xml:space="preserve">
+    <value>Admit Card</value>
+  </data>
+  <data name="MENU_STUDENT_ATTENDANCE" xml:space="preserve">
+    <value>Student Attendance</value>
+  </data>
+  <data name="MENU_STUDENT_COURSE_ASSIGN" xml:space="preserve">
+    <value>Course Assign</value>
+  </data>
+  <data name="MENU_STUDENT_LIST" xml:space="preserve">
+    <value>Student List</value>
+  </data>
+  <data name="MENU_STUDENT_PENDING_PROMOTION_LIST" xml:space="preserve">
+    <value>Pending Promotion List</value>
+  </data>
+  <data name="MENU_STUDENT_PORTAL_USER" xml:space="preserve">
+    <value>Portal User List</value>
+  </data>
+  <data name="MENU_STUDENT_PROMOTION" xml:space="preserve">
+    <value>Student Promotion</value>
+  </data>
+  <data name="MENU_STUDENT_QUICK_ADD" xml:space="preserve">
+    <value>Student Quick Add</value>
+  </data>
+  <data name="MENU_STUDENT_REGISTRATION" xml:space="preserve">
+    <value>Student Registration</value>
+  </data>
+  <data name="MENU_TEACHER_ASSIGN" xml:space="preserve">
+    <value>Teacher Assign</value>
+  </data>
+  <data name="MENU_TEST_CONFIGURATION" xml:space="preserve">
+    <value>Test Configuration</value>
+  </data>
+  <data name="MENU_TEST_ELIGIBLE_LIST" xml:space="preserve">
+    <value>Test Eligible List</value>
+  </data>
+  <data name="MENU_TYPE" xml:space="preserve">
+    <value>Menu Type</value>
+  </data>
+  <data name="MENU_USERS" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="MENU_YEAR" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="MIGRATION_APPLICATION" xml:space="preserve">
+    <value>Migration Application List</value>
+  </data>
+  <data name="MIGRATION_APPLICATION_FORM" xml:space="preserve">
+    <value>Migration Application Form</value>
+  </data>
+  <data name="MIGRATION_FORM_CONFIG" xml:space="preserve">
+    <value>Migration Form Config</value>
+  </data>
+  <data name="MINIMUM_GPA" xml:space="preserve">
+    <value>Minimum GPA</value>
+  </data>
+  <data name="MODIFY_MONEY_RECEIPT" xml:space="preserve">
+    <value>Modify Money Receipt</value>
+  </data>
+  <data name="MODULE_ATTENDANCE" xml:space="preserve">
+    <value>Attendance</value>
+  </data>
+  <data name="MONEY_RECEIPT_NO" xml:space="preserve">
+    <value>Money Receipt No.</value>
+  </data>
+  <data name="MONTH" xml:space="preserve">
+    <value>Month</value>
+  </data>
+  <data name="MONTH_IS_REQUIRED" xml:space="preserve">
+    <value>Month is Required</value>
+  </data>
+  <data name="Mother Contact" xml:space="preserve">
+    <value>Mother Contact</value>
+  </data>
+  <data name="Mother Name" xml:space="preserve">
+    <value>Mother Name</value>
+  </data>
+  <data name="MOTHERCONTACT_IS_REQUIRED" xml:space="preserve">
+    <value>Mother Contact  is required.</value>
+  </data>
+  <data name="MOTHERNAME_IS_REQUIRED" xml:space="preserve">
+    <value>Mother Name is required.</value>
+  </data>
+  <data name="MOTHERNAME_MUST_NOT_EXCEED_50_CHARACTERS" xml:space="preserve">
+    <value>Mother Name must not exceed 50 characters.</value>
+  </data>
+  <data name="MOTHER_CONTACT" xml:space="preserve">
+    <value>Mother Contact</value>
+  </data>
+  <data name="MOTHER_INFORMATION" xml:space="preserve">
+    <value>Mother Information</value>
+  </data>
+  <data name="MOTHER_NAME" xml:space="preserve">
+    <value>Mother Name</value>
+  </data>
+  <data name="MOTHER_PHOTO" xml:space="preserve">
+    <value>Mother Photo</value>
+  </data>
+  <data name="MOTHER_PROFESSION" xml:space="preserve">
+    <value>Mother Profession</value>
+  </data>
+  <data name="MOTHER_QUALIFICATION" xml:space="preserve">
+    <value>Mother Qualification</value>
+  </data>
+  <data name="NAME" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NAMEBN" xml:space="preserve">
+    <value>Name in Bangla</value>
+  </data>
+  <data name="NAMEBN_IS_REQUIRED" xml:space="preserve">
+    <value>Name in Bangla is required</value>
+  </data>
+  <data name="NAMEBN_MUST_NOT_EXCEED_100_CHARACTERS" xml:space="preserve">
+    <value>Name in Bangla must not exceed 100 characters.</value>
+  </data>
+  <data name="NAME_IS_REQUIRED" xml:space="preserve">
+    <value>Name is required</value>
+  </data>
+  <data name="NAME_MUST_NOT_EXCEED_100_CHARACTERS" xml:space="preserve">
+    <value>Name must not exceed 100 characters.</value>
+  </data>
+  <data name="NAME_OF_INSTITUTE" xml:space="preserve">
+    <value>Name of Institute</value>
+  </data>
+  <data name="NAME_OF_OFFICE" xml:space="preserve">
+    <value>Name of Office</value>
+  </data>
+  <data name="NARRATION" xml:space="preserve">
+    <value>Narration</value>
+  </data>
+  <data name="Nationality" xml:space="preserve">
+    <value>Nationality</value>
+  </data>
+  <data name="NATIONALITY_IS_REQUIRED" xml:space="preserve">
+    <value>Nationality is required.</value>
+  </data>
+  <data name="NATIONALITY_MUST_NOT_EXCEED_50_CHARACTERS" xml:space="preserve">
+    <value>Nationality  must not exceed 50 characters.</value>
+  </data>
+  <data name="NEXT_EXAM" xml:space="preserve">
+    <value>Next Exam</value>
+  </data>
+  <data name="NID No" xml:space="preserve">
+    <value>NID No</value>
+  </data>
+  <data name="NID_IS_REQUIRED" xml:space="preserve">
+    <value>NID is required.</value>
+  </data>
+  <data name="NID_NO" xml:space="preserve">
+    <value>NID No.</value>
+  </data>
+  <data name="NOTICE_BOARD" xml:space="preserve">
+    <value>Notice Board</value>
+  </data>
+  <data name="NOTICE_TEXT" xml:space="preserve">
+    <value>Notice Text</value>
+  </data>
+  <data name="NOTICE_TEXT_IS_REQUIRED" xml:space="preserve">
+    <value>Notice Text is require</value>
+  </data>
+  <data name="NOTICE_TITLE" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="NOTICE_TITLE_IS_REQUIRED" xml:space="preserve">
+    <value>Notice Title is required</value>
+  </data>
+  <data name="NOTICE_TYPE" xml:space="preserve">
+    <value>Notice Type</value>
+  </data>
+  <data name="NOTICE_TYPE_IS_REQUIRED" xml:space="preserve">
+    <value>Notice Type is Required.</value>
+  </data>
+  <data name="NO_OF_ANS_PAPER" xml:space="preserve">
+    <value>No of Answer Paper</value>
+  </data>
+  <data name="ONLINE" xml:space="preserve">
+    <value>Online</value>
+  </data>
+  <data name="OPTION" xml:space="preserve">
+    <value>Option</value>
+  </data>
+  <data name="OTHER_INFORMATION" xml:space="preserve">
+    <value>Other Information</value>
+  </data>
+  <data name="PAPER_ASSIGN_REPORT" xml:space="preserve">
+    <value>Paper Assign Report</value>
+  </data>
+  <data name="PARENT" xml:space="preserve">
+    <value>Parent</value>
+  </data>
+  <data name="PARENTS_INFO" xml:space="preserve">
+    <value>Parents Information</value>
+  </data>
+  <data name="PARENTS_NAME" xml:space="preserve">
+    <value>Parent's Name</value>
+  </data>
+  <data name="PART_A" xml:space="preserve">
+    <value>Part A</value>
+  </data>
+  <data name="PART_B" xml:space="preserve">
+    <value>Part B</value>
+  </data>
+  <data name="PART_C" xml:space="preserve">
+    <value>Part C</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
+  </data>
+  <data name="PasswordPolicy" xml:space="preserve">
+    <value>Password Policy</value>
+  </data>
+  <data name="PASSWORD_IS_REQUIRED" xml:space="preserve">
+    <value>Password is required</value>
+  </data>
+  <data name="PASSWORD_POLICY_NAME" xml:space="preserve">
+    <value>Password Policy Name</value>
+  </data>
+  <data name="PASS_MARK" xml:space="preserve">
+    <value>Pass Mark</value>
+  </data>
+  <data name="PAYMENT_APPROVAL" xml:space="preserve">
+    <value>Payment Approval</value>
+  </data>
+  <data name="PAYMENT_DATE" xml:space="preserve">
+    <value>Payment Date</value>
+  </data>
+  <data name="PAYMENT_MODE" xml:space="preserve">
+    <value>Payment Mode</value>
+  </data>
+  <data name="PAYMENT_MODE_IS_REQUIRED" xml:space="preserve">
+    <value>Payment Mode is required.</value>
+  </data>
+  <data name="PAYMENT_STATUS" xml:space="preserve">
+    <value>Payment Status</value>
+  </data>
+  <data name="PDF" xml:space="preserve">
+    <value>Pdf</value>
+  </data>
+  <data name="Pending Promotion List" xml:space="preserve">
+    <value>Pending Promotion List</value>
+  </data>
+  <data name="Pending Student Promotion List" xml:space="preserve">
+    <value>Pending Student Promotion List</value>
+  </data>
+  <data name="PERIOD_CONFIG" xml:space="preserve">
+    <value>Period Config</value>
+  </data>
+  <data name="PERIOD_NAME" xml:space="preserve">
+    <value>Period Name</value>
+  </data>
+  <data name="PERIOD_SETUP" xml:space="preserve">
+    <value>Period Setup</value>
+  </data>
+  <data name="PERMANENT_ADDRESS" xml:space="preserve">
+    <value>Permanent Address</value>
+  </data>
+  <data name="PERMANENT_ADDRESS_IS_REQUIRED" xml:space="preserve">
+    <value>Permanent Address is requred.</value>
+  </data>
+  <data name="Phone Number" xml:space="preserve">
+    <value>Phone Number</value>
+  </data>
+  <data name="PHONE_NO_IS_REQUIRED" xml:space="preserve">
+    <value>Phone Number is required.</value>
+  </data>
+  <data name="PHONE_NUMBER_VALIDATION" xml:space="preserve">
+    <value>Please enter a valid phone number</value>
+  </data>
+  <data name="PHOTO" xml:space="preserve">
+    <value>Photo</value>
+  </data>
+  <data name="PHOTO_IS_REQUIRED" xml:space="preserve">
+    <value>Photo is required.</value>
+  </data>
+  <data name="POLICY_NAME" xml:space="preserve">
+    <value>Policy Name</value>
+  </data>
+  <data name="PORTAL_USER_LIST" xml:space="preserve">
+    <value>Portal User List</value>
+  </data>
+  <data name="POST" xml:space="preserve">
+    <value>Post</value>
+  </data>
+  <data name="POSTING_DATE" xml:space="preserve">
+    <value>Posting Date</value>
+  </data>
+  <data name="POST_IS_REQUIRED" xml:space="preserve">
+    <value>Post is Required.</value>
+  </data>
+  <data name="POST_OFFICE" xml:space="preserve">
+    <value>Post Office</value>
+  </data>
+  <data name="PREQUISITE" xml:space="preserve">
+    <value>Prerequisite</value>
+  </data>
+  <data name="PRESENT" xml:space="preserve">
+    <value>Present</value>
+  </data>
+  <data name="PRESENT_ADDRESS" xml:space="preserve">
+    <value>Present Address</value>
+  </data>
+  <data name="PRESENT_ADDRESS_IS_REQUIRED" xml:space="preserve">
+    <value>Present Address is required.</value>
+  </data>
+  <data name="PREVIEW" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="PREV_EXAM" xml:space="preserve">
+    <value>Previous Exam</value>
+  </data>
+  <data name="PRINT" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="PRINT_MONEY_RECEIPT" xml:space="preserve">
+    <value>Print Money Receipt</value>
+  </data>
+  <data name="PRINT_TYPE" xml:space="preserve">
+    <value>Print Type</value>
+  </data>
+  <data name="PROCESS_IS_REQUIRED" xml:space="preserve">
+    <value>Process is required</value>
+  </data>
+  <data name="PROCESS_NAME" xml:space="preserve">
+    <value>Process Name</value>
+  </data>
+  <data name="PROFESSION" xml:space="preserve">
+    <value>Profession</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>Profile</value>
   </data>
+  <data name="PROGRAM" xml:space="preserve">
+    <value>Program</value>
+  </data>
+  <data name="PROGRAM_CREDITPOINTS_MUST_BE_GREATER_THAN_ZERO" xml:space="preserve">
+    <value>Credit Points must be greater than 0</value>
+  </data>
+  <data name="PROGRAM_CREDIT_POINTS" xml:space="preserve">
+    <value>Credit Points</value>
+  </data>
+  <data name="PROGRAM_IS_REQUIRED" xml:space="preserve">
+    <value>Program Name is required.</value>
+  </data>
+  <data name="PROGRAM_MUST_NOT_EXCEED_500_CHARACTERS" xml:space="preserve">
+    <value>Program Name must not exceed 500 characters.</value>
+  </data>
+  <data name="PROGRAM_TYPE" xml:space="preserve">
+    <value>Program Type</value>
+  </data>
+  <data name="PROGRAM_YEARDURATION_MUST_BE_GREATER_THAN_ZERO" xml:space="preserve">
+    <value>Year Duration must be greater than 0</value>
+  </data>
+  <data name="PUBLISHED" xml:space="preserve">
+    <value>Published</value>
+  </data>
+  <data name="PUBLISH_DATE" xml:space="preserve">
+    <value>Publish Date</value>
+  </data>
+  <data name="PUBLISH_DATE_IS_REQUIRED" xml:space="preserve">
+    <value>Publish Date is required</value>
+  </data>
+  <data name="PUNISHMENT_FROM" xml:space="preserve">
+    <value>Punishment From</value>
+  </data>
+  <data name="PUNISHMENT_TO" xml:space="preserve">
+    <value>Punishment To</value>
+  </data>
+  <data name="QUALIFICATION" xml:space="preserve">
+    <value>Qualification</value>
+  </data>
   <data name="Ready to Leave?" xml:space="preserve">
     <value>Ready to Leave?</value>
+  </data>
+  <data name="RECEIVE_AMOUNT" xml:space="preserve">
+    <value>Receive Amount</value>
+  </data>
+  <data name="REFUND_PERCENTANGE" xml:space="preserve">
+    <value>Refund Percentange</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Register</value>
@@ -180,16 +1785,904 @@
   <data name="Register Account" xml:space="preserve">
     <value>Register Account</value>
   </data>
+  <data name="REGISTRATION_CODE_IS_REQUIRED" xml:space="preserve">
+    <value>Registration Code is required.</value>
+  </data>
+  <data name="REGNO_IS_REQUIRED" xml:space="preserve">
+    <value>Registration No is required.</value>
+  </data>
+  <data name="REG_CODE" xml:space="preserve">
+    <value>Reg Code</value>
+  </data>
+  <data name="REG_NO" xml:space="preserve">
+    <value>Reg No</value>
+  </data>
+  <data name="Religion" xml:space="preserve">
+    <value>Religion</value>
+  </data>
+  <data name="RELIGION_IS_REQUIRED" xml:space="preserve">
+    <value>Religion is required.</value>
+  </data>
+  <data name="RELIGION_MUST_NOT_EXCEED_50_CHARACTERS" xml:space="preserve">
+    <value>Religion must not exceed 50 characters.</value>
+  </data>
+  <data name="REMARKS" xml:space="preserve">
+    <value>Remarks</value>
+  </data>
   <data name="Remember Me" xml:space="preserve">
     <value>Remember Me</value>
   </data>
   <data name="Repeat Password" xml:space="preserve">
     <value>Repeat Password</value>
   </data>
+  <data name="Report" xml:space="preserve">
+    <value>Report</value>
+  </data>
+  <data name="REPORT_TYPE" xml:space="preserve">
+    <value>Report Type</value>
+  </data>
+  <data name="RESULT" xml:space="preserve">
+    <value>Result</value>
+  </data>
+  <data name="RETAKE" xml:space="preserve">
+    <value>Retake</value>
+  </data>
+  <data name="ROLES" xml:space="preserve">
+    <value>Roles</value>
+  </data>
+  <data name="ROLL_BACK" xml:space="preserve">
+    <value>Rollback</value>
+  </data>
+  <data name="ROLL_PREFIX" xml:space="preserve">
+    <value>Roll Prefix</value>
+  </data>
+  <data name="ROOM" xml:space="preserve">
+    <value>Room</value>
+  </data>
+  <data name="ROOMWISE_STUDENT_DISTRIBUTION" xml:space="preserve">
+    <value>Roomwise Student Distribution</value>
+  </data>
+  <data name="ROOM_NUMBER" xml:space="preserve">
+    <value>Room Number</value>
+  </data>
+  <data name="ROOM_NUMBER_IS_REQUIRED" xml:space="preserve">
+    <value>Room Number is required</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="SAVED" xml:space="preserve">
+    <value>Saved Successfully</value>
+  </data>
+  <data name="SCHEDULE_SUBMISSION_DATE" xml:space="preserve">
+    <value>Schedule Submission Date</value>
+  </data>
+  <data name="SEARCH" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="SEARCH_BOX" xml:space="preserve">
+    <value>Search Box</value>
+  </data>
+  <data name="SEARCH_EMPLOYEE_BY_ID_OR_NAME" xml:space="preserve">
+    <value>Search Employee by Id or Name</value>
+  </data>
+  <data name="SEARCH_STUDENT_BY_ID" xml:space="preserve">
+    <value>Serach Student By ID</value>
+  </data>
+  <data name="SEARCH_STUDENT_BY_ID_OR_NAME" xml:space="preserve">
+    <value>Search Student By ID or Name</value>
+  </data>
+  <data name="SEAT_CAPACITY" xml:space="preserve">
+    <value>Seat Capacity</value>
+  </data>
+  <data name="SECOND_EXAMINER" xml:space="preserve">
+    <value>Second Examiner</value>
+  </data>
   <data name="Select Logout below if you are ready to end your current session." xml:space="preserve">
     <value>Select Logout below if you are ready to end your current session.</value>
+  </data>
+  <data name="SELECTION_FOR_ENROLLMENT" xml:space="preserve">
+    <value>Selection for Enrolled</value>
+  </data>
+  <data name="SELECT_TEACHER" xml:space="preserve">
+    <value>Select Teacher</value>
+  </data>
+  <data name="SEMESTER" xml:space="preserve">
+    <value>Semester</value>
+  </data>
+  <data name="SERIAL_NO" xml:space="preserve">
+    <value>Serial No</value>
+  </data>
+  <data name="ACADEMIC_YEAR_CODE" xml:space="preserve">
+    <value>Academic Year Code</value>
+  </data>
+  <data name="ACADEMIC_YEAR_END_DATE_IS_REQUIRED" xml:space="preserve">
+    <value>Academic Year End Date is required.</value>
+  </data>
+  <data name="ACADEMIC_YEAR_IS_REQUIRED" xml:space="preserve">
+    <value>Academic Year is required.</value>
+  </data>
+  <data name="ACADEMIC_YEAR_MUST_NOT_EXCEED_50_CHARACTERS" xml:space="preserve">
+    <value>Academic Year must not exceed 50 characters.</value>
+  </data>
+  <data name="ACADEMIC_YEAR_NAME" xml:space="preserve">
+    <value>Academic Year Name</value>
+  </data>
+  <data name="ACADEMIC_YEAR_START_DATE_IS_REQUIRED" xml:space="preserve">
+    <value>Academic Year Start Date is required.</value>
+  </data>
+  <data name="SETUP" xml:space="preserve">
+    <value>Setup</value>
+  </data>
+  <data name="SETUP_EXAM_ROUTINE" xml:space="preserve">
+    <value>Setup Exam Routine</value>
+  </data>
+  <data name="SETUP_GRADE_POLICY" xml:space="preserve">
+    <value>Setup Grade Policy</value>
+  </data>
+  <data name="SETUP_NEW_ADMISSION_REFERENCE_DETAIL" xml:space="preserve">
+    <value>Setup New Admission Reference Detail</value>
+  </data>
+  <data name="SETUP_NEW_BUILDING_INFORMATION" xml:space="preserve">
+    <value>Setup New Building Information</value>
+  </data>
+  <data name="SETUP_NEW_EXAM_ROOM" xml:space="preserve">
+    <value>Setup New Exam Room</value>
+  </data>
+  <data name="SETUP_NEW_EXAM_SEAT" xml:space="preserve">
+    <value>Setup New Exam Seat</value>
+  </data>
+  <data name="SL" xml:space="preserve">
+    <value>SL</value>
+  </data>
+  <data name="SMSNOTIFICATION_NO_IS_REQUIRED" xml:space="preserve">
+    <value>Mobile No. is required.</value>
+  </data>
+  <data name="SMS_NOTIFICATION_NO" xml:space="preserve">
+    <value>Mobile No.</value>
+  </data>
+  <data name="SMS_NOTIFICATION_NO_EMP" xml:space="preserve">
+    <value>Contact No.</value>
+  </data>
+  <data name="START_DATE" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="START_DATE_IS_REQUIRED" xml:space="preserve">
+    <value>Start Date is required</value>
+  </data>
+  <data name="START_ROLL" xml:space="preserve">
+    <value>Start Role</value>
+  </data>
+  <data name="START_ROLL_IS_REQUIRED" xml:space="preserve">
+    <value>Start Roll is required.</value>
+  </data>
+  <data name="START_TIME" xml:space="preserve">
+    <value>Start Time</value>
+  </data>
+  <data name="STATUS" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="STATUS_IS_REQUIRED" xml:space="preserve">
+    <value>Status is required</value>
+  </data>
+  <data name="NEW" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="String2" xml:space="preserve">
+    <value>s</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Student</value>
+  </data>
+  <data name="Student Course Assign" xml:space="preserve">
+    <value>Student Course Assign</value>
+  </data>
+  <data name="Student Details" xml:space="preserve">
+    <value>Student Details</value>
+  </data>
+  <data name="Student ID" xml:space="preserve">
+    <value>Student ID</value>
+  </data>
+  <data name="Student List" xml:space="preserve">
+    <value>Student List</value>
+  </data>
+  <data name="Student Promotion" xml:space="preserve">
+    <value>Student Promotion</value>
+  </data>
+  <data name="Student Quick Add" xml:space="preserve">
+    <value>Student Quick Add</value>
+  </data>
+  <data name="STUDENTNAME_IS_REQUIRED" xml:space="preserve">
+    <value>Student Name is required.</value>
+  </data>
+  <data name="STUDENTNAME_MUST_NOT_EXCEED_50_CHARACTERS" xml:space="preserve">
+    <value>Student Name must not exceed 50 characters.</value>
+  </data>
+  <data name="STUDENTS_ADVISER_DETAILS_SETUP" xml:space="preserve">
+    <value>Student Adviser Details Setup</value>
+  </data>
+  <data name="STUDENT_DUE_DETAILS_REPORT" xml:space="preserve">
+    <value>Student Due Details Report</value>
+  </data>
+  <data name="STUDENT_FORM_FILLUP" xml:space="preserve">
+    <value>Student Form Fill up</value>
+  </data>
+  <data name="STUDENT_ID_IS_REQUIRED" xml:space="preserve">
+    <value>Please Insert Your Student ID.</value>
+  </data>
+  <data name="STUDENT_INFO" xml:space="preserve">
+    <value>Student Information</value>
+  </data>
+  <data name="STUDENT_INSID" xml:space="preserve">
+    <value>Student ID </value>
+  </data>
+  <data name="STUDENT_IS_REQUIRED" xml:space="preserve">
+    <value>Student is required</value>
+  </data>
+  <data name="STUDENT_NAME" xml:space="preserve">
+    <value>Student Name</value>
+  </data>
+  <data name="STUDENT_PHOTO" xml:space="preserve">
+    <value>Student Photo</value>
+  </data>
+  <data name="STUDENT_PHOTO_IS_REQUIRED" xml:space="preserve">
+    <value>Student Photo is required.</value>
+  </data>
+  <data name="STUDY_BOARD" xml:space="preserve">
+    <value>Study Board</value>
+  </data>
+  <data name="SUBMISSION_DATE" xml:space="preserve">
+    <value>Submission Date</value>
+  </data>
+  <data name="SUB_EXAM" xml:space="preserve">
+    <value>Sub Exam</value>
+  </data>
+  <data name="TAKE_ATTENDANCE_FORM" xml:space="preserve">
+    <value>Take Attendance Form</value>
+  </data>
+  <data name="Teacher" xml:space="preserve">
+    <value>Teacher</value>
+  </data>
+  <data name="TEACHER_ASSIGNING_FORM" xml:space="preserve">
+    <value>Teacher Assigning Form</value>
+  </data>
+  <data name="TERM_FINAL" xml:space="preserve">
+    <value>Term Final</value>
+  </data>
+  <data name="THANA" xml:space="preserve">
+    <value>Thana</value>
+  </data>
+  <data name="THANA_IS_REQUIRED" xml:space="preserve">
+    <value>Thana is Required.</value>
+  </data>
+  <data name="THIRD_EXAMINER" xml:space="preserve">
+    <value>Third Examiner</value>
+  </data>
+  <data name="THIS_FIELD_IS_REQUIRED" xml:space="preserve">
+    <value>This field is required</value>
+  </data>
+  <data name="TITLE" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="TITLE_ACADEMIC_CALENDAR_SETUP" xml:space="preserve">
+    <value>Academic Calendar Setup</value>
+  </data>
+  <data name="TITLE_ADMISSION_TEST_ELIGIBLE_LIST_GENERATE_FORM" xml:space="preserve">
+    <value>Admission Test Eligible List Generate Form</value>
+  </data>
+  <data name="TITLE_COMMON_LOOKUP" xml:space="preserve">
+    <value>Common Lookup</value>
+  </data>
+  <data name="TITLE_COMMON_LOOKUP_DETAILS" xml:space="preserve">
+    <value>Common Lookup Details</value>
+  </data>
+  <data name="TITLE_IS_REQUIRED" xml:space="preserve">
+    <value>Title is required</value>
+  </data>
+  <data name="TODATE_MUST_BE_GREATER_THAN_FROMDATE" xml:space="preserve">
+    <value>To Date must be greater than From Date</value>
+  </data>
+  <data name="TOTAL_AMOUNT" xml:space="preserve">
+    <value>Total Amount</value>
+  </data>
+  <data name="TOTAL_GPA" xml:space="preserve">
+    <value>Total GPA</value>
+  </data>
+  <data name="TOTAL_MARKS" xml:space="preserve">
+    <value>Total Marks</value>
+  </data>
+  <data name="TOTAL_NUMBER" xml:space="preserve">
+    <value>Total Number</value>
+  </data>
+  <data name="TOTAL_PERCENTAGE" xml:space="preserve">
+    <value>Total Percentage(%)</value>
+  </data>
+  <data name="TOTAL_PRESENT_DAY" xml:space="preserve">
+    <value>Total Present Day</value>
+  </data>
+  <data name="TOTAL_SEAT" xml:space="preserve">
+    <value>Total Seat</value>
+  </data>
+  <data name="TOTAL_SEAT_IS_REQUIRED" xml:space="preserve">
+    <value>Total seat is required.</value>
+  </data>
+  <data name="TO_BE_MIGRATED" xml:space="preserve">
+    <value>To Be Migrated</value>
+  </data>
+  <data name="TO_DATE" xml:space="preserve">
+    <value>To Date</value>
+  </data>
+  <data name="TO_DATE_IS_REQUIRED" xml:space="preserve">
+    <value>To Date is required.</value>
+  </data>
+  <data name="TO_MARKS" xml:space="preserve">
+    <value>To Marks</value>
+  </data>
+  <data name="TO_YEAR" xml:space="preserve">
+    <value>To Year</value>
+  </data>
+  <data name="UNITTYPE_IS_REQUIRED" xml:space="preserve">
+    <value>UnitType is required.</value>
+  </data>
+  <data name="UNIT_TYPE" xml:space="preserve">
+    <value>Unit Type</value>
+  </data>
+  <data name="UPAZILA" xml:space="preserve">
+    <value>Upazila</value>
+  </data>
+  <data name="UPDATE" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="UPDATE_BATCH" xml:space="preserve">
+    <value>Edit Batch</value>
+  </data>
+  <data name="UPDATE_BUILDING_INFORMATION" xml:space="preserve">
+    <value>Update Building Information</value>
+  </data>
+  <data name="UPDATE_MSG" xml:space="preserve">
+    <value>Updated Successfully</value>
+  </data>
+  <data name="URL" xml:space="preserve">
+    <value>Url</value>
+  </data>
+  <data name="USERS" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="USER_NAME" xml:space="preserve">
+    <value>User Name</value>
+  </data>
+  <data name="USER_STATUS" xml:space="preserve">
+    <value>User Status</value>
+  </data>
+  <data name="VIEW_DETAILS" xml:space="preserve">
+    <value>View Details</value>
+  </data>
+  <data name="VILLAGE" xml:space="preserve">
+    <value>Village</value>
+  </data>
+  <data name="VILLAGE_IS_REQUIRED" xml:space="preserve">
+    <value>Village is Required.</value>
+  </data>
+  <data name="WEEK_DAY" xml:space="preserve">
+    <value>Week Day</value>
+  </data>
+  <data name="WORD" xml:space="preserve">
+    <value>Word</value>
+  </data>
+  <data name="YEAR" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="YEAR_IS_REQUIRED" xml:space="preserve">
+    <value>Year is Required.</value>
+  </data>
+  <data name="YEAR_MUST_NOT_EXCEED_50_CHARACTERS" xml:space="preserve">
+    <value>Year must not exceed 50 characters.</value>
+  </data>
+  <data name="EDIT_ACADEMIC_YEAR" xml:space="preserve">
+    <value>Edit Academic Year</value>
+  </data>
+  <data name="CA_MARK_ENTRY_FORM" xml:space="preserve">
+    <value>CA Mark Entry Form</value>
+  </data>
+  <data name="EXAM_ROUTINE" xml:space="preserve">
+    <value>Exam Routine</value>
+  </data>
+  <data name="TF_MARK_ENTRY_FORM" xml:space="preserve">
+    <value>T.F. Mark Entry Form</value>
+  </data>
+  <data name="UPDATE_APPLICATION_PREREQUISITE" xml:space="preserve">
+    <value>Update Application Prerequisite</value>
+  </data>
+  <data name="SETUP_SUBJECT_WISE_GRADE" xml:space="preserve">
+    <value>Setup Subject Wise Grade</value>
+  </data>
+  <data name="UPDATE_SUBJECT_WISE_GRADE" xml:space="preserve">
+    <value>Update Subject Wise Grade</value>
+  </data>
+  <data name="SUBJECT" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="ASSIGN_INVIGILATOR" xml:space="preserve">
+    <value>Assign New Invigilator</value>
+  </data>
+  <data name="EDIT_ASSIGNED_INVIGILATOR" xml:space="preserve">
+    <value>Edit Assigned Invigilator</value>
+  </data>
+  <data name="SHIFT_NAME" xml:space="preserve">
+    <value>Shift Name</value>
+  </data>
+  <data name="ACADEMIC_SEMESTERR" xml:space="preserve">
+    <value>Academic Semester</value>
+  </data>
+  <data name="MERIT_POLICY_SETUP" xml:space="preserve">
+    <value>Merit Policy Setup</value>
+  </data>
+  <data name="COURSE_NAME" xml:space="preserve">
+    <value>Course Name</value>
+  </data>
+  <data name="C_A" xml:space="preserve">
+    <value>C. A.</value>
+  </data>
+  <data name="BEST_2_CT" xml:space="preserve">
+    <value>CT Total</value>
+  </data>
+  <data name="CAMPUS_NAME" xml:space="preserve">
+    <value>Campus Name</value>
+  </data>
+  <data name="CA_MARK_APPROVAL_FORM" xml:space="preserve">
+    <value>C.A. Mark Approval Form</value>
+  </data>
+  <data name="CT_1" xml:space="preserve">
+    <value>CT 1</value>
+  </data>
+  <data name="CT_2" xml:space="preserve">
+    <value>CT 2</value>
+  </data>
+  <data name="CT_3" xml:space="preserve">
+    <value>CT 3</value>
+  </data>
+  <data name="INVIGILATOR_NAME" xml:space="preserve">
+    <value>Invigilator Name</value>
+  </data>
+  <data name="MID_TERM" xml:space="preserve">
+    <value>Mid Term</value>
+  </data>
+  <data name="INVIGILATOR" xml:space="preserve">
+    <value>Invigilator</value>
+  </data>
+  <data name="MOBILE" xml:space="preserve">
+    <value>Mobile</value>
+  </data>
+  <data name="STUDENT_ASSIGNED" xml:space="preserve">
+    <value>Student Assigned</value>
+  </data>
+  <data name="TEACHER_ASSIGNED" xml:space="preserve">
+    <value>Teacher Assigned</value>
+  </data>
+  <data name="REGISTRATION_FORM_CONFIG" xml:space="preserve">
+    <value>Registraion Form Config</value>
+  </data>
+  <data name="CONTACTTHOUR" xml:space="preserve">
+    <value>Contact Hour</value>
+  </data>
+  <data name="BATCHNAME_IS_REQUIRED" xml:space="preserve">
+    <value>Batch name is required</value>
+  </data>
+  <data name="EFFECTIVE_UPTO" xml:space="preserve">
+    <value>Effective Upto</value>
+  </data>
+  <data name="ORGANIZATION" xml:space="preserve">
+    <value>Organization</value>
+  </data>
+  <data name="APPROX_RETURN_DATE" xml:space="preserve">
+    <value>Approx Return Date</value>
+  </data>
+  <data name="EXAM_SCRIPT_HANDOVER" xml:space="preserve">
+    <value>Exam Script Handover</value>
+  </data>
+  <data name="RECEIVED" xml:space="preserve">
+    <value>Received</value>
+  </data>
+  <data name="RECEIVED_DATE" xml:space="preserve">
+    <value>Received Date</value>
+  </data>
+  <data name="SEMESTER_IS_REQUIRED" xml:space="preserve">
+    <value>Semester is required</value>
+  </data>
+  <data name="APPLICATION_CODE_IS_REQUIRED" xml:space="preserve">
+    <value>Application code is required.</value>
+  </data>
+  <data name="CLASS_ROLL_IS_REQUIRED" xml:space="preserve">
+    <value>Class roll is required.</value>
+  </data>
+  <data name="FORM_NO_IS_REQUIRED" xml:space="preserve">
+    <value>Form no is required.</value>
+  </data>
+  <data name="MARITAL_STATUS_IS_REQUIRED" xml:space="preserve">
+    <value>Marital status is required.</value>
+  </data>
+  <data name="COURSE_TEACHER_MARKS" xml:space="preserve">
+    <value>Course Teacher Marks</value>
+  </data>
+  <data name="C_A_MARKS" xml:space="preserve">
+    <value>C. A. Marks</value>
+  </data>
+  <data name="MARKS_DIFFERENCE" xml:space="preserve">
+    <value>Marks Defference</value>
+  </data>
+  <data name="SCRUTINIZER_MARKS" xml:space="preserve">
+    <value>Scrutinizer Marks</value>
+  </data>
+  <data name="EXAM_CONTROLLER_OFFICE_MARK_VERIFY" xml:space="preserve">
+    <value>Exam Controller Office Mark Verify</value>
+  </data>
+  <data name="ADD_NEW_EXAM_LOOKUP" xml:space="preserve">
+    <value>Add New Exam Lookup</value>
+  </data>
+  <data name="EDIT_EXAM_LOOKUP" xml:space="preserve">
+    <value>Edit Exam Lookup</value>
+  </data>
+  <data name="EXAM_COMMON_LOOKUP_DETAIL" xml:space="preserve">
+    <value>Exam Common Lookup Detail</value>
+  </data>
+  <data name="TOTAL_STUDENT" xml:space="preserve">
+    <value>Total Student</value>
+  </data>
+  <data name="APPLICATION_DATE" xml:space="preserve">
+    <value>Application Date</value>
+  </data>
+  <data name="FINAL_PAYMENT_DATE" xml:space="preserve">
+    <value>Final Payment Date</value>
+  </data>
+  <data name="HSC_GPA" xml:space="preserve">
+    <value>HSC GPA</value>
+  </data>
+  <data name="PRIMARY_PAYMENT_DATE" xml:space="preserve">
+    <value>Primary Payment Date</value>
+  </data>
+  <data name="SSC_GPA" xml:space="preserve">
+    <value>SSC GPA</value>
+  </data>
+  <data name="ROLL" xml:space="preserve">
+    <value>Roll</value>
+  </data>
+  <data name="ASSIGN_TEACHER_TO_COURSE" xml:space="preserve">
+    <value>Assign Teacher To Course</value>
+  </data>
+  <data name="APPLICATION_PREREQUISITE" xml:space="preserve">
+    <value>Application Prerequisite</value>
+  </data>
+  <data name="REGISTRATION_NUMBER_IS_REQUIRED" xml:space="preserve">
+    <value>Registration number is required</value>
+  </data>
+  <data name="EXAM_COMMON_LOOKUP" xml:space="preserve">
+    <value>Exam Common Lookup</value>
+  </data>
+  <data name="PROGRAM_COODRINATOR_APPROVAL" xml:space="preserve">
+    <value>Program Coodrinator Approval</value>
+  </data>
+  <data name="REGISTERED" xml:space="preserve">
+    <value>Registered</value>
+  </data>
+  <data name="ADD_NEW_EXAM_LOOKUP_DETAIL" xml:space="preserve">
+    <value>Add New Exam Lookup Detail</value>
+  </data>
+  <data name="EDIT_EXAM_LOOKUP_DETAIL" xml:space="preserve">
+    <value>Edit Exam Lookup Detail</value>
+  </data>
+  <data name="MAXIMUM_APPLICANT" xml:space="preserve">
+    <value>Maximum Applicant</value>
+  </data>
+  <data name="TOTAL_ADMISSION_TEST_MARKS" xml:space="preserve">
+    <value>Total Admission Test Marks</value>
+  </data>
+  <data name="MARKS_RANGE" xml:space="preserve">
+    <value>Mark Range</value>
+  </data>
+  <data name="TRANSECTION_ID" xml:space="preserve">
+    <value>Transection ID</value>
+  </data>
+  <data name="EXAM_DATE_IS_REQUIRED" xml:space="preserve">
+    <value>Exam date is required.</value>
+  </data>
+  <data name="APPLICANT_INFORMATION" xml:space="preserve">
+    <value>Applicant Information</value>
+  </data>
+  <data name="OBTAINED_MARK" xml:space="preserve">
+    <value>Obtained Mark</value>
+  </data>
+  <data name="VIVA_MARK" xml:space="preserve">
+    <value>Viva Mark</value>
+  </data>
+  <data name="WRITTEN_MARK" xml:space="preserve">
+    <value>Written Mark</value>
+  </data>
+  <data name="IS_EXAM_ROOM" xml:space="preserve">
+    <value>Is Exam Room</value>
+  </data>
+  <data name="ACADEMIC_ROLE" xml:space="preserve">
+    <value>Academic Role</value>
+  </data>
+  <data name="ACADEMIC_ROLE_ASSIGN" xml:space="preserve">
+    <value>Academic Role Assign</value>
+  </data>
+  <data name="EDIT_TEACHER_ASSIGN" xml:space="preserve">
+    <value>Edit Teacher Assign</value>
+  </data>
+  <data name="BEST_CT_1" xml:space="preserve">
+    <value>Best CT 1</value>
+  </data>
+  <data name="BEST_CT_2" xml:space="preserve">
+    <value>Best CT 2</value>
+  </data>
+  <data name="CLASS_PERFORMANCE" xml:space="preserve">
+    <value>Class Performance</value>
+  </data>
+  <data name="COURSE_TEACHER_MARK_PART_A" xml:space="preserve">
+    <value>Course Teacher Mark Part A</value>
+  </data>
+  <data name="COURSE_TEACHER_MARK_PART_B" xml:space="preserve">
+    <value>Course Teacher Mark Part B</value>
+  </data>
+  <data name="TF_TOTAL_MARKS" xml:space="preserve">
+    <value>TF Total Marks</value>
+  </data>
+  <data name="CONVERTED_TF_MARKS" xml:space="preserve">
+    <value>Converted T.F Marks</value>
+  </data>
+  <data name="APPLICANT_SIGNATURE_IS_REQUIRED" xml:space="preserve">
+    <value>Applicant signature is required.</value>
+  </data>
+  <data name="DATE_IS_INVALID" xml:space="preserve">
+    <value>Date is invalid.</value>
+  </data>
+  <data name="EMAIL_IS_NOT_VALID" xml:space="preserve">
+    <value>Email is not valid.</value>
+  </data>
+  <data name="GUARDIAN_SIGNATURE_IS_REQUIRED" xml:space="preserve">
+    <value>Guardian signature is required.</value>
+  </data>
+  <data name="PHONE_NO_IS_NOT_VALID" xml:space="preserve">
+    <value>Phone number is not valid.</value>
+  </data>
+  <data name="TOTAL_OBTAINED_MARK" xml:space="preserve">
+    <value>Total Obtained Marks</value>
+  </data>
+  <data name="DIVISION" xml:space="preserve">
+    <value>Division</value>
+  </data>
+  <data name="GROUP" xml:space="preserve">
+    <value>Group</value>
+  </data>
+  <data name="HONORS" xml:space="preserve">
+    <value>Honors</value>
+  </data>
+  <data name="HSC" xml:space="preserve">
+    <value>HSC</value>
+  </data>
+  <data name="MAJOR" xml:space="preserve">
+    <value>Major</value>
+  </data>
+  <data name="PHD_MPHIL" xml:space="preserve">
+    <value>PhD/MPhill</value>
+  </data>
+  <data name="POST_GRADUATIPOST_GRADUATION" xml:space="preserve">
+    <value>Post Graduation</value>
+  </data>
+  <data name="RECRUITMENT" xml:space="preserve">
+    <value>Recruitment</value>
+  </data>
+  <data name="REFERENCE" xml:space="preserve">
+    <value>Reference</value>
+  </data>
+  <data name="REQUIREMENT" xml:space="preserve">
+    <value>Requirement</value>
+  </data>
+  <data name="SSC" xml:space="preserve">
+    <value>SSC</value>
+  </data>
+  <data name="PASS_STATUS" xml:space="preserve">
+    <value>Pass Status</value>
+  </data>
+  <data name="ADMIT_CARD_ENABLE_FROM" xml:space="preserve">
+    <value>Admit Card Enable From</value>
+  </data>
+  <data name="ADMIT_CARD_ENABLE_TO" xml:space="preserve">
+    <value>Admit Card Enable To</value>
+  </data>
+  <data name="FACULTY_OFFICE" xml:space="preserve">
+    <value>Faculty/Office</value>
+  </data>
+  <data name="VIEW_MONEY_RECEIPT" xml:space="preserve">
+    <value>View money receipt</value>
+  </data>
+  <data name="AGE" xml:space="preserve">
+    <value>Age</value>
+  </data>
+  <data name="BIRTH_REGISTRATION_NO" xml:space="preserve">
+    <value>Birth Registration No</value>
+  </data>
+  <data name="HOUSE_AND_ROAD_NO" xml:space="preserve">
+    <value>House &amp; Road No.</value>
+  </data>
+  <data name="MARITAL_STATUS" xml:space="preserve">
+    <value>Marital Status</value>
+  </data>
+  <data name="POST_CODE" xml:space="preserve">
+    <value>Post Code</value>
+  </data>
+  <data name="SIGNATURE" xml:space="preserve">
+    <value>Signature</value>
+  </data>
+  <data name="TOTAL" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="AREA_OF_EXPERIENCE" xml:space="preserve">
+    <value>Area Of Experience</value>
+  </data>
+  <data name="BOARD_UNIVERSITY" xml:space="preserve">
+    <value>Board/University</value>
+  </data>
+  <data name="CERTIFICATE" xml:space="preserve">
+    <value>Certificate</value>
+  </data>
+  <data name="CGPA_GRADE_DIVISION" xml:space="preserve">
+    <value>CGPA/Grade/Division</value>
+  </data>
+  <data name="DOCUMEMT" xml:space="preserve">
+    <value>Document</value>
+  </data>
+  <data name="NAME_OF_THE_EXAM" xml:space="preserve">
+    <value>Name of the Exam</value>
+  </data>
+  <data name="PASSING_YEAR" xml:space="preserve">
+    <value>Passing Year</value>
+  </data>
+  <data name="TOTAL_EXPERIENCE" xml:space="preserve">
+    <value>Total Experience</value>
+  </data>
+  <data name="UPLOADED" xml:space="preserve">
+    <value>Uploaded</value>
+  </data>
+  <data name="POST_GRADUATION" xml:space="preserve">
+    <value>Post Graduation</value>
+  </data>
+  <data name="BONUS" xml:space="preserve">
+    <value>Bonus</value>
+  </data>
+  <data name="RECRUITMENT_REFERENCE_IS_REQUIRED" xml:space="preserve">
+    <value>Recruitment Reference is required.</value>
+  </data>
+  <data name="DEADLINE_DATE_IS_REQUIRED" xml:space="preserve">
+    <value>Deadline date is required.</value>
+  </data>
+  <data name="AMOUNT" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="TYPE" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="EMPLOYEE_CLASS_IS_REQUIRED" xml:space="preserve">
+    <value>Employee class is required.</value>
+  </data>
+  <data name="GRADE_NAME_BN_IS_REQUIRED" xml:space="preserve">
+    <value>Grade name (Bangla) is required.</value>
+  </data>
+  <data name="GRADE_NAME_IS_REQUIRED" xml:space="preserve">
+    <value>Grade name is required.</value>
+  </data>
+  <data name="OFFICE_IS_REQUIRED" xml:space="preserve">
+    <value>Office is required.</value>
+  </data>
+  <data name="BANK_NAME" xml:space="preserve">
+    <value>Bank Name</value>
+  </data>
+  <data name="BASIC_SALARY" xml:space="preserve">
+    <value>Basic Salary</value>
+  </data>
+  <data name="LEAVE_GROUP" xml:space="preserve">
+    <value>Leave Group</value>
+  </data>
+  <data name="MOBILE_ALLOWANCE" xml:space="preserve">
+    <value>Mobile Allowance</value>
+  </data>
+  <data name="OTHER_ALLOWANCE" xml:space="preserve">
+    <value>Other Allowance</value>
+  </data>
+  <data name="POSTING_AREA" xml:space="preserve">
+    <value>Posting Area</value>
+  </data>
+  <data name="PRL_END_DATE" xml:space="preserve">
+    <value>PRL End Date</value>
+  </data>
+  <data name="PRL_START_DATE" xml:space="preserve">
+    <value>PRL Start Date</value>
+  </data>
+  <data name="RANK" xml:space="preserve">
+    <value>Rank</value>
+  </data>
+  <data name="RETIREMENT_DATE" xml:space="preserve">
+    <value>Retirement Date</value>
+  </data>
+  <data name="SALARY_AC_NO" xml:space="preserve">
+    <value>Salary Account No.</value>
+  </data>
+  <data name="TAX_ZONE_AREA_CIRCLE" xml:space="preserve">
+    <value>Tax Zone/Area/Circle</value>
+  </data>
+  <data name="TIN_NO" xml:space="preserve">
+    <value>TIN No.</value>
+  </data>
+  <data name="ADMISSION_YEAR" xml:space="preserve">
+    <value>Admission Year</value>
+  </data>
+  <data name="CONTACT_NO_IS_NOT_VALID" xml:space="preserve">
+    <value>Contact Number Is Not Valid</value>
+  </data>
+  <data name="CONTACT_NO_IS_REQUIRED" xml:space="preserve">
+    <value>Contact Number Is Required.</value>
+  </data>
+  <data name="BRANCH_NAME" xml:space="preserve">
+    <value>Branch Name</value>
+  </data>
+  <data name="COURSE_OBJECTIVE" xml:space="preserve">
+    <value>Course Objective</value>
+  </data>
+  <data name="COURSE_OUTLINE" xml:space="preserve">
+    <value>Course Outline</value>
+  </data>
+  <data name="PART" xml:space="preserve">
+    <value>Part</value>
+  </data>
+  <data name="ADD_CHAPTER" xml:space="preserve">
+    <value>Add Chapter</value>
+  </data>
+  <data name="CLASS" xml:space="preserve">
+    <value>Class</value>
+  </data>
+  <data name="TRANSACTION_ID_BANK_DRAFT" xml:space="preserve">
+    <value>Transaction Id / Bank Draft</value>
+  </data>
+  <data name="CHAPTER" xml:space="preserve">
+    <value>Chapter</value>
+  </data>
+  <data name="REFERENCE_BOOK" xml:space="preserve">
+    <value>Reference Book</value>
+  </data>
+  <data name="TEXT_BOOK" xml:space="preserve">
+    <value>Text Book</value>
+  </data>
+  <data name="MPHIL" xml:space="preserve">
+    <value>MPhil</value>
+  </data>
+  <data name="PHD" xml:space="preserve">
+    <value>PhD</value>
+  </data>
+  <data name="ROOM_NAME" xml:space="preserve">
+    <value>Room Name</value>
+  </data>
+  <data name="ROOM_NAME_BN" xml:space="preserve">
+    <value>Room Name in Bangla</value>
+  </data>
+  <data name="STUDENT_USERS" xml:space="preserve">
+    <value>Student Users</value>
+  </data>
+  <data name="EARNED_LEAVE_BALANCE" xml:space="preserve">
+    <value>Earned Leave Balance</value>
+  </data>
+  <data name="LAST_RECREATION_LEAVE_DATE" xml:space="preserve">
+    <value>Last Recreation Leave Date</value>
+  </data>
+  <data name="MEDICAL_LEAVE_BALANCE" xml:space="preserve">
+    <value>Medical Leave Balance</value>
+  </data>
+  <data name="NEXT_RECREATION_LEAVE_DATE" xml:space="preserve">
+    <value>Next Recreation Leave Date</value>
+  </data>
+  <data name="WEEKEND_ONE" xml:space="preserve">
+    <value>Weekend One</value>
+  </data>
+  <data name="WEEKEND_TWO" xml:space="preserve">
+    <value>Weekend Two</value>
   </data>
 </root>

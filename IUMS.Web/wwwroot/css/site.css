@@ -1,10 +1,57 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+.error {
+    color: #a94442;
+    border-color: #ebccd1;
+    padding: 1px 20px 1px 20px;
+}
+
+div.dt-buttons {
+    position: relative;
+    float: right;
+}
+
+
 a.navbar-brand {
     white-space: normal;
     text-align: center;
     word-break: break-all;
+}
+
+.customRptBtn {
+    background: #F2D022;
+    box-shadow: 0px 7px 10px rgb(1 51 119 / 30%);
+    border: none;
+    border-radius: 5px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    color: #012766 !important;
+    padding: 8px 16px 8px 16px;
+}
+
+.customInfoBtn {
+    background: #17a2b8;
+    box-shadow: 0px 7px 10px rgb(1 51 119 / 30%);
+    border: none;
+    border-radius: 5px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    color: #012766 !important;
+    padding: 8px 16px 8px 16px;
+}
+
+.customActionBtn {
+    color: #fff;
+    background-color: #0a65c0;
+    border-color: #0a65c0;
+    box-shadow: none;
 }
 
 /* Provide sufficient contrast against white background */
@@ -20,8 +67,8 @@ a {
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
     color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
+    background-color: #0a65c0;
+    border-color: #0a65c0;
 }
 
 /* Sticky footer styles
@@ -61,9 +108,10 @@ html {
 }
 
 body {
-    /* Margin bottom by footer height */
+    /* Margin bottom by footer height
     margin-bottom: 60px;
-    background: rgb(244, 246, 249) !important;
+    background: rgb(244, 246, 249) !important; */
+    min-height: 100% !important;
 }
 
 .footer {
@@ -72,4 +120,160 @@ body {
     width: 100%;
     white-space: nowrap;
     line-height: 60px; /* Vertically center the text there */
+}
+
+.color-white {
+    color: white !important;
+}
+
+.customBtn {
+    background: #0a65c0;
+    box-shadow: 0px 7px 10px rgba(1, 51, 119, 0.3);
+    border: none;
+    border-radius: 5px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    color: #FFFFFF !important;
+    padding: 8px 16px 8px 16px;
+}
+
+.customActiveBtn {
+    padding: 10px;
+    gap: 10px;
+    background: #EBFAEF;
+    border-radius: 8px;
+    border: none;
+    color: #2EA851;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+}
+
+.customInactiveBtn {
+    background: #FEE7E8;
+    border-radius: 8px;
+    color: #F23338;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    border: none;
+    padding: 8px;
+    text-align: center;
+}
+
+.customPendingBtn {
+    background: #f7faac;
+    border-radius: 8px;
+    color: #9c970c;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    border: none;
+    padding: 8px;
+    text-align: center;
+}
+
+.customCancelBtn {
+    background: #ffe4e1;
+    color: #FF0000;
+}
+
+.addItem {
+    border: none;
+    background-color: #EBFAEF;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    color: #2EA851;
+    font-size: 1.2rem;
+}
+
+.rmvItem {
+    border: none;
+    background-color: #FEE7E8;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    color: #F23338;
+    font-size: 1.2rem;
+}
+
+.btnLoadList {
+    height: 43px;
+    width: 145px;
+    background: linear-gradient(12.31deg, #0157AE -71.06%, #000C3C 101.44%);
+    box-shadow: 0px 10px 20px rgba(1, 50, 118, 0.25);
+    border-radius: 8px;
+    outline-style: none;
+    color: #ffffff;
+    margin-top: 10px;
+    padding: 10px 26px;
+    gap: 10px;
+    display: inline-block;
+    margin: auto;
+}
+
+.required:after {
+    content: " *";
+    color: red;
+}
+
+
+.middleTd {
+    border-bottom: none !important;
+}
+
+.alert-danger {
+    background: #002968 !important;
+    border-color: #ffeb12 !important;
+    color: #FFFF;
+}
+
+.chip {
+    display: inline-block;
+    padding: 0 25px;
+    height: 50px;
+    font-size: 18px;
+    line-height: 50px;
+    border-radius: 25px;
+    background-color: #def1ff;
+}
+
+.closebtn {
+    padding-left: 10px;
+    color: #888;
+    font-weight: bold;
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+    .closebtn:hover {
+        color: #000;
+    }
+
+button:disabled {
+    cursor: not-allowed;
+}
+
+a:disabled {
+    cursor: not-allowed;
+}
+
+.IsChecked {
+    transform: scale(2);
+}
+
+a:hover {
+    cursor: pointer;
 }

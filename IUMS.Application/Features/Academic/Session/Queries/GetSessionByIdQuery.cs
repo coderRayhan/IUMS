@@ -1,12 +1,14 @@
 ﻿using AspNetCoreHero.Results;
 using AutoMapper;
+using Dapper;
+using IUMS.Application.Interfaces.Contexts;
 using MediatR;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 using static IUMS.Application.Constants.DBConstants;
 
-namespace UEMS.Application.Features.Academic.Session.Queries
+namespace IUMS.Application.Features.Academic
 {
 	public class GetSessionByIdQuery : IRequest<Result<GetAllSessionResponse>>
     {
@@ -15,20 +17,26 @@ namespace UEMS.Application.Features.Academic.Session.Queries
         public class GetSessionByIdQueryHandler : IRequestHandler<GetSessionByIdQuery, Result<GetAllSessionResponse>>
         {
             private readonly IMapper _mapper;
-            private readonly IDbRepository _dbRepository;
+            private readonly IDapperContext _context;
 
-            public GetSessionByIdQueryHandler(IMapper mapper, IDbRepository dbRepository)
+            public GetSessionByIdQueryHandler(IMapper mapper, IDapperContext context)
             {
                 _mapper = mapper;
-                _dbRepository = dbRepository;
+                _context = context;
             }
 
             public async Task<Result<GetAllSessionResponse>> Handle(GetSessionByIdQuery query, CancellationToken cancellationToken)
             {
                 try
                 {
-                    var session = await _dbRepository.GetObjectBySpWithParam<GetAllSessionResponse>(STORE_PROCEDURE.GET_ACADEMIC_YEAR_BY_ID, query.Id);
+                    var sql = QUERIES.GET_SESSION_BY_ID;
+
+                    using var connection = _context.CreateConnection();
+
+                    var session = await connection.QueryFirstOrDefaultAsync<GetAllSessionResponse>(sql, new { query.Id });
+
                     var mappedSession = _mapper.Map<GetAllSessionResponse>(session);
+
                     return Result<GetAllSessionResponse>.Success(mappedSession);
                 }
                 catch (Exception ex)

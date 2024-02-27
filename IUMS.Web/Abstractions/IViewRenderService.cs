@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace AspNetCoreHero.Boilerplate.Web.Abstractions
+namespace IUMS.Web.Abstractions
 {
     public interface IViewRenderService
     {

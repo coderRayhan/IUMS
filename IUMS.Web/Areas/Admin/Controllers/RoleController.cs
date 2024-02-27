@@ -1,6 +1,6 @@
 ﻿using AspNetCoreHero.Boilerplate.Infrastructure.Identity.Models;
-using AspNetCoreHero.Boilerplate.Web.Abstractions;
 using AspNetCoreHero.Boilerplate.Web.Areas.Admin.Models;
+using IUMS.Web.Abstractions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

@@ -1,12 +1,10 @@
 using AspNetCoreHero.Boilerplate.Application.DTOs;
 using AspNetCoreHero.Boilerplate.Application.Features.ActivityLog.Queries.GetUserLogs;
 using AspNetCoreHero.Boilerplate.Application.Interfaces.Shared;
-using AspNetCoreHero.Boilerplate.Web.Abstractions;
+using IUMS.Web.Abstractions;
 using MediatR;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace AspNetCoreHero.Boilerplate.Web.Areas.Identity.Pages.Account

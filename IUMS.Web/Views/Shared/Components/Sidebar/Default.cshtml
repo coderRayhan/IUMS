@@ -1,10 +1,11 @@
-﻿@using Microsoft.AspNetCore.Mvc.Localization
+﻿@using IUMS.Web
+@using Microsoft.AspNetCore.Mvc.Localization
 @inject IHtmlLocalizer<SharedResource> localizer
 <aside id="sideBar" class="main-sidebar sidebar-dark-primary">
     <a href="/" class="brand-link">
         <img src="~/images/logo-transparent.png" id="brand-logo" alt="logo" class="brand-image img-circle"
              style="opacity: .8">
-        <span class="brand-text font-weight-light" style="font-size:0.8em!important">ASP.NET Core Hero</span>
+        <span class="brand-text font-weight-light" style="font-size:0.8em!important">IUMS</span>
     </a>
     <div class="sidebar">
         <nav class="mt-2">
@@ -40,6 +41,33 @@
                                 <a is-active-route asp-area="Admin" asp-controller="Role" class="nav-link">
                                     <i class="far fa-user-circle nav-icon"></i>
                                     <p>@localizer["Roles"]</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                }
+                @if (User.IsInRole("SuperAdmin"))
+                {
+                    @* <li class="nav-header">@localizer["Admin"]</li> *@
+                    <li is-active-route asp-area="Admin" class="nav-item has-treeview">
+                        <a is-active-route asp-area="Admin" class="nav-link">
+                            <i class="nav-icon fas fa-user"></i>
+                            <p>
+                                @localizer["Academic"]
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a is-active-route asp-area="Academic" asp-controller="Session" class="nav-link">
+                                    <i class="far fa-user-circle nav-icon"></i>
+                                    <p>@localizer["Session"]</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a is-active-route asp-area="Academic" asp-controller="Faculty" class="nav-link">
+                                    <i class="far fa-user-circle nav-icon"></i>
+                                    <p>@localizer["Faculty"]</p>
                                 </a>
                             </li>
                         </ul>

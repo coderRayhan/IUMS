@@ -1,4 +1,4 @@
-﻿namespace AspNetCoreHero.Boilerplate.Infrastructure.CacheKeys
+﻿namespace IUMS.Infrastructure.CacheKeys
 {
     public static class SessionCacheKeys
 	{

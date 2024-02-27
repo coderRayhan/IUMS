@@ -3,6 +3,7 @@ using AspNetCoreHero.Boilerplate.Application.Interfaces.Contexts;
 using AspNetCoreHero.Boilerplate.Application.Interfaces.Shared;
 using AspNetCoreHero.Boilerplate.Domain.Entities.Catalog;
 using AspNetCoreHero.EntityFrameworkCore.AuditTrail;
+using IUMS.Domain.Entities.Academic;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 using System.Linq;
@@ -27,6 +28,10 @@ namespace AspNetCoreHero.Boilerplate.Infrastructure.DbContexts
         public IDbConnection Connection => Database.GetDbConnection();
 
         public bool HasChanges => ChangeTracker.HasChanges();
+
+        public DbSet<Session> Sessions { get; set; }
+        public DbSet<Faculty> Faculties { get; set; }
+        public DbSet<Department> Departments { get; set; }
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {

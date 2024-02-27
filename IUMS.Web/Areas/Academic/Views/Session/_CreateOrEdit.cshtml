@@ -1,0 +1,89 @@
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+@inject IHtmlLocalizer<SharedResource> localizer
+@using IUMS.Application.Constants
+@using IUMS.Web
+@using IUMS.Web.Areas.Academic.Models
+@using Microsoft.AspNetCore.Localization
+@model SessionViewModel
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cName = requestCulture.RequestCulture.Culture.Name;
+}
+<form id="create-form" method="post" asp-area="Academic" asp-controller="Session" asp-action="OnPostCreateOrEdit" asp-route-id="@Model.Id" onsubmit="return jQueryModalPost(this);" enctype="multipart/form-data">
+    <div class="row px-2">
+        <input type="hidden" value="@cName" name="Local" />
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="form-label required">@localizer[LocalizerConstant.ACADEMIC_YEAR_NAME]:</label>
+                <input type="text" asp-for="SessionName" name="SessionName" class="form-control">
+                <span asp-validation-for="SessionName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="form-label required">@localizer[LocalizerConstant.START_DATE]:</label>
+                <input type="datetime" asp-for="SessionStartDate" name="SessionStartDate" class="form-control" id="startDatepicker" value="@Model.SessionStartDate" readonly>
+                <span asp-validation-for="SessionStartDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label required">@localizer[LocalizerConstant.ACADEMIC_YEAR_CODE]:</label>
+                <input type="text" asp-for="SessionCode" name="SessionCode" class="form-control">
+                <span asp-validation-for="SessionCode" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="form-label required">@localizer[LocalizerConstant.ACADEMIC_YEAR_NAME] (@localizer[LocalizerConstant.BANGLA]):</label>
+                <input type="text" asp-for="SessionNameBN" name="SessionNameBN" class="form-control">
+                <span asp-validation-for="SessionNameBN" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label required">@localizer[LocalizerConstant.END_DATE]:</label>
+                <input type="datetime" asp-for="SessionEndDate" name="SessionEndDate" class="form-control" id="endDatepicker" value="@Model.SessionEndDate" readonly>
+                <span asp-validation-for="SessionEndDate" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row px-2">
+        <button type="submit" class="btn" style="background-color: #0a65c0; color: white; width:100%; margin-top:10px; margin-left: 7px; margin-right: 7px ">Save</button>
+    </div>
+</form>
+<script type="text/javascript" language=javascript>
+    $.validator.unobtrusive.parse(document);
+</script>
+
+<script>
+
+
+    $(function () {
+        var CName = '@cName';
+        if (CName == 'en') {
+            $("#startDatepicker").datepicker({
+                uiLibrary: 'bootstrap4',
+                footer: false,
+                size: 'default'
+                //format: 'dd/mm/yyyy'
+            });
+            $("#endDatepicker").datepicker({
+                uiLibrary: 'bootstrap4',
+                footer: false,
+                size: 'default'
+                //format: 'dd/mm/yyyy'
+            });
+        } else {
+            $("#startDatepicker").datepicker({
+                uiLibrary: 'bootstrap4',
+                footer: false,
+                size: 'default',
+                format: 'dd/mm/yyyy'
+            });
+            $("#endDatepicker").datepicker({
+                uiLibrary: 'bootstrap4',
+                footer: false,
+                size: 'default',
+                format: 'dd/mm/yyyy'
+            });
+        }
+
+    });
+</script>

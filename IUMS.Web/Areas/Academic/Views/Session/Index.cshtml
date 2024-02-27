@@ -1,0 +1,57 @@
+﻿@using IUMS.Web
+@using IUMS.Web.Areas.Academic.Models
+@inject IHtmlLocalizer<SharedResource> localizer
+@model SessionViewModel
+@using Microsoft.AspNetCore.Localization
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cName = requestCulture.RequestCulture.Culture.Name;
+    var title = "";
+    var menuUrl = "";
+    // if (@Accessor.HttpContext.Session.GetString("Menu") is not null)
+    // {
+    //     var menuResponse = JsonConvert.DeserializeObject<GetTitleResponse>(@Accessor.HttpContext.Session.GetString("Menu"));
+    //     title = cName == "en" ? menuResponse.MenuName : menuResponse.MenuNameBN;
+    //     menuUrl = menuResponse.MenuUrl;
+    // }
+}
+<div class="row ">
+    <div class="col-md-6">
+        <h3>Session </h3>
+        <small>Academic > Session</small>
+    </div>
+    <div class="col-md-6 text-right">
+        <div>
+            @{
+                <a onclick="jQueryModalGet('/academic/session/OnGetCreateOrEdit', 'Session')" class="btn customBtn">
+                    <i class="fa fa-plus-square-o" aria-hidden="true"></i> &nbsp;&nbsp; Add New
+                </a>
+            }
+
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div id="viewAll" class="card-body table-responsive">
+    </div>
+</div>
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            loadData();
+            $('#reload').on('click', function () {
+                loadData();
+            });
+        });
+        function loadData() {
+            $('#viewAll').load('/academic/session/LoadAll');
+        }
+        $('#printReport').on('click', function () {
+            printReport();
+        });
+        function printReport() {
+            window.open('/reports/rpt/PrintSessionReport', '_blank');
+        }
+    </script>
+}

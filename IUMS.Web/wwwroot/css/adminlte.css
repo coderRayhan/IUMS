@@ -5287,7 +5287,7 @@ input[type="button"].btn-block {
     padding: 0.5rem 0.75rem;
     margin-left: -1px;
     line-height: 1.25;
-    color: #007bff;
+    color: #0a65c0;
     background-color: #ffffff;
     border: 1px solid #dee2e6;
 }
@@ -5320,8 +5320,8 @@ input[type="button"].btn-block {
 .page-item.active .page-link {
     z-index: 3;
     color: #ffffff;
-    background-color: #007bff;
-    border-color: #007bff;
+    background-color: #0a65c0;
+    border-color: #0a65c0;
 }
 
 .page-item.disabled .page-link {
@@ -5816,8 +5816,8 @@ a.badge-dark:focus, a.badge-dark.focus {
     .list-group-item.active {
         z-index: 2;
         color: #ffffff;
-        background-color: #007bff;
-        border-color: #007bff;
+        background-color: #0a65c0;
+        border-color: #0a65c0;
     }
 
     .list-group-item + .list-group-item {
@@ -13114,13 +13114,13 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .main-header::bef
 
 .sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active,
 .sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active {
-    background-color: #007bff;
+    background-color: #0a65c0;
     color: #ffffff;
 }
 
 .sidebar-dark-primary .nav-sidebar.nav-legacy > .nav-item > .nav-link.active,
 .sidebar-light-primary .nav-sidebar.nav-legacy > .nav-item > .nav-link.active {
-    border-color: #007bff;
+    border-color: #0a65c0;
 }
 
 .sidebar-dark-secondary .nav-sidebar > .nav-item > .nav-link.active,
@@ -13268,13 +13268,13 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .main-header::bef
 
 .sidebar-dark-blue .nav-sidebar > .nav-item > .nav-link.active,
 .sidebar-light-blue .nav-sidebar > .nav-item > .nav-link.active {
-    background-color: #007bff;
+    background-color: #0a65c0;
     color: #ffffff;
 }
 
 .sidebar-dark-blue .nav-sidebar.nav-legacy > .nav-item > .nav-link.active,
 .sidebar-light-blue .nav-sidebar.nav-legacy > .nav-item > .nav-link.active {
-    border-color: #007bff;
+    border-color: #0a65c0;
 }
 
 .sidebar-dark-indigo .nav-sidebar > .nav-item > .nav-link.active,
@@ -14749,7 +14749,7 @@ body.text-sm .control-sidebar {
 }
 
     .nav-pills .nav-link:not(.active):hover {
-        color: #007bff;
+        color: #0a65c0;
     }
 
 .nav-pills .nav-item.dropdown.show .nav-link:hover {

@@ -1,0 +1,92 @@
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+@using IUMS.Application.Constants
+@using IUMS.Web
+@using IUMS.Web.Areas.Academic.Models
+@using Microsoft.AspNetCore.Localization
+@inject IHtmlLocalizer<SharedResource> localizer
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cName = requestCulture.RequestCulture.Culture.Name;
+}
+@model FacultyViewModel
+<style>
+    .redStar {
+        color: Red;
+        Font-weight: Bold
+    }
+</style>
+
+<form id="create-form" method="post" asp-area="Academic" asp-controller="Faculty" asp-action="OnPostCreateOrEdit" asp-route-id="@Model.Id" onsubmit="return jQueryModalPost(this);" enctype="multipart/form-data">
+    <div class="row">
+        <input type="hidden" value="@cName" name="Local" />
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>@localizer[LocalizerConstant.NAME]<span class="redStar">*</span></label>
+                <div>
+                    <input type="text" asp-for="FacultyName" name="FacultyName" class="form-control">
+                    <span asp-validation-for="FacultyName" class="text-danger"></span>
+                </div>
+            </div>
+            <div>
+                <label>@localizer[LocalizerConstant.NAME] (@localizer[LocalizerConstant.BANGLA])<span class="redStar">*</span></label>
+                <div>
+                    <input type="text" asp-for="FacultyNameBN" name="FacultyNameBN" class="form-control">
+                    <span asp-validation-for="FacultyNameBN" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>@localizer[LocalizerConstant.CODE]<span class="redStar">*</span></label>
+                <div>
+                    <input type="text" asp-for="Code" name="Code" class="form-control">
+                    <span asp-validation-for="Code" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>@localizer[LocalizerConstant.DESCRIPTION]</label>
+                <div>
+                    <input type="text" asp-for="Description" name="Description" class="form-control">
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group justify-content-between pull-right">
+        <button type="submit" class="btn btn-success" id="submit">Save</button>
+        <button type="button" class="btn btn-default close-button" data-dismiss="modal">Cancel</button>
+    </div>
+</form>
+<script type="text/javascript" language=javascript>
+    //$(document).ready(function () {
+
+    //    if ($("#HasAffiliatedInstitute").is(':checked')) {
+    //        $("#AffiliatedInstituteDiv").toggleClass("d-none");
+    //    };
+    //});
+    $.validator.unobtrusive.parse(document);
+    var hasAffiliatedInstitute = document.getElementById("HasAffiliatedInstitute");
+    var list = document.getElementById("AffiliatedInstituteId");
+    var submit = document.getElementById("submit");
+
+    function checkDisabled() {
+        submit.disabled = hasAffiliatedInstitute.checked && (list.value.length === 0);
+        list.style.visibility = hasAffiliatedInstitute.checked ? 'visible' : 'hidden';
+    }
+
+    [hasAffiliatedInstitute, list].forEach((x) => x.addEventListener('change', function () {
+        checkDisabled()
+    }))
+    checkDisabled();
+
+    $("#HasAffiliatedInstitute").click((el) => {
+        let isChecked = document.querySelector("#HasAffiliatedInstitute");
+        if (isChecked) {
+            $("#AffiliatedInstituteDiv").removeClass("d-none");
+        } else {
+            $("#AffiliatedInstituteDiv").addClass("d-none");
+            //$("#AffiliatedInstituteId").val(0);
+            $("#AffiliatedInstituteId").selectedIndex = 0;
+        }
+    })
+</script>

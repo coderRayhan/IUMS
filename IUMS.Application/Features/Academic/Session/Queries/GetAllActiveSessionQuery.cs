@@ -1,5 +1,7 @@
 ﻿using AspNetCoreHero.Results;
 using AutoMapper;
+using Dapper;
+using IUMS.Application.Interfaces.Contexts;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -7,32 +9,35 @@ using System.Threading;
 using System.Threading.Tasks;
 using static IUMS.Application.Constants.DBConstants;
 
-namespace UEMS.Application.Features.Academic.Session.Queries.GetAll
+namespace IUMS.Application.Features.Academic
 {
-	public class GetAllActiveSessionQuery:IRequest<Result<List<GetAllSessionResponse>>>
-    {
-        public GetAllActiveSessionQuery()
-        {
-
-        }
-    }
+	public record GetAllActiveSessionQuery:IRequest<Result<List<GetAllSessionResponse>>>;
 
     public class GetAllActiveSessionQueryHandler : IRequestHandler<GetAllActiveSessionQuery, Result<List<GetAllSessionResponse>>>
     {
         private readonly IMapper _mapper;
-        private readonly IDbRepository _dbRepository;
-        public GetAllActiveSessionQueryHandler(IMapper mapper, IDbRepository dbRepository)
+        private readonly IDapperContext _context;
+        public GetAllActiveSessionQueryHandler(IMapper mapper, IDapperContext context)
         {
             _mapper = mapper;
-            _dbRepository = dbRepository;
+            _context = context;
         }
         public async Task<Result<List<GetAllSessionResponse>>> Handle(GetAllActiveSessionQuery request, CancellationToken cancellationToken)
         {
             try
             {
-                var sessionList = await _dbRepository.GetListBySp<GetAllSessionResponse>(STORE_PROCEDURE.GET_ALL_ACADEMIC_YEAR);
+                var query = QUERIES.GET_ALL_SESSION;
+
+                IEnumerable<GetAllSessionResponse> sessionList;
+
+                using (var connection = _context.CreateConnection())
+                {
+                    sessionList = await connection.QueryAsync<GetAllSessionResponse>(query);
+                }
+
                 var mappedSessions = _mapper.Map<List<GetAllSessionResponse>>(sessionList);
-                return Result<List<GetAllSessionResponse>>.Success();
+
+                return Result<List<GetAllSessionResponse>>.Success(mappedSessions);
             }
             catch (Exception ex)
             {

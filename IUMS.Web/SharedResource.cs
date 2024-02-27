@@ -1,4 +1,4 @@
-﻿namespace AspNetCoreHero.Boilerplate.Web
+﻿namespace IUMS.Web
 {
     public class SharedResource
     {
