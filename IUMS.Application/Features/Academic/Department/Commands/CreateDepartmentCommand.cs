@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using System;
 using System.Linq;
 using IUMS.Application.Interfaces.Repositories.Academic;
-using AspNetCoreHero.Boilerplate.Application.Interfaces.Repositories;
 using IUMS.Domain.Entities.Academic;
+using IUMS.Application.Interfaces.Repositories;
 
 namespace IUMS.Application.Features
 {

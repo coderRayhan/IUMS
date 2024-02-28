@@ -1,10 +1,11 @@
-﻿using AspNetCoreHero.Boilerplate.Application.Interfaces.Repositories;
+﻿using IUMS.Application.Interfaces.Repositories;
 using AspNetCoreHero.Results;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
+using AspNetCoreHero.Boilerplate.Application.Interfaces.Repositories;
 
-namespace AspNetCoreHero.Boilerplate.Application.Features.ActivityLog.Commands.AddLog
+namespace IUMS.Application.Features.ActivityLog.Commands.AddLog
 {
     public partial class AddActivityLogCommand : IRequest<Result<int>>
     {

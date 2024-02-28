@@ -3,12 +3,12 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 using System;
-using AspNetCoreHero.Boilerplate.Application.Interfaces.Repositories;
 using IUMS.Application.Interfaces.Repositories.Academic;
+using IUMS.Application.Interfaces.Repositories;
 
 namespace IUMS.Application.Features.Academic
 {
-	public class SessionStatusUpdateCommand : IRequest<Result<int>>
+    public class SessionStatusUpdateCommand : IRequest<Result<int>>
     {
         public int Id { get; set; }
       

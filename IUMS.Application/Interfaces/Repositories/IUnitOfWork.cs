@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace AspNetCoreHero.Boilerplate.Application.Interfaces.Repositories
+namespace IUMS.Application.Interfaces.Repositories
 {
     public interface IUnitOfWork : IDisposable
     {

@@ -4,7 +4,8 @@
     ViewData["Title"] = "Login";
     Layout = null;
 }
-@using AspNetCoreHero.Boilerplate.Web.Views.Shared.Components.Culture;
+@using IUMS.Web
+@inject IHtmlLocalizer<SharedResource> localizer
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,94 +16,199 @@
     <meta name="author" content="">
     <title>@ViewData["Title"]</title>
     <partial name="_Styles" />
+    @*<script src="https://cdn.lordicon.com/lordicon.js"></script>*@
+
+    <style>
+        body {
+            background-image: url('/images/bsmraau/background.png') !important;
+            background-size: cover !important;
+            background-repeat: no-repeat !important;
+            overflow: auto;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        .main {
+            position: absolute;
+            width: 100%;
+            min-height: 100%;
+            left: 0px;
+            top: 0px;
+            background: rgb(219,219,228);
+            background: linear-gradient(90deg, rgba(219,219,228,1) 0%, rgba(229,227,230,1) 17%, rgba(229,230,231,1) 100%);
+            mix-blend-mode: normal;
+            overflow: auto;
+        }
+
+        .container {
+            position: absolute;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+            left: 0;
+            right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 3rem;
+        }
+
+        .loginBox {
+            display: flex;
+            align-items: center;
+        }
+
+        .loginBox-img {
+            width: 60%;
+        }
+
+            .loginBox-img img {
+                border-top-left-radius: 20px;
+                border-bottom-left-radius: 20px;
+                display: block;
+                width: 100%;
+                height: 520px;
+            }
+
+        .loginBox-content {
+            width: 40%;
+            background: #fff;
+            height: 100%;
+            padding: 0 60px;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+
+        .loginBox-headertext img {
+            height: 80px;
+        }
+
+        .loginBox-headertext h1 {
+            font-size: 30px;
+            font-weight: 800;
+            margin: 10px 0 0 0;
+        }
+
+        .loginBox {
+            background: #fff;
+            border-radius: 20px;
+        }
+
+
+        .colorText {
+            color: #1C3669 !important;
+            font-weight: 900;
+        }
+
+        .leftText {
+            position: absolute;
+            left: 20px;
+            font-family: verdana;
+            letter-spacing: -1PX;
+        }
+
+
+
+        @@media (max-width: 991px) {
+            .loginBox {
+                flex-direction: column;
+            }
+
+            .loginBox-img,
+            .loginBox-content {
+                width: 100%;
+            }
+
+
+                .loginBox-img img {
+                    height: 100%;
+                    border-top-right-radius: 20px;
+                    border-bottom-left-radius: 0;
+                }
+
+            .loginBox-content {
+                padding: 25px 50px 50px 50px;
+                border-top-right-radius: 0;
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 20px;
+                box-shadow: 2px 2px 2px rgb(0,0,0,0.3);
+            }
+
+            .loginContainer {
+                margin: 15px 0;
+            }
+
+            .container {
+                top: auto;
+                -webkit-transform: translateY(10%);
+                -ms-transform: translateY(10%);
+                transform: translateY(10%);
+                margin-top: 0rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <nav id="navigationBar" class="main-header navbar navbar-expand navbar-light" style="margin:0 !important">
-        <ul class="navbar-nav" style=" margin-inline-start: auto; ">
-            <li class="nav-item dropdown no-arrow">
-                @(await Component.InvokeAsync<CultureViewComponent>())
-            </li>
-        </ul>
-        <ul class="navbar-nav">
-            <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input" id="darkSwitch">
-                <label class="custom-control-label" style="font-weight:400" for="darkSwitch">@localizer["Dark Mode"]</label>
-            </divv>
-        </ul>
-    </nav>
-    <div class="content-wrapper mrl-zero" id="contentWrapper">
-        <div class="container">
+    <div class="main">
+        <div class="wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="loginContainer">
+                            <div class="loginBox">
+                                <div class="loginBox-img img-fluid">
 
-            <!-- Outer Row -->
-            <div class="row justify-content-center">
-
-                <div class="col-xl-10 col-lg-12 col-md-9">
-
-                    <div class="card o-hidden border-0 my-5">
-                        <div class="card-body p-0">
-                            <!-- Nested Row within Card Body -->
-                            <div class="row">
-                                <div class="col-lg-6 d-none d-lg-block" style=" background: url('/images/bg-login.jpg');background-position: center;background-size: cover;"></div>
-                                <div class="col-lg-6">
-                                    <div style="padding:10rem 3rem 10rem 3rem !important;">
-                                        <div class="text-center">
-                                            <h1 class="h4 text-gray-900 mb-4">@localizer["Login"]</h1>
-                                        </div>
-                                        <form class="user" id="account" method="post">
-                                            <div class="form-group">
-                                                <input asp-for="Input.Email" type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
-                                                <small><span asp-validation-for="Input.Email" class="text-danger"></span></small>
-                                            </div>
-                                            <div class="form-group">
-                                                <input asp-for="Input.Password" type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
-                                                <small><span asp-validation-for="Input.Password" class="text-danger"></span></small>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="custom-control custom-checkbox small">
-                                                    <input asp-for="Input.RememberMe" type="checkbox" class="custom-control-input" id="customCheck">
-                                                    <label class="custom-control-label" for="customCheck">@localizer["Remember Me"]</label>
-                                                </div>
-                                            </div>
-                                            <button type="submit" class="btn btn-primary btn-user btn-block">
-                                                @localizer["Login"]
-                                            </button>
-                                            @*<hr>
-                                                <a class="btn btn-google btn-user btn-block">
-                                                    <i class="fab fa-google fa-fw"></i> Login with Google
-                                                </a>
-                                                <a class="btn btn-facebook btn-user btn-block">
-                                                    <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                                                </a>*@
-                                        </form>
-                                        <hr>
-                                        <div class="text-center">
-                                            <a asp-area="Identity" asp-page="/Account/forgotpassword" class="small">@localizer["Forgot Password?"]</a>
-                                        </div>
-                                        <div class="text-center">
-                                            <a asp-area="Identity" asp-page="/Account/register" class="small">@localizer["Create an Account!"]</a>
-                                        </div>
+                                    <img src="/images/bg-login.jpg" alt="Image not loaded" />
+                                </div>
+                                <div class="loginBox-content">
+                                    <div class="loginBox-headertext text-center">
+                                        <img id="viewableImage" class="viewableImage" src="/images/logo.png" alt="">
+                                        <h6 class="colorText mt-3 mb-5" style="color:#1C3669 !important; font-family:verdana; ">
+                                            Jahangirnagar University
+                                        </h6>
                                     </div>
+                                    <input type="hidden" />
+                                    <form class="user" id="account" method="post">
+                                        <input type="hidden" />
+                                        <div class="form-group loginInput">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-user "></i></span>
+                                                <input asp-for="Input.Email" type="text" class="form-control" placeholder="User ID/ Email" aria-describedby="basic-addon1" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group loginInput">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon2"><i class="fa fa-lock"></i></span>
+                                                <input asp-for="Input.Password" type="password" class="form-control" placeholder="Enter Password" id="password-field" />
+                                                <span style="margin-right: 15px; margin-top: 8px; position: relative;" class="pull-right">
+                                                    <i class="fa fa-fw fa-eye-slash toggle-password" toggle="#password-field"></i>
+                                                    @*<lord-icon src="https://cdn.lordicon.com/vfczflna.json"
+
+                                                    trigger="loop" delay="2000"
+                                                    style="width:25px;height:25px;margin-left:15px" toggle="#password-field">
+                                                    </lord-icon>*@
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row" style="color:#9EB6E5;">
+                                            <div class="col-6 mr-0"> <input asp-for="Input.RememberMe" type="checkbox" class="form-check-inline loginChack" /> <span class="mb-2">Remember me</span> </div>
+                                            <div class="col-6 text-right">
+                                                <a asp-area="Identity" asp-page="ForgotPassword">Forgot Password? </a>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mt-5">
+                                            <button type="submit" class="btn btnLogin text-light form-control">Login</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-xl-10 col-lg-12 col-md-9">
-                    <div class="card">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 text-secondary">@localizer["Default Credentials"]</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col">
-                                    <b>Super Admin : </b> superadmin@gmail.com / 123Pa$$word! / Default
-                                    <br />
-                                    <b>Basic User : </b> basicuser@gmail.com / 123Pa$$word! / Default
-                                </div>
-                            </div>
-                        </div>
+                <div class="row mt-5 pt-5 footerText">
+                    <div class="col-12 text-center">
+                        @* <p>Copyright © <span style="color:#f2d31a"> JU</span> | Developed By <span style="color:#f2d31a"> Rayhan</span>.</p> *@
                     </div>
                 </div>
             </div>
@@ -110,6 +216,18 @@
     </div>
 
     <partial name="_Scripts" />
+    <script>
+        $(".toggle-password").click(function () {
+            $(this).toggleClass("fa-eye fa-eye-slash");
+            var input = $($(this).attr("toggle"));
+            if (input.attr("type") == "password") {
+                input.attr("type", "text");
+            } else {
+                input.attr("type", "password");
+            }
+        });
+    </script>
 </body>
 </html>
 @await Component.InvokeAsync("Notyf")
+

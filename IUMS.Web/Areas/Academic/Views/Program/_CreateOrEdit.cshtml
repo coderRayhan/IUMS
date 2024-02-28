@@ -1,0 +1,133 @@
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+@using IUMS.Application.Constants
+@using IUMS.Web
+@using IUMS.Web.Areas.Academic.Models
+@using IUMS.Web.Views.Shared.Components.Common
+@using Microsoft.AspNetCore.Localization
+@inject IHtmlLocalizer<SharedResource> localizer
+@model ProgramViewModel
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cName = requestCulture.RequestCulture.Culture.Name;
+}
+<form id="create-form" method="post" asp-controller="Program" asp-action="OnPostCreateOrEdit" asp-route-id="@Model.Id" onsubmit="return jQueryModalPost(this);" enctype="multipart/form-data">
+    <div class="row px-2">
+        <input type="hidden" value="@cName" name="Local" />
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="form-label text-right required">@localizer[LocalizerConstant.MENU_PROGRAM] @localizer[LocalizerConstant.NAME] (@localizer[LocalizerConstant.ENGLISH])</label>
+                <input type="text" asp-for="ProgramName" name="ProgramName" class="form-control">
+                <span asp-validation-for="ProgramName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="form-label text-right required">@localizer[LocalizerConstant.MENU_PROGRAM] @localizer[LocalizerConstant.NAME] (@localizer[LocalizerConstant.BANGLA]) </label>
+                <input type="text" asp-for="ProgramNameBN" name="ProgramNameBN" class="form-control">
+                <span asp-validation-for="ProgramNameBN" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row px-2">
+        <div class="col-md-6">
+            <div class="form-group">
+                @(
+                    await Component.InvokeAsync<CommonViewComponent>(new
+                    {
+                        name = "FacultyId",
+                        id = "FacultyId",
+                        entityId = Model.FacultyId,
+                        query = CommonDropdownConstants.GET_ALL_FACULTIES,
+                        labelText = "Faculty",
+                        isRequired = true,
+                        isLabelRequired = true
+                    })
+                    )
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @(
+                    await Component.InvokeAsync<CommonViewComponent>(new
+                    {
+                        name = "DepartmentId",
+                        id = "DepartmentId",
+                        entityId = Model.DepartmentId,
+                        query = CommonDropdownConstants.GET_ALL_DEPARTMENTS,
+                        labelText = "Department",
+                        parameters = new object[] { Model.FacultyId },
+                        isRequired = true,
+                        isLabelRequired = true
+                    })
+                    )
+            </div>
+        </div>
+    </div>
+    <div class="row px-2">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="form-label text-right required">@localizer[LocalizerConstant.CREDIT_POINTS]</label>
+                <input type="text" asp-for="CreditPoints" class="form-control">
+                <span asp-validation-for="CreditPoints" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="form-label text-right required">@localizer[LocalizerConstant.YEAR]</label>
+                <input type="text" asp-for="YearDuration" class="form-control">
+                <span asp-validation-for="YearDuration" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="form-label text-right">@localizer[LocalizerConstant.CODE]</label>
+                <input type="text" asp-for="Code" class="form-control">
+                <span asp-validation-for="Code" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row px-2 mt-3">
+        <button type="submit" class="btn btn col-12" style="background-color: #012766 ; color: white">Save</button>
+    </div>
+
+</form>
+<script type="text/javascript" language=javascript>
+    $.validator.unobtrusive.parse(document);
+</script>
+<script>
+    //$("#FacultyId").change(function () {
+    //    var cName = '@cName';
+    //    var facultyId = $('#FacultyId').val();
+    //    $("#DepartmentId").html('').append("<option Value=''>Choose Option</option>");
+
+    //    $.get("/academic/Department/FilterDeptByFaculty", { FacultyId: facultyId }, function (data) {
+    //        $.each(data, function (index, row) {
+    //            if (cName == 'en') {
+    //                $("#DepartmentId").append("<option value='" + row.id + "'>" + row.departmentName + "</option>")
+
+    //            } else {
+    //                $("#DepartmentId").append("<option value='" + row.id + "'>" + row.departmentNameBN + "</option>")
+
+    //            }
+
+    //        })
+    //    })
+    //});
+
+    $("#FacultyId").change(function () {
+        var cName = '@cName';
+        var facultyId = $('#FacultyId').val();
+        $("#DepartmentId").html('').append("<option Value=''>Choose Option</option>");
+        $.get("/Academic/Program/GetDepartmentsByFaculty", { facultyId: facultyId }, function (data) {
+            $.each(data, function (index, row) {
+                if (cName == 'en') {
+                    $("#DepartmentId").append(`<option value='${row.id}'>${row.name}</option>`)
+                } else {
+                    $("#DepartmentId").append(`<option value='${row.id}'>${row.nameBN}</option>`)
+                }
+            })
+        })
+    });
+
+</script>

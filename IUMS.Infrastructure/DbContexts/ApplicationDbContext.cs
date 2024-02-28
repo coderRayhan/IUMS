@@ -32,6 +32,8 @@ namespace AspNetCoreHero.Boilerplate.Infrastructure.DbContexts
         public DbSet<Session> Sessions { get; set; }
         public DbSet<Faculty> Faculties { get; set; }
         public DbSet<Department> Departments { get; set; }
+        public DbSet<Program> Programs { get; set; }
+        public DbSet<Batch> Batches { get; set; }
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {

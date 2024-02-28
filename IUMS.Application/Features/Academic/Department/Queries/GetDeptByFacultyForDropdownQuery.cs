@@ -1,8 +1,6 @@
 ﻿using AspNetCoreHero.Results;
 using AutoMapper;
 using Dapper;
-using IUMS.Application.Features.Academic;
-using IUMS.Application.Features.Academic.Department.Queries;
 using IUMS.Application.Interfaces.Contexts;
 using MediatR;
 using System;

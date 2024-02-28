@@ -1,0 +1,85 @@
+﻿@using IUMS.Application.Constants
+@using IUMS.Web
+@using IUMS.Web.Areas.Academic.Models
+@using IUMS.Web.Extensions
+@using Microsoft.AspNetCore.Localization
+@model IEnumerable<ProgramViewModel>
+@inject IHtmlLocalizer<SharedResource> localizer
+@{
+    var SLNo = 1;
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cName = requestCulture.RequestCulture.Culture.Name;
+    // if (@Accessor.HttpContext.Session.GetString("Menu") is not null)
+    // {
+    //     var menuResponse = JsonConvert.DeserializeObject<GetTitleResponse>(@Accessor.HttpContext.Session.GetString("Menu"));
+    //     title = cName == "en" ? menuResponse.MenuName : menuResponse.MenuNameBN;
+    // }
+}
+<table id="programTable" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
+    <thead class="thead-primary">
+        <tr>
+            <th width="5%">@localizer[LocalizerConstant.SL]</th>
+            <th>@localizer[LocalizerConstant.CODE]</th>
+            <th>@localizer[LocalizerConstant.PROGRAM]</th>
+            <th>@localizer[LocalizerConstant.DEPARTMENT]</th>
+            <th>@localizer[LocalizerConstant.PROGRAM_CREDIT_POINTS]</th>
+            <th>@localizer[LocalizerConstant.DURATION_YEAR]</th>
+            <th width="15%">@localizer[LocalizerConstant.ACTIONS]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td align="center">
+
+                    @(cName == "en" ? SLNo.ToString() : ViewExtensions.ConvertToUniCode(SLNo))
+                    @{
+                        SLNo++;
+                    }
+                </td>
+                <td>
+                    @item.Code
+                </td>
+                <td>
+                    @(cName == "en" ? item.ProgramName : item.ProgramNameBN)
+                </td>
+                <td>
+                    @(cName == "en" ? item.DepartmentName : item.DepartmentNameBN)
+                </td>
+                <td>
+                    @item.CreditPoints
+                </td>
+                <td>
+                    @item.YearDuration
+                </td>
+
+                <td text-right">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Action
+                        </button>
+                        <div class="dropdown-menu shadow animated--grow-in">
+                            @{
+                                <a onclick="jQueryModalGet('/academic/program/OnGetCreateOrEdit?id=@item.Id','Program')" class="dropdown-item"><i class="fas fa-pencil-alt"></i>  Edit</a>
+                            }
+                            <form id="form_delete_@item.Id" asp-area="academic" asp-controller="Program" method="post" asp-action="OnPostDelete" asp-route-id="@item.Id" onsubmit="return jQueryModalDelete(this)">
+                                <a href="javascript:$('#form_delete_@item.Id').submit();" class="dropdown-item"><i class="fas fa-trash-alt"></i>  Delete</a>
+                            </form>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script>
+    $(document).ready(function () {
+        if ('@cName' == 'en') {
+            var res = true;
+        } else {
+            var res = false;
+        }
+        $("#programTable").DataTable({ "ordering": res });
+    });
+</script>

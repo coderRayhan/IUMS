@@ -6,6 +6,7 @@ using System;
 using IUMS.Application.Interfaces.Repositories.Academic;
 using AspNetCoreHero.Boilerplate.Application.Interfaces.Repositories;
 using IUMS.Application.Constants;
+using IUMS.Application.Interfaces.Repositories;
 
 namespace IUMS.Application.Features
 {

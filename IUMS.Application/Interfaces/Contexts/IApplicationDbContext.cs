@@ -21,5 +21,7 @@ namespace AspNetCoreHero.Boilerplate.Application.Interfaces.Contexts
         DbSet<Session> Sessions { get; set; }
         DbSet<Faculty> Faculties { get; set; }
         DbSet<Department> Departments { get; set; }
+        DbSet<Program> Programs { get; set; }
+        DbSet<Batch> Batches { get; set; }
     }
 }

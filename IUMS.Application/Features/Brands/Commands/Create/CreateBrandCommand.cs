@@ -2,6 +2,7 @@
 using AspNetCoreHero.Boilerplate.Domain.Entities.Catalog;
 using AspNetCoreHero.Results;
 using AutoMapper;
+using IUMS.Application.Interfaces.Repositories;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;

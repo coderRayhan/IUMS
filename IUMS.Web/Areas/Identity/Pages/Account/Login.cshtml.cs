@@ -1,5 +1,5 @@
-﻿using AspNetCoreHero.Boilerplate.Application.Features.ActivityLog.Commands.AddLog;
-using AspNetCoreHero.Boilerplate.Infrastructure.Identity.Models;
+﻿using AspNetCoreHero.Boilerplate.Infrastructure.Identity.Models;
+using IUMS.Application.Features.ActivityLog.Commands.AddLog;
 using IUMS.Web.Abstractions;
 using MediatR;
 using Microsoft.AspNetCore.Authentication;

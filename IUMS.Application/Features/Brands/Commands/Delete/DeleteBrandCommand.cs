@@ -1,5 +1,6 @@
 ﻿using AspNetCoreHero.Boilerplate.Application.Interfaces.Repositories;
 using AspNetCoreHero.Results;
+using IUMS.Application.Interfaces.Repositories;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;

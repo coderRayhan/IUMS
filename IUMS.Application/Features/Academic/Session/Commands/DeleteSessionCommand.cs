@@ -4,11 +4,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using System;
 using IUMS.Application.Interfaces.Repositories.Academic;
-using AspNetCoreHero.Boilerplate.Application.Interfaces.Repositories;
+using IUMS.Application.Interfaces.Repositories;
 
 namespace IUMS.Application.Features.Academic
 {
-	public class DeleteSessionCommand : IRequest<Result<int>>
+    public class DeleteSessionCommand : IRequest<Result<int>>
     {
         public int Id { get; set; }
 

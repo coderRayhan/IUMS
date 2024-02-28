@@ -1,8 +1,10 @@
 ﻿using AspNetCoreHero.Abstractions.Domain;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace IUMS.Domain.Entities.Academic
 {
+    [Table("Aca_Departments")]
     public class Department : AuditableEntity
     {
         public int FacultyId { get; set; } // Fk Faculty Table

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System;
 using System.Linq;
 using IUMS.Application.Interfaces.Repositories.Academic;
-using AspNetCoreHero.Boilerplate.Application.Interfaces.Repositories;
+using IUMS.Application.Interfaces.Repositories;
 
 namespace UEMS.Application.Features
 {
