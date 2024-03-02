@@ -1,6 +1,6 @@
 ﻿namespace IUMS.Infrastructure.CacheKeys
 {
-    public class ProgramCacheKeys
+    public static class ProgramCacheKeys
     {
         public static string ListKey => "ProgramList";
 

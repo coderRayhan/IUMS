@@ -8,8 +8,8 @@
 @{
     var requestCulture = Context.Features.Get<IRequestCultureFeature>();
     var cName = requestCulture.RequestCulture.Culture.Name;
-    var title = "";
-    var menuUrl = "";
+    var title = "Faculty";
+    var menuUrl = "Academic > Faculty";
     // if (@Accessor.HttpContext.Session.GetString("Menu") is not null)
     // {
     //     var menuResponse = JsonConvert.DeserializeObject<GetTitleResponse>(@Accessor.HttpContext.Session.GetString("Menu"));
@@ -19,8 +19,8 @@
 }
 <div class="row">
     <div class="col-md-6">
-        <h3>Faculty</h3>
-        <small>Academic > Faculty</small>
+        <h3>@title</h3>
+        <small>@menuUrl</small>
     </div>
     <div class="col-sm-6 col-md-6">
         <div class="pull-right">

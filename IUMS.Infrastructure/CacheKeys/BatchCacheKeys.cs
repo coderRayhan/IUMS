@@ -1,6 +1,6 @@
 ﻿namespace IUMS.Infrastructure.CacheKeys
 {
-    public class BatchCacheKeys
+    public static class BatchCacheKeys
     {
         public static string ListKey => "BatchList";
 

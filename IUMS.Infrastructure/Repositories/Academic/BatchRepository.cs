@@ -1,6 +1,7 @@
 ﻿using AspNetCoreHero.Boilerplate.Application.Interfaces.Repositories;
 using IUMS.Application.Interfaces.Repositories.Academic;
 using IUMS.Domain.Entities.Academic;
+using IUMS.Infrastructure.CacheKeys;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Distributed;
 using System;
@@ -28,8 +29,8 @@ namespace IUMS.Infrastructure.Repositories.Academic
         public async Task DeleteAsync(Batch batch)
         {
             await _repository.DeleteAsync(batch);
-            await _distributedCache.RemoveAsync(CacheKeys.BatchCacheKeys.ListKey);
-            await _distributedCache.RemoveAsync(CacheKeys.BatchCacheKeys.GetKey(batch.Id));
+            await _distributedCache.RemoveAsync(BatchCacheKeys.ListKey);
+            await _distributedCache.RemoveAsync(BatchCacheKeys.GetKey(batch.Id));
         }
 
         public async Task<Batch> GetByIdAsync(int batchId)
@@ -50,15 +51,15 @@ namespace IUMS.Infrastructure.Repositories.Academic
         public async Task<int> InsertAsync(Batch batch)
         {
             await _repository.AddAsync(batch);
-            await _distributedCache.RemoveAsync(CacheKeys.BatchCacheKeys.ListKey);
+            await _distributedCache.RemoveAsync(BatchCacheKeys.ListKey);
             return batch.Id;
         }
 
         public async Task UpdateAsync(Batch batch)
         {
             await _repository.UpdateAsync(batch);
-            await _distributedCache.RemoveAsync(CacheKeys.BatchCacheKeys.ListKey);
-            await _distributedCache.RemoveAsync(CacheKeys.BatchCacheKeys.GetKey(batch.Id));
+            await _distributedCache.RemoveAsync(BatchCacheKeys.ListKey);
+            await _distributedCache.RemoveAsync(BatchCacheKeys.GetKey(batch.Id));
         }
     }
 }

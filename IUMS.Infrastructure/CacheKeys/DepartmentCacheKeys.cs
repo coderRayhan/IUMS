@@ -1,6 +1,6 @@
 ﻿namespace IUMS.Infrastructure.CacheKeys
 {
-    public class DepartmentCacheKeys
+    public static class DepartmentCacheKeys
     {
         public static string ListKey => "DepartmentList";
 

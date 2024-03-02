@@ -4,6 +4,7 @@ using AspNetCoreHero.Boilerplate.Application.Interfaces.Shared;
 using AspNetCoreHero.Boilerplate.Domain.Entities.Catalog;
 using AspNetCoreHero.EntityFrameworkCore.AuditTrail;
 using IUMS.Domain.Entities.Academic;
+using IUMS.Domain.Entities.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System.Data;
@@ -35,6 +36,8 @@ namespace AspNetCoreHero.Boilerplate.Infrastructure.DbContexts
         public DbSet<Department> Departments { get; set; }
         public DbSet<Program> Programs { get; set; }
         public DbSet<Batch> Batches { get; set; }
+        public DbSet<Lookup> Lookups { get; set; }
+        public DbSet<LookupDetail> LookupDetails { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

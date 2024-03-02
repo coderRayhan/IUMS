@@ -7,7 +7,7 @@
     var SLNo = 1;
     var requestCulture = Context.Features.Get<IRequestCultureFeature>();
     var cName = requestCulture.RequestCulture.Culture.Name;
-    var title = "";
+    var title = "Session";
     // if (@Accessor.HttpContext.Session.GetString("Menu") is not null)
     // {
     //     var menuResponse = JsonConvert.DeserializeObject<GetTitleResponse>(@Accessor.HttpContext.Session.GetString("Menu"));
@@ -77,7 +77,7 @@
                             Action
                         </button>
                         <div class="dropdown-menu shadow animated--grow-in">
-                            <a onclick="jQueryModalGet('/academic/session/OnGetCreateOrEdit?id=@item.Id', 'Session')" class="dropdown-item"><i class="fas fa-pencil-alt"></i>  Edit</a>
+                            <a onclick="jQueryModalGet('/academic/session/OnGetCreateOrEdit?id=@item.Id', '@title')" class="dropdown-item"><i class="fas fa-pencil-alt"></i>  Edit</a>
                             <form id="form_delete_@item.Id" asp-area="academic" asp-controller="Session" method="post" asp-action="OnPostDelete" asp-route-id="@item.Id" onsubmit="return jQueryModalDelete(this)">
                                 <a href="javascript:$('#form_delete_@item.Id').submit();" class="dropdown-item"><i class="fas fa-trash-alt"></i>  Delete</a>
                             </form>
