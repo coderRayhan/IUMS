@@ -9,7 +9,9 @@ using IUMS.Application.Interfaces.Contexts;
 using IUMS.Application.Interfaces.Repositories;
 using IUMS.Application.Interfaces.Repositories.Academic;
 using IUMS.Infrastructure.DbContexts;
+using IUMS.Infrastructure.Interceptors;
 using IUMS.Infrastructure.Repositories.Academic;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
@@ -22,6 +24,7 @@ namespace IUMS.Infrastructure.Extensions
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
+            services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
         }
 
         public static void AddRepositories(this IServiceCollection services)

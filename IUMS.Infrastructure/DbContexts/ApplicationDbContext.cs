@@ -5,6 +5,7 @@ using AspNetCoreHero.Boilerplate.Domain.Entities.Catalog;
 using AspNetCoreHero.EntityFrameworkCore.AuditTrail;
 using IUMS.Domain.Entities.Academic;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System.Data;
 using System.Linq;
 using System.Threading;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace AspNetCoreHero.Boilerplate.Infrastructure.DbContexts
 {
-    public class ApplicationDbContext : AuditableContext, IApplicationDbContext
+    public class ApplicationDbContext : DbContext, IApplicationDbContext
     {
         private readonly IDateTimeService _dateTime;
         private readonly IAuthenticatedUserService _authenticatedUser;
@@ -34,33 +35,6 @@ namespace AspNetCoreHero.Boilerplate.Infrastructure.DbContexts
         public DbSet<Department> Departments { get; set; }
         public DbSet<Program> Programs { get; set; }
         public DbSet<Batch> Batches { get; set; }
-
-        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
-        {
-            foreach (var entry in ChangeTracker.Entries<AuditableEntity>().ToList())
-            {
-                switch (entry.State)
-                {
-                    case EntityState.Added:
-                        entry.Entity.CreatedOn = _dateTime.NowUtc;
-                        entry.Entity.CreatedBy = _authenticatedUser.UserId;
-                        break;
-
-                    case EntityState.Modified:
-                        entry.Entity.LastModifiedOn = _dateTime.NowUtc;
-                        entry.Entity.LastModifiedBy = _authenticatedUser.UserId;
-                        break;
-                }
-            }
-            if (_authenticatedUser.UserId == null)
-            {
-                return await base.SaveChangesAsync(cancellationToken);
-            }
-            else
-            {
-                return await base.SaveChangesAsync(_authenticatedUser.UserId);
-            }
-        }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
