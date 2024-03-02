@@ -9,26 +9,26 @@ using System.Threading.Tasks;
 
 namespace UEMS.Application.Features.Academic.Department.Queries
 {
-    public record GetDepartmentByIdQuery : IRequest<Result<GetAllDepartmentResponse>>
+    public record GetDepartmentByIdQuery : IRequest<Result<DepartmentResponse>>
     {
         public int Id { get; set; }
 
         public record GetDepartmentByIdQueryHandler(
             IDepartmentRepository Repository, 
             IMapper Mapper) 
-            : IRequestHandler<GetDepartmentByIdQuery, Result<GetAllDepartmentResponse>>
+            : IRequestHandler<GetDepartmentByIdQuery, Result<DepartmentResponse>>
         {
-            public async Task<Result<GetAllDepartmentResponse>> Handle(GetDepartmentByIdQuery query, CancellationToken cancellationToken)
+            public async Task<Result<DepartmentResponse>> Handle(GetDepartmentByIdQuery query, CancellationToken cancellationToken)
             {
                 try
                 {
                     var department = await Repository.GetByIdAsync(query.Id);
-                    var mappedDepartment = Mapper.Map<GetAllDepartmentResponse>(department);
-                    return Result<GetAllDepartmentResponse>.Success(mappedDepartment);
+                    var mappedDepartment = Mapper.Map<DepartmentResponse>(department);
+                    return Result<DepartmentResponse>.Success(mappedDepartment);
                 }
                 catch (Exception ex)
                 {
-                    return Result<GetAllDepartmentResponse>.Fail(ex.Message);
+                    return Result<DepartmentResponse>.Fail(ex.Message);
                 }
             }
         }

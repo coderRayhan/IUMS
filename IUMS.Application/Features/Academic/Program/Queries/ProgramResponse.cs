@@ -1,6 +1,6 @@
 ﻿namespace IUMS.Application.Features.Academic.Program.Queries
 {
-    public class GetAllProgramResponse
+    public class ProgramResponse
     {
         public int Id { get; set; }
         public string Code { get; set; }

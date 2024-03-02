@@ -1,4 +1,5 @@
-﻿@using IUMS.Web
+﻿@using IUMS.Application.Constants
+@using IUMS.Web
 @using Microsoft.AspNetCore.Mvc.Localization
 @inject IHtmlLocalizer<SharedResource> localizer
 <aside id="sideBar" class="main-sidebar sidebar-dark-primary">
@@ -48,12 +49,12 @@
                 }
                 @if (User.IsInRole("SuperAdmin"))
                 {
-                    @* <li class="nav-header">@localizer["Admin"]</li> *@
+                    <li class="nav-header">@localizer["Academic"]</li>
                     <li is-active-route asp-area="Admin" class="nav-item has-treeview">
                         <a is-active-route asp-area="Admin" class="nav-link">
                             <i class="nav-icon fas fa-user"></i>
                             <p>
-                                @localizer["Academic"]
+                                @localizer["Academic Setup"]
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -67,7 +68,25 @@
                             <li class="nav-item">
                                 <a is-active-route asp-area="Academic" asp-controller="Faculty" class="nav-link">
                                     <i class="far fa-user-circle nav-icon"></i>
-                                    <p>@localizer["Faculty"]</p>
+                                    <p>@localizer[LocalizerConstant.FACULTY]</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a is-active-route asp-area="Academic" asp-controller="Department" class="nav-link">
+                                    <i class="far fa-user-circle nav-icon"></i>
+                                    <p>@localizer[LocalizerConstant.DEPARTMENT]</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a is-active-route asp-area="Academic" asp-controller="Program" class="nav-link">
+                                    <i class="far fa-user-circle nav-icon"></i>
+                                    <p>@localizer[LocalizerConstant.PROGRAM]</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a is-active-route asp-area="Academic" asp-controller="Batch" class="nav-link">
+                                    <i class="far fa-user-circle nav-icon"></i>
+                                    <p>@localizer[LocalizerConstant.BATCH]</p>
                                 </a>
                             </li>
                         </ul>

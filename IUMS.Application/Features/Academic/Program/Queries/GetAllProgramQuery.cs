@@ -11,13 +11,13 @@ using System.Threading.Tasks;
 namespace IUMS.Application.Features.Academic.Program.Queries.GetAll
 {
     public sealed record GetAllProgramQuery
-        : IRequest<Result<List<GetAllProgramResponse>>>;
+        : IRequest<Result<List<ProgramResponse>>>;
     internal sealed record GetAllProgramQueryHandler(
         IDapperContext _context,
         IMapper _mapper)
-    : IRequestHandler<GetAllProgramQuery, Result<List<GetAllProgramResponse>>>
+    : IRequestHandler<GetAllProgramQuery, Result<List<ProgramResponse>>>
     {
-        public async Task<Result<List<GetAllProgramResponse>>> Handle(GetAllProgramQuery request, CancellationToken cancellationToken)
+        public async Task<Result<List<ProgramResponse>>> Handle(GetAllProgramQuery request, CancellationToken cancellationToken)
         {
             try
             {
@@ -25,15 +25,15 @@ namespace IUMS.Application.Features.Academic.Program.Queries.GetAll
 
                 using var connection = _context.CreateConnection();
 
-                var data = await connection.QueryAsync<GetAllProgramResponse>(sql);
+                var data = await connection.QueryAsync<ProgramResponse>(sql);
 
-                var mappedList = _mapper.Map<List<GetAllProgramResponse>>(data);
+                var mappedList = _mapper.Map<List<ProgramResponse>>(data);
 
-                return Result<List<GetAllProgramResponse>>.Success(mappedList);
+                return Result<List<ProgramResponse>>.Success(mappedList);
             }
             catch (Exception ex)
             {
-                return Result<List<GetAllProgramResponse>>.Fail(ex.Message);
+                return Result<List<ProgramResponse>>.Fail(ex.Message);
             }
 
         }

@@ -12,9 +12,9 @@ using static IUMS.Application.Constants.DBConstants;
 namespace IUMS.Application.Features.Academic
 {
 	public record GetAllSessionQuery 
-        : IRequest<Result<List<GetAllSessionResponse>>>;
+        : IRequest<Result<List<SessionResponse>>>;
 
-    public class GetAllSessionQueryHandler : IRequestHandler<GetAllSessionQuery, Result<List<GetAllSessionResponse>>>
+    public class GetAllSessionQueryHandler : IRequestHandler<GetAllSessionQuery, Result<List<SessionResponse>>>
     {
         private readonly IMapper _mapper;
         private readonly IDapperContext _context;
@@ -23,27 +23,27 @@ namespace IUMS.Application.Features.Academic
             _mapper = mapper;
             _context = context;
         }
-        public async Task<Result<List<GetAllSessionResponse>>> Handle(GetAllSessionQuery request, CancellationToken cancellationToken)
+        public async Task<Result<List<SessionResponse>>> Handle(GetAllSessionQuery request, CancellationToken cancellationToken)
         {
             try
             {
                 var query = QUERIES.GET_ALL_SESSION;
 
-                IEnumerable<GetAllSessionResponse> sessionList;
+                IEnumerable<SessionResponse> sessionList;
 
                 using (var connection = _context.CreateConnection())
                 {
-                    sessionList = await connection.QueryAsync<GetAllSessionResponse>(query);
+                    sessionList = await connection.QueryAsync<SessionResponse>(query);
                 }
 
-                var mappedSessions = _mapper.Map<List<GetAllSessionResponse>>(sessionList);
+                var mappedSessions = _mapper.Map<List<SessionResponse>>(sessionList);
 
-                return Result<List<GetAllSessionResponse>>.Success(mappedSessions);
+                return Result<List<SessionResponse>>.Success(mappedSessions);
             }
             catch (Exception ex)
             {
 
-                return Result<List<GetAllSessionResponse>>.Fail(ex.Message);
+                return Result<List<SessionResponse>>.Fail(ex.Message);
             }
          
         }

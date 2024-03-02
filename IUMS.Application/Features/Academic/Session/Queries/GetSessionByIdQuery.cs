@@ -10,11 +10,11 @@ using static IUMS.Application.Constants.DBConstants;
 
 namespace IUMS.Application.Features.Academic
 {
-	public class GetSessionByIdQuery : IRequest<Result<GetAllSessionResponse>>
+	public class GetSessionByIdQuery : IRequest<Result<SessionResponse>>
     {
         public int Id { get; set; }
 
-        public class GetSessionByIdQueryHandler : IRequestHandler<GetSessionByIdQuery, Result<GetAllSessionResponse>>
+        public class GetSessionByIdQueryHandler : IRequestHandler<GetSessionByIdQuery, Result<SessionResponse>>
         {
             private readonly IMapper _mapper;
             private readonly IDapperContext _context;
@@ -25,7 +25,7 @@ namespace IUMS.Application.Features.Academic
                 _context = context;
             }
 
-            public async Task<Result<GetAllSessionResponse>> Handle(GetSessionByIdQuery query, CancellationToken cancellationToken)
+            public async Task<Result<SessionResponse>> Handle(GetSessionByIdQuery query, CancellationToken cancellationToken)
             {
                 try
                 {
@@ -33,16 +33,16 @@ namespace IUMS.Application.Features.Academic
 
                     using var connection = _context.CreateConnection();
 
-                    var session = await connection.QueryFirstOrDefaultAsync<GetAllSessionResponse>(sql, new { query.Id });
+                    var session = await connection.QueryFirstOrDefaultAsync<SessionResponse>(sql, new { query.Id });
 
-                    var mappedSession = _mapper.Map<GetAllSessionResponse>(session);
+                    var mappedSession = _mapper.Map<SessionResponse>(session);
 
-                    return Result<GetAllSessionResponse>.Success(mappedSession);
+                    return Result<SessionResponse>.Success(mappedSession);
                 }
                 catch (Exception ex)
                 {
 
-                    return Result<GetAllSessionResponse>.Fail(ex.Message);
+                    return Result<SessionResponse>.Fail(ex.Message);
                 }
             
             }

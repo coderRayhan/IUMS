@@ -15,14 +15,14 @@ namespace IUMS.Application.Features
         int DepartmentId, 
         int ProgramId, 
         int SessionId) 
-        : IRequest<Result<List<GetAllBatchResponse>>>;
+        : IRequest<Result<List<BatchResponse>>>;
 
     internal sealed record GetBatchByFilterQueryHandler(
         IDapperContext _context,
         IMapper _mapper) 
-        : IRequestHandler<GetBatchByFilterQuery, Result<List<GetAllBatchResponse>>>
+        : IRequestHandler<GetBatchByFilterQuery, Result<List<BatchResponse>>>
     {
-        public async Task<Result<List<GetAllBatchResponse>>> Handle(GetBatchByFilterQuery request, CancellationToken cancellationToken)
+        public async Task<Result<List<BatchResponse>>> Handle(GetBatchByFilterQuery request, CancellationToken cancellationToken)
         {
             try
             {
@@ -30,13 +30,13 @@ namespace IUMS.Application.Features
 
                 using var connection = _context.CreateConnection();
 
-                var batchList = await connection.QueryAsync<GetAllBatchResponse>(sql, new { request.FacultyId, request.DepartmentId, request.SessionId, request.ProgramId });
+                var batchList = await connection.QueryAsync<BatchResponse>(sql, new { request.FacultyId, request.DepartmentId, request.SessionId, request.ProgramId });
 
-                return Result<List<GetAllBatchResponse>>.Success(_mapper.Map<List<GetAllBatchResponse>>(batchList));
+                return Result<List<BatchResponse>>.Success(_mapper.Map<List<BatchResponse>>(batchList));
             }
             catch (Exception ex)
             {
-                return Result<List<GetAllBatchResponse>>.Fail(ex.Message);
+                return Result<List<BatchResponse>>.Fail(ex.Message);
             }
 
         }

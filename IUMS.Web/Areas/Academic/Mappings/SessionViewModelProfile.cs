@@ -10,7 +10,7 @@ namespace IUMS.Web.Areas.Academic.Mappings
         {
             CreateMap<SessionViewModel, CreateSessionCommand>().ReverseMap();
             CreateMap<SessionViewModel, UpdateSessionCommand>().ReverseMap();
-            CreateMap<SessionViewModel, GetAllSessionResponse>().ReverseMap();
+            CreateMap<SessionViewModel, SessionResponse>().ReverseMap();
         }
     }
 }

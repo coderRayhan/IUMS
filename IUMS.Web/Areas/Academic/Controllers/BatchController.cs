@@ -26,29 +26,7 @@ namespace IUMS.Web.Areas.Academic.Controllers
             }
             return null;
         }
-        //public async Task<IActionResult> LoadAll(int FacultyId, int DepartmentId, int ProgramId)
-        //{
-        //    var menuId = HttpContext.Session.GetInt32("menuId");
-        //    var response = await _mediator.Send(new GetAllBatchQuery(FacultyId, DepartmentId, ProgramId));
-        //    var user = User.Identity.Name;
-        //    var model = new DepartmentViewModel();
-        //    var res = await _mediator.Send(new GetPageEditTileQuery() { UserId = user, Id = menuId });
-        //    if (res.Succeeded)
-        //    {
-        //        model = _mapper.Map<DepartmentViewModel>(res.Data);
 
-        //    }
-        //    if (response.Succeeded)
-        //    {
-        //        var viewModel = _mapper.Map<List<BatchViewModel>>(response.Data);
-        //        viewModel[0].MenuName = model.MenuName;
-        //        viewModel[0].MenuNameBN = model.MenuNameBN;
-        //        viewModel[0].MenuId = model.MenuId;
-        //        return PartialView("_ViewAll", viewModel);
-        //    }
-        //    return null;
-        //}
-        
         public async Task<JsonResult> OnGetCreateOrEdit(int id = 0)
         {
 

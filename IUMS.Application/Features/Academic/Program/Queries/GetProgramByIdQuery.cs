@@ -12,13 +12,13 @@ namespace IUMS.Application.Features.Academic.Program.Queries
 {
     public sealed record GetProgramByIdQuery(
         int Id)
-        : IRequest<Result<GetAllProgramResponse>>;
+        : IRequest<Result<ProgramResponse>>;
     internal sealed record GetProgramByIdQueryHandler(
         IDapperContext _context,
         IMapper _mapper) 
-        : IRequestHandler<GetProgramByIdQuery, Result<GetAllProgramResponse>>
+        : IRequestHandler<GetProgramByIdQuery, Result<ProgramResponse>>
     {
-        public async Task<Result<GetAllProgramResponse>> Handle(
+        public async Task<Result<ProgramResponse>> Handle(
             GetProgramByIdQuery query, 
             CancellationToken cancellationToken)
         {
@@ -28,16 +28,16 @@ namespace IUMS.Application.Features.Academic.Program.Queries
 
                 using var connection = _context.CreateConnection();
 
-                var program = await connection.QueryFirstOrDefaultAsync<GetAllProgramResponse>(sql, new { query.Id });
+                var program = await connection.QueryFirstOrDefaultAsync<ProgramResponse>(sql, new { query.Id });
 
-                var mappedProgram = _mapper.Map<GetAllProgramResponse>(program);
+                var mappedProgram = _mapper.Map<ProgramResponse>(program);
 
-                return Result<GetAllProgramResponse>.Success(mappedProgram);
+                return Result<ProgramResponse>.Success(mappedProgram);
             }
             catch (Exception ex)
             {
 
-                return Result<GetAllProgramResponse>.Fail(ex.Message);
+                return Result<ProgramResponse>.Fail(ex.Message);
             }
 
         }

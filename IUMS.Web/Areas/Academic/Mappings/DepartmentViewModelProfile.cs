@@ -12,7 +12,8 @@ namespace IUMS.Web.Areas.Academic.Mappings
         {
             CreateMap<DepartmentViewModel, CreateDepartmentCommand>().ReverseMap();
             CreateMap<DepartmentViewModel, UpdateDepartmentCommand>().ReverseMap();
-            CreateMap<DepartmentViewModel, GetAllDepartmentResponse>().ReverseMap();
+            CreateMap<DepartmentViewModel, DepartmentResponse>().ReverseMap();
+            CreateMap<DepartmentViewModel, GetDeptByFacultyResponse>().ReverseMap();
         }
     }
 }

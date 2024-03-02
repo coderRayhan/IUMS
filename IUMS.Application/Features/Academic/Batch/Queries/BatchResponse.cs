@@ -1,6 +1,6 @@
 ﻿namespace IUMS.Application.Features
 {
-    public class GetAllBatchResponse
+    public class BatchResponse
     {
         public int Id { get; set; }
         public int SessionId { get; set; }

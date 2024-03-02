@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 namespace IUMS.Application.Features
 {
     public sealed record GetBatchByIdQuery(int Id) 
-        : IRequest<Result<GetAllBatchResponse>>;
+        : IRequest<Result<BatchResponse>>;
     internal sealed record GetBatchByIdQueryHandler(
         IDapperContext _context) 
-        : IRequestHandler<GetBatchByIdQuery, Result<GetAllBatchResponse>>
+        : IRequestHandler<GetBatchByIdQuery, Result<BatchResponse>>
     {
-        public async Task<Result<GetAllBatchResponse>> Handle(GetBatchByIdQuery query, CancellationToken cancellationToken)
+        public async Task<Result<BatchResponse>> Handle(GetBatchByIdQuery query, CancellationToken cancellationToken)
         {
             try
             {
@@ -22,13 +22,13 @@ namespace IUMS.Application.Features
 
                 using var connection = _context.CreateConnection();
 
-                var res = await connection.QueryFirstOrDefaultAsync<GetAllBatchResponse>(sql, new { query.Id });
+                var res = await connection.QueryFirstOrDefaultAsync<BatchResponse>(sql, new { query.Id });
 
-                return Result<GetAllBatchResponse>.Success(res);
+                return Result<BatchResponse>.Success(res);
             }
             catch (Exception ex)
             {
-                return Result<GetAllBatchResponse>.Fail(ex.Message);
+                return Result<BatchResponse>.Fail(ex.Message);
             }
         }
     }

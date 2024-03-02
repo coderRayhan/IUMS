@@ -10,7 +10,7 @@ namespace IUMS.Application.Mappings
         {
             CreateMap<Session, CreateSessionCommand>().ReverseMap();
             CreateMap<Session, UpdateSessionCommand>().ReverseMap();
-            CreateMap<Session, GetAllSessionResponse>().ReverseMap();
+            CreateMap<Session, SessionResponse>().ReverseMap();
         }
     }
 }

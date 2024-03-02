@@ -1,6 +1,6 @@
 ﻿namespace IUMS.Application.Features.Academic.Department.Queries
 {
-    public class GetAllDepartmentResponse
+    public class DepartmentResponse
     {
         public int Id { get; set; }
         public string DepartmentName { get; set; }

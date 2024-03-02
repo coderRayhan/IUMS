@@ -141,8 +141,12 @@
             "AND C.FacultyId = {1}\r\n" +
             "AND C.DepartmentId = {2}\r\n" +
             "AND C.ProgramId = {3}";
+        public const string GET_ALL_ACTIVE_SESSIONS = "SELECT Id, SessionName Name FROM Aca_Sessions WHERE EndDate > GETDATE()";
+
         public const string GET_ALL_FACULTIES = "SELECT Fac.Id Id, Fac.FacultyName Name, Fac.FacultyNameBN NameBN FROM dbo.Aca_Faculties Fac";
+
         public const string GET_ALL_DEPARTMENTS = "SELECT Id, DepartmentName Name, DepartmentNameBN NameBN FROM dbo.Aca_Departments WHERE FacultyId = {0}";
+
         public const string GET_ALL_PROGRAMS = "SELECT Id, ProgramName Name, ProgramNameBN NameBN FROM dbo.Aca_Programs WHERE DepartmentId = {0}";
         #endregion
     }

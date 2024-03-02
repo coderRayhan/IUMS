@@ -11,7 +11,7 @@ namespace IUMS.Web.Areas.Academic.Mappings
         {
             CreateMap<ProgramViewModel, CreateProgramCommand>().ReverseMap();
             CreateMap<ProgramViewModel, UpdateProgramCommand>().ReverseMap();
-            CreateMap<ProgramViewModel, GetAllProgramResponse>().ReverseMap();
+            CreateMap<ProgramViewModel, ProgramResponse>().ReverseMap();
         }
     }
 }

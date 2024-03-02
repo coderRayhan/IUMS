@@ -11,7 +11,7 @@ namespace IUMS.Application.Mappings
         {
             CreateMap<Program, CreateProgramCommand>().ReverseMap();
             CreateMap<Program, UpdateProgramCommand>().ReverseMap();
-            CreateMap<Program, GetAllProgramResponse>().ReverseMap();
+            CreateMap<Program, ProgramResponse>().ReverseMap();
         }
     }
 }

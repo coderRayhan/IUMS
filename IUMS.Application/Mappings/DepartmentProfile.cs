@@ -11,7 +11,7 @@ namespace IUMS.Application.Mappings
         {
             CreateMap<Department, CreateDepartmentCommand>().ReverseMap();
             CreateMap<Department, UpdateDepartmentCommand>().ReverseMap();
-            CreateMap<Department, GetAllDepartmentResponse>().ReverseMap();
+            CreateMap<Department, DepartmentResponse>().ReverseMap();
         }
     }
 }

@@ -171,11 +171,6 @@ namespace IUMS.Web.Areas.Academic.Controllers
         //    return null;
         //}
 
-        public async Task<IEnumerable<CommonDropdownResponse>> GetDepartmentsByFaculty(int facultyId)
-        {
-            object[] parameterList = new object[] { facultyId };
-            var list = await _mediator.Send(new CommonDropdownQuery(CommonDropdownConstants.GET_ALL_DEPARTMENTS, parameterList));
-            return list.Data;
-        }
+        
     }
 }

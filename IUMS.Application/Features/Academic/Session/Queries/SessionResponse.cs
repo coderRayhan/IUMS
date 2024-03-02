@@ -2,7 +2,7 @@
 
 namespace IUMS.Application.Features.Academic
 {
-    public class GetAllSessionResponse
+    public class SessionResponse
     {
         public int Id { get; set; }
         public string SessionName { get; set; }

@@ -12,7 +12,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>AspNetCoreHero.Boilerplate</title>
+    <title>JU IUMS</title>
     <partial name="_Styles" />
 </head>
 <body class="hold-transition sidebar-mini">
@@ -35,9 +35,6 @@
         @(await Component.InvokeAsync<LogoutViewComponent>())
         @(await Component.InvokeAsync<FormModalViewComponent>())
         @(await Component.InvokeAsync<ImageModalViewComponent>())
-        @*<partial name="AdminLTE/_LogoutModal" />
-            <partial name="AdminLTE/Modals/_FormModal" />
-            <partial name="AdminLTE/_ImageModal" />*@
     </div>
     <partial name="_Scripts" />
     @await Component.InvokeAsync("Notyf")
