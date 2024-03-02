@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
@@ -79,8 +80,16 @@ namespace AspNetCoreHero.Boilerplate.Web.Extensions
             }
             else
             {
-                services.AddDbContext<IdentityContext>(options => options.UseSqlServer(configuration.GetConnectionString("IdentityConnection")));
-                services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("ApplicationConnection")));
+                services.AddDbContext<IdentityContext>((sp, options) =>
+                {
+                    //options.AddInterceptors(sp.GetServices<ISaveChangesInterceptor>());
+                    options.UseSqlServer(configuration.GetConnectionString("IdentityConnection"));
+                });
+                services.AddDbContext<ApplicationDbContext>((sp, options) =>
+                {
+                    options.AddInterceptors(sp.GetServices<ISaveChangesInterceptor>());
+                    options.UseSqlServer(configuration.GetConnectionString("ApplicationConnection"));
+                });
             }
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {

@@ -31,7 +31,7 @@ namespace AspNetCoreHero.Boilerplate.Infrastructure.Repositories
                 UserId = userId,
                 DateTime = _dateTimeService.NowUtc
             };
-            await _repository.AddAsync(audit);
+            //await _repository.AddAsync(audit);
         }
 
         public async Task<List<AuditLogResponse>> GetAuditLogsAsync(string userId)
