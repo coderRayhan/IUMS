@@ -1,0 +1,130 @@
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+@inject IHtmlLocalizer<SharedResource> localizer
+@using IUMS.Application.Constants
+@using IUMS.Web
+@using IUMS.Web.Areas.Academic.Models
+@using IUMS.Web.Views.Shared.Components.Common
+@using Microsoft.AspNetCore.Localization
+@model LookupDetailViewModel
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cName = requestCulture.RequestCulture.Culture.Name;
+}
+<form id="create-form" method="post" asp-area="Common" asp-controller="LookupDetail" asp-action="OnPostCreateOrEdit" asp-route-id="@Model.Id" onsubmit="return jQueryModalPost(this);" enctype="multipart/form-data">
+    <div class="row px-2">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="form-label required"> @localizer[LocalizerConstant.CODE] </label>
+                <input type="text" asp-for="Code" name="Code" class="form-control">
+                <span asp-validation-for="Code" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @(
+                    await Component.InvokeAsync<CommonViewComponent>(new
+                    {
+                        name = "LookupId",
+                        id = "LookupId",
+                        entityId = Model.ParentId,
+                        query = CommonDropdownConstants.GET_ALL_ACTIVE_LOOKUPS,
+                        labelText = "Lookup",
+                        isRequired = true,
+                        isLabelRequired = true
+                    })
+                    )
+            </div>
+        </div>
+    </div>
+    <div class="row px-2">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="form-label required"> @localizer[LocalizerConstant.NAME] </label>
+                <input type="text" asp-for="Name" name="Name" class="form-control">
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @(
+                    await Component.InvokeAsync<CommonViewComponent>(new
+                    {
+                        name = "ParentId",
+                        id = "ParentId",
+                        entityId = Model.ParentId,
+                        query = CommonDropdownConstants.GET_DETAIL_PARENT_BY_LOOKUP_ID,
+                        parameters = new object[] {Model.ParentId},
+                        labelText = "Parent",
+                        isRequired = true,
+                        isLabelRequired = true
+                    })
+                    )
+            </div>
+        </div>
+    </div>
+    <div class="row px-2">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="form-label required">@localizer[LocalizerConstant.NAMEBN]</label>
+                <input type="text" asp-for="NameBN" name="NameBN" class="form-control">
+                <span asp-validation-for="NameBN" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="form-label">  @localizer[LocalizerConstant.DESCRIPTION]</label>
+                <input type="text" asp-for="Description" name="Description" class="form-control">
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    @if (Model.Id == 0)
+    {
+        <div class="row px-2">
+            <div class="col-md-6 form-group ">
+                @if (Model.Status == "true")
+                {
+                    <input type="checkbox" checked asp-for="Status" name="Status" class="form-check-input" style="margin-left: auto">
+                }
+                else
+                {
+                    <input type="checkbox" asp-for="Status" name="Status" class="form-check-input" style="margin-left: auto">
+                }
+                <label class="form-label" style="margin-left: 25px;">  @localizer[LocalizerConstant.ACTIVE]: </label>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+        </div>
+    }
+    else
+    {
+        <input type="hidden" asp-for="Status" value="@Model.Status" name="Status" class="form-check-input" style="margin-left: auto">
+    }
+
+    <div class="row px-2">
+        <button type="submit" class="btn" style="background-color: #012766 ; color: white; width:100%; margin-top:10px; margin-left: 7px; margin-right: 7px ">Save</button>
+    </div>
+</form>
+<script type="text/javascript" language=javascript>
+    $.validator.unobtrusive.parse(document);
+</script>
+
+<script>
+    $("#LookupId").change(function () {
+        var cName = '@cName';
+        var lookupId = $('#LookupId').val();
+        $("#ParentId").html('').append("<option Value=''>Choose Option</option>");
+
+        $.get("/academic/LookupDetail/GetParentByCommonLookup", { LookupId: lookupId }, function (data) {
+            $.each(data, function (index, row) {
+                console.log(row);
+                if (cName == 'en') {
+                    $("#ParentId").append("<option value='" + row.id + "'>" + row.name + "</option>")
+
+                } else {
+                    $("#ParentId").append("<option value='" + row.id + "'>" + row.nameBN + "</option>")
+
+                }
+            })
+        })
+    });
+</script>

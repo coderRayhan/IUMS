@@ -1,0 +1,94 @@
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+@inject IHtmlLocalizer<SharedResource> localizer
+
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cName = requestCulture.RequestCulture.Culture.Name;
+    var title = "Lookup";
+}
+
+@using IUMS.Application.Constants
+@using IUMS.Web
+@using IUMS.Web.Areas.Academic.Models
+@using Microsoft.AspNetCore.Localization
+
+@model IEnumerable<LookupViewModel>
+<div class="card">
+    <div class="card-body table-responsive">
+        <table id="lookupTable" class="table table-striped table-bordered table-hover text-center" width="100%" cellspacing="0">
+            <thead class="thead-primary">
+                <tr>
+
+                    <th>@localizer[LocalizerConstant.CODE]</th>
+                    <th>@localizer[LocalizerConstant.NAME]</th>
+                    <th>@localizer[LocalizerConstant.NAMEBN]</th>
+                    <th>@localizer[LocalizerConstant.PARENTS_NAME]</th>
+                    <th>@localizer[LocalizerConstant.STATUS]</th>
+                    <th>@localizer[LocalizerConstant.ACTIONS]</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+
+                    <tr>
+                        <td>
+                            @item.Code
+                        </td>
+                        <td>
+
+                            @item.Name
+                        </td>
+                        <td>
+
+                            @item.NameBN
+                        </td>
+                        <td>
+                            @item.ParentsName
+                        </td>
+                        <td>
+                            @if (item.Status == "A")
+                            {
+                                <button class="customActiveBtn">Active</button>
+                            }
+                            else
+                            {
+                                <button class="customInactiveBtn">Inactive</button>
+                            }
+                        </td>
+
+                        <td text-right>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Action
+                                </button>
+                                <div class="dropdown-menu shadow animated--grow-in">
+
+                                    @{
+                                        <a onclick="jQueryModalGet('/common/Lookup/OnGetCreateOrEdit?id=@item.Id','@title')" class="dropdown-item"><i class="fas fa-pencil-alt"></i>  Edit</a>
+                                    }
+
+                                    <form id="form_status_@item.Id" asp-area="common" asp-controller="Lookup" method="post" asp-action="OnPostCommonLookupStatus" asp-route-id="@item.Id" onsubmit="return jQueryModalStatus(this)">
+                                        <a href="javascript:$('#form_status_@item.Id').submit();" class="dropdown-item"><i class="fas fa-pencil-alt"></i>Change Status</a>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        if ('@cName' == 'en') {
+            var res = true;
+        } else {
+            var res = false;
+        }
+        $("#lookupTable").DataTable({ "ordering": false });
+    });
+</script>

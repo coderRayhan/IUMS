@@ -31,8 +31,6 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Catalog\Data\" />
     <Folder Include="Areas\Common\Data\" />
-    <Folder Include="Areas\Common\Models\" />
-    <Folder Include="Areas\Common\Views\" />
     <Folder Include="Areas\Dashboard\Data\" />
     <Folder Include="Areas\Dashboard\Models\" />
     <Folder Include="Areas\Settings\Data\" />

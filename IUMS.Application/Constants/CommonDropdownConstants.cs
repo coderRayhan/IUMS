@@ -149,5 +149,10 @@
 
         public const string GET_ALL_PROGRAMS = "SELECT Id, ProgramName Name, ProgramNameBN NameBN FROM dbo.Aca_Programs WHERE DepartmentId = {0}";
         #endregion
+
+        #region Common
+        public const string GET_ALL_ACTIVE_LOOKUPS = "SELECT Id, Name, NameBN FROM Com_Lookups WHERE Status = 'A'";
+        public const string GET_DETAIL_PARENT_BY_LOOKUP_ID = "SELECT cld.Id, cld.Name, cld.NameBN FROM   dbo.Com_Lookups AS cl INNER JOIN dbo.Com_LookupDetails AS cld  ON cl.ParentId = cld.LookupId WHERE (0= @Id or cl.Id = @Id) AND cld.Status = 'A' ORDER BY cld.Name";
+        #endregion
     }
 }

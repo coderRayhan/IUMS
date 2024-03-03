@@ -1,0 +1,58 @@
+﻿@using IUMS.Web
+@using IUMS.Web.Areas.Academic.Models
+@using Microsoft.AspNetCore.Localization
+@inject IHtmlLocalizer<SharedResource> localizer
+@model LookupDetailViewModel
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cName = requestCulture.RequestCulture.Culture.Name;
+    var title = "Lookup Detail";
+    var menuUrl = "Common > Lookup Detail";
+}
+<div class="row ">
+    <div class="col-md-6">
+        <h3>@title </h3>
+        <small>@menuUrl</small>
+    </div>
+    <div class="col-md-6 text-right">
+        <div>
+            @{
+                <a onclick="jQueryModalGet('/common/LookupDetail/OnGetCreateOrEdit', '@title')" class="btn customBtn">
+                    <i class="fa fa-plus-square-o" aria-hidden="true"></i> &nbsp;&nbsp; Add New
+                </a>
+            }
+            @* @if ((AuthorizationService.AuthorizeAsync(User, Permissions.Sessions.Create)).Result.Succeeded)
+            {*@
+            @* <a onclick="jQueryModalGet('/academic/LookupDetail/OnGetCreateOrEdit', '@localizer[LocalizerConstant.ADD_NEW_LOOKUP_DETAIL]')" class="btn customBtn">
+            <i class="fa fa-plus-square-o" aria-hidden="true"></i> &nbsp;&nbsp; Add New
+            </a>*@
+            @*  }*@
+        </div>
+
+    </div>
+
+</div>
+<div class="card">
+    <div id="viewAll" class="card-body table-responsive">
+    </div>
+</div>
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            loadData();
+            $('#reload').on('click', function () {
+                loadData();
+            });
+        });
+        function loadData() {
+            $('#viewAll').load('/common/LookupDetail/LoadAll');
+        }
+        $('#printReport').on('click', function () {
+            printReport();
+        });
+        function printReport() {
+            window.open('/reports/rpt/PrintSessionReport', '_blank');
+        }
+    </script>
+}
