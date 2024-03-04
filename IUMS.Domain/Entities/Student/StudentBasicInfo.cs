@@ -35,7 +35,6 @@ public class StudentBasicInfo : AuditableEntity
     public DateTime DateOfBirth { get; set; }
     public int GenderId { get; set; }
     public int ReligionId { get; set; }
-    public int MaritalStatusId { get; set; }
     public int BloodGroupId { get; set; }
     [StringLength(200)]
     public string VillageName { get; set; }
