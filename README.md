@@ -14,17 +14,14 @@
     <img src="images/boilerplate-logo.png" alt="Logo">
   </a>
 
-  <h3 align="center">Clean Architecture Boilerplate</h3>
+  <h3 align="center">Integrated University management system for Jahangirnagar University</h3>
 
   <p align="center">
-    For ASP.NET Core 5.0 (WebApi & MVC)
+    For ASP.NET Core 7.0 (WebApi & MVC)
     <br />
-    <a href="https://codewithmukesh.com/blog/aspnet-core-hero-boilerplate-quick-start/"><strong>Explore the docs »</strong></a>
+    <a href=""><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/aspnetcorehero/Boilerplate/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/aspnetcorehero/Boilerplate/issues">Request Feature</a>
   </p>
 </p>
 
@@ -44,8 +41,8 @@
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#features-included">Features Included</a></li>
         <ul>
-            <li><a href="#aspnet-core-50-mvc-project">ASP.NET Core 5.0 MVC Project</a></li>
-            <li><a href="#aspnet-core-50-webapi">ASP.NET Core 5.0 WebAPI</a></li>
+            <li><a href="#aspnet-core-50-mvc-project">ASP.NET 7.0 MVC Project</a></li>
+            <li><a href="#aspnet-core-50-webapi">ASP.NET 7.0 WebAPI</a></li>
         </ul>
       </ul>
     </li>
@@ -64,22 +61,22 @@
 
 ## About The Project
 
-Clean Architecture Solution Template for ASP.NET Core 5.0. Built with Onion/Hexagonal Architecture and incorporates the most essential Packages your projects will ever need. Includes both WebApi and Web(MVC) Projects.
+This is Integrated Univesity management system designed and developing of JU. Our main focus is the LMS module. But it is extendable and have plan to extend it to other module. This project is developed with ASP.NET 7.0. Built with Onion/Hexagonal Architecture and incorporates the most essential Packages your projects will ever need. Includes both WebApi and Web(MVC) Projects.
 
 ### Built with
 
--   [ASP.NET Core 5.0 MVC](https://dotnet.microsoft.com/learn/aspnet/what-is-aspnet-core)
--   ASP.NET Core 5.0 WebAPI
--   [Entity Framework Core 5.0](https://docs.microsoft.com/en-us/ef/core/)
+-   [ASP.NET 7.0 MVC](https://dotnet.microsoft.com/learn/aspnet/what-is-aspnet-core)
+-   ASP.NET 7.0 WebAPI
+-   [Entity Framework Core 7.0](https://docs.microsoft.com/en-us/ef/core/)
 
 ## Getting Started
 
-An idea to bring together the best and essential practices / packages of ASP.NET Core 5.0 along with Clean Hexagonal Architecture that can be a right fit for small/mid and enterprise level solutions.
+An idea to bring together the best and essential practices / packages of ASP.NET 7.0 along with Clean Hexagonal Architecture that can be a right fit for small/mid and enterprise level solutions.
 How easy would it be if you are able to run a single line of CLI command on your Console and you get a complete implementation in no time? That's the exact vision I have while building this full-fledged Boilerplate template.
 
 ### Prerequisites
 
--   Make sure you are running on the latest .NET 5 SDK (SDK 5.0 and above only). [Get the latest one here.](https://dotnet.microsoft.com/download/dotnet/5.0)
+-   Make sure you are running on the latest .NET 7 SDK (SDK 7.0 and above only). [Get the latest one here.](https://dotnet.microsoft.com/download/dotnet/7.0)
 
 -   Visual Studio 2019 (v16.8+) (You can check out my Installation Guide of [Visual Studio 2019 Community](https://codewithmukesh.com/blog/install-visual-studio-2019-community/) which is completely Free to use.) Make sure that ASP.NET and web development workload is installed.
 
@@ -95,7 +92,7 @@ How easy would it be if you are able to run a single line of CLI command on your
 
 ### Features Included
 
-#### ASP.NET Core 5.0 MVC Project
+#### ASP.NET Core 7.0 MVC Project
 
 -   Slim Controllers using MediatR Library
 -   Permissions Management based on Role Claims
@@ -117,7 +114,7 @@ How easy would it be if you are able to run a single line of CLI command on your
 -   Supports Audit Logging / Activity Logging for Entity Framework Core
 -   Automapper
 
-#### ASP.NET Core 5.0 WebAPI
+#### ASP.NET Core 7.0 WebAPI
 
 -   JWT & Refresh Tokens
 -   Swagger
@@ -141,7 +138,6 @@ See the [open issues](issues-url) for a list of proposed features (and known iss
 -   Add Arabic Translations throughout the MVC Project. You can find the Dictionary under the Resources Folder in the Web Project.
 -   Ensure the code quality.
 
-Let's make this the best .NET 5 Clean Architecture Template.
 
 ## Contributing
 
@@ -158,14 +154,6 @@ Contributions are what make the open-source community such an amazing place to b
 Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
-
-### Mukesh Murugan
-
--   Blogs at [codewithmukesh.com](https://www.codewithmukesh.com)
--   Facebook - [codewithmukesh](https://www.facebook.com/codewithmukesh)
--   Twitter - [Mukesh Murugan](https://www.twitter.com/iammukeshm)
--   Twitter - [codewithmukesh](https://www.twitter.com/codewithmukesh)
--   Linkedin - [Mukesh Murugan](https://www.linkedin.com/in/iammukeshm/)
 
 ## Support
 
