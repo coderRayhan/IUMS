@@ -36,6 +36,7 @@
     <Folder Include="Areas\Settings\Data\" />
     <Folder Include="Areas\Settings\Models\" />
     <Folder Include="Areas\Settings\Views\" />
+    <Folder Include="Areas\Student\Data\" />
     <Folder Include="Log\" />
     <Folder Include="Views\Shared\Components\Menu\" />
   </ItemGroup>

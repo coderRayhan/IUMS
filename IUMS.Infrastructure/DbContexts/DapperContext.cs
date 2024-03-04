@@ -32,7 +32,7 @@ namespace IUMS.Infrastructure.DbContexts
 
             foreach ( var filter in filters )
             {
-                sql.Append($"AND {filter} = @{filter}");
+                sql.Append($" AND {filter} = @{filter}");
             }
 
             sql.Append(") THEN 1 ELSE 0 END AS BIT )");

@@ -5,6 +5,7 @@ using AspNetCoreHero.Boilerplate.Domain.Entities.Catalog;
 using AspNetCoreHero.EntityFrameworkCore.AuditTrail;
 using IUMS.Domain.Entities.Academic;
 using IUMS.Domain.Entities.Common;
+using IUMS.Domain.Entities.Student;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System.Data;
@@ -38,6 +39,8 @@ namespace AspNetCoreHero.Boilerplate.Infrastructure.DbContexts
         public DbSet<Batch> Batches { get; set; }
         public DbSet<Lookup> Lookups { get; set; }
         public DbSet<LookupDetail> LookupDetails { get; set; }
+        public DbSet<StudentBasicInfo> StudentBasicInfos { get; set; }
+        public DbSet<StudentEducationalInfo> StudentEducationalInfos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

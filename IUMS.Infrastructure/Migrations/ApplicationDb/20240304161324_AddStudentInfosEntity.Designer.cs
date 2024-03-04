@@ -4,6 +4,7 @@ using AspNetCoreHero.Boilerplate.Infrastructure.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AspNetCoreHero.Boilerplate.Infrastructure.Migrations.ApplicationDb
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240304161324_AddStudentInfosEntity")]
+    partial class AddStudentInfosEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,7 +56,7 @@ namespace AspNetCoreHero.Boilerplate.Infrastructure.Migrations.ApplicationDb
 
                     b.HasKey("Id");
 
-                    b.ToTable("Brand", (string)null);
+                    b.ToTable("Brand");
                 });
 
             modelBuilder.Entity("AspNetCoreHero.Boilerplate.Domain.Entities.Catalog.Product", b =>
@@ -98,7 +101,7 @@ namespace AspNetCoreHero.Boilerplate.Infrastructure.Migrations.ApplicationDb
 
                     b.HasIndex("BrandId");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("IUMS.Domain.Entities.Academic.Batch", b =>
@@ -156,7 +159,7 @@ namespace AspNetCoreHero.Boilerplate.Infrastructure.Migrations.ApplicationDb
 
                     b.HasIndex("ProgramId");
 
-                    b.ToTable("Aca_Batches", (string)null);
+                    b.ToTable("Aca_Batches");
                 });
 
             modelBuilder.Entity("IUMS.Domain.Entities.Academic.Department", b =>
@@ -202,7 +205,7 @@ namespace AspNetCoreHero.Boilerplate.Infrastructure.Migrations.ApplicationDb
 
                     b.HasIndex("FacultyId");
 
-                    b.ToTable("Aca_Departments", (string)null);
+                    b.ToTable("Aca_Departments");
                 });
 
             modelBuilder.Entity("IUMS.Domain.Entities.Academic.Faculty", b =>
@@ -252,7 +255,7 @@ namespace AspNetCoreHero.Boilerplate.Infrastructure.Migrations.ApplicationDb
 
                     b.HasKey("Id");
 
-                    b.ToTable("Aca_Faculties", (string)null);
+                    b.ToTable("Aca_Faculties");
                 });
 
             modelBuilder.Entity("IUMS.Domain.Entities.Academic.Program", b =>
@@ -299,7 +302,7 @@ namespace AspNetCoreHero.Boilerplate.Infrastructure.Migrations.ApplicationDb
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("Aca_Programs", (string)null);
+                    b.ToTable("Aca_Programs");
                 });
 
             modelBuilder.Entity("IUMS.Domain.Entities.Academic.Session", b =>
@@ -346,7 +349,7 @@ namespace AspNetCoreHero.Boilerplate.Infrastructure.Migrations.ApplicationDb
 
                     b.HasKey("Id");
 
-                    b.ToTable("Aca_Sessions", (string)null);
+                    b.ToTable("Aca_Sessions");
                 });
 
             modelBuilder.Entity("IUMS.Domain.Entities.Common.Lookup", b =>
@@ -393,7 +396,7 @@ namespace AspNetCoreHero.Boilerplate.Infrastructure.Migrations.ApplicationDb
 
                     b.HasKey("Id");
 
-                    b.ToTable("Com_Lookups", (string)null);
+                    b.ToTable("Com_Lookups");
                 });
 
             modelBuilder.Entity("IUMS.Domain.Entities.Common.LookupDetail", b =>
@@ -444,7 +447,7 @@ namespace AspNetCoreHero.Boilerplate.Infrastructure.Migrations.ApplicationDb
 
                     b.HasKey("Id");
 
-                    b.ToTable("Com_LookupDetails", (string)null);
+                    b.ToTable("Com_LookupDetails");
                 });
 
             modelBuilder.Entity("IUMS.Domain.Entities.Student.StudentBasicInfo", b =>
@@ -578,7 +581,7 @@ namespace AspNetCoreHero.Boilerplate.Infrastructure.Migrations.ApplicationDb
 
                     b.HasKey("Id");
 
-                    b.ToTable("Std_StudentBasicInfos", (string)null);
+                    b.ToTable("Std_StudentBasicInfos");
                 });
 
             modelBuilder.Entity("IUMS.Domain.Entities.Student.StudentEducationalInfo", b =>
@@ -626,7 +629,7 @@ namespace AspNetCoreHero.Boilerplate.Infrastructure.Migrations.ApplicationDb
 
                     b.HasIndex("StudentBasicInfoId");
 
-                    b.ToTable("Std_StudentEducationalInfos", (string)null);
+                    b.ToTable("Std_StudentEducationalInfos");
                 });
 
             modelBuilder.Entity("AspNetCoreHero.Boilerplate.Domain.Entities.Catalog.Product", b =>

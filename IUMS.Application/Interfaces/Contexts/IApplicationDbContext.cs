@@ -1,6 +1,7 @@
 ﻿using AspNetCoreHero.Boilerplate.Domain.Entities.Catalog;
 using IUMS.Domain.Entities.Academic;
 using IUMS.Domain.Entities.Common;
+using IUMS.Domain.Entities.Student;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System.Data;
@@ -26,5 +27,7 @@ namespace AspNetCoreHero.Boilerplate.Application.Interfaces.Contexts
         DbSet<Batch> Batches { get; set; }
         DbSet<Lookup> Lookups { get; set; }
         DbSet<LookupDetail> LookupDetails { get; set; }
+        DbSet<StudentBasicInfo> StudentBasicInfos { get; set; }
+        DbSet<StudentEducationalInfo> StudentEducationalInfos { get; set; }
     }
 }

@@ -1,0 +1,838 @@
+﻿@using IUMS.Application.Constants
+@using IUMS.Web
+@using IUMS.Web.Areas.Student.Models
+@using IUMS.Web.Views.Shared.Components.Common
+@using Microsoft.AspNetCore.Localization
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+@inject IHtmlLocalizer<SharedResource> localizer
+@model StudentBasicInfoViewModel
+<style>
+    .card {
+        background-color: #FAFAFA !important;
+        border-radius: 0px !important;
+        border: 1px solid #D7E1F4 !important;
+        margin-bottom: 20px;
+    }
+
+    .card-header {
+        background-color: #D7E1F4 !important;
+        border-radius: 0px !important;
+        border: none;
+        padding: 10px;
+    }
+
+    .card-header-title {
+        color: #112140 !important;
+        font-family: 'Inter', sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        text-align: left !important;
+    }
+
+    .card-body {
+        padding-left: 35px !important;
+        padding-right: 35px !important;
+        padding-top: 20px;
+    }
+
+    .disableInput {
+        background: #F2F2F2;
+        border-radius: 5px;
+        border: none;
+        background: #B3B3B3;
+        font-family: 'Inter', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+    }
+
+    label {
+        font-family: 'Inter', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        color: #666666;
+    }
+
+    .pageTitle {
+        border-bottom: 2px solid #D7E1F4;
+        margin: 20px 0px;
+    }
+
+    select.form-control:first-child {
+        font-family: 'Inter',sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        color: #E6E6E6;
+    }
+
+    .inputMsg {
+        margin-top: 10px;
+        background-color: #FCF5CF !important;
+        border-radius: 10px;
+        border: none;
+        font-family: 'Inter', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        color: #112140;
+    }
+
+    .bodyTitle {
+        font-family: 'Inter', sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        color: #3160B9;
+    }
+
+    ::placeholder {
+        opacity: .3;
+    }
+
+    td {
+        border-bottom: 1px solid #B3B3B3;
+    }
+
+    .form-container {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    .btnFile {
+        width: 283px;
+        height: 40px;
+        font-size: 18px;
+        background-color: #3160B9;
+        color: white;
+        border-radius: 5px;
+        align-items: center;
+        margin-top: 10px;
+        display: block;
+        margin: auto;
+    }
+
+    .card-body img {
+        height: 280px;
+        width: 280px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+
+    .statement {
+        background: #F2F7FF;
+        border-radius: 10px;
+        font-weight: 500;
+        font-size: 16px !important;
+        color: #112140;
+        padding: 20px;
+        margin-left: 1px;
+        margin-right: 1px;
+        margin-right: 0px !important;
+    }
+
+    .statementCheck {
+        height: 30px !important;
+        width: 30px !important;
+        border-radius: 30px !important;
+        background: #333333;
+    }
+
+    .btnSubmit {
+        background: linear-gradient(12.31deg, #0157AE -71.06%, #000C3C 101.44%);
+        box-shadow: 0px 20px 25px -10px rgba(1, 49, 117, 0.3);
+        border-radius: 10px;
+        width: 100%;
+        height: 54px;
+        color: white;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 20px;
+        line-height: 19px;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .warning {
+        height: 48px;
+        background: #FCF5CF;
+        border-radius: 10px;
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+
+    .warning-text {
+        position: relative;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 600;
+        font-size: clamp(.5rem, 1.3vw, 1rem);
+        line-height: 16px;
+        color: #112140;
+        display: flex;
+        align-items: center;
+        margin-left: 15px;
+        padding-top: 8px;
+    }
+
+    .custom-file-label::after {
+        background-color: #3160B9;
+        color: white;
+    }
+
+    .select2Disable {
+        pointer-events: none;
+    }
+
+</style>
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cName = requestCulture.RequestCulture.Culture.Name;
+}
+
+<div class="form-container">
+    <div class="pageTitle">
+        <h2>Admission Form</h2>
+    </div>
+    <form asp-controller="AdmissionForm" method="post" asp-action="OnPostCreateOrEdit" enctype="multipart/form-data">
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="AcademicSemesterId" value="0" />
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-header-title">Choose Program</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @(
+                                await Component.InvokeAsync<CommonViewComponent>(new
+                                {
+                                    name = "SessionId",
+                                    id = "SessionId",
+                                    entityId = Model.SessionId,
+                                    query = CommonDropdownConstants.GET_ALL_ACTIVE_SESSIONS,
+                                    labelText = "SessionId",
+                                    isRequired = true,
+                                    isLabelRequired = true
+                                })
+                                )
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @(
+                                await Component.InvokeAsync<CommonViewComponent>(new
+                                {
+                                    name = "FacultyId",
+                                    id = "FacultyId",
+                                    entityId = Model.FacultyId,
+                                    query = CommonDropdownConstants.GET_ALL_FACULTIES,
+                                    labelText = "Faculty",
+                                    isRequired = true,
+                                    isLabelRequired = true
+                                })
+                                )
+                        </div>
+                    </div>
+                    @*   <div class="col-md-6">
+                    <div class="form-group">
+                    <label class="form-label required">@localizer[LocalizerConstant.ACADEMIC_SEMESTER]</label>
+                    @(await Component.InvokeAsync<LookupForAllViewComponent>(new { id = "AcademicSemesterId", type = "Academic Semester", selectedId = "AcademicSemesterId", lookupId = Model.AcademicSemesterId, labelclass = "text-right", isRequired = true }))
+                    </div>
+                    </div>*@
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="form-group">
+                                @(
+                                    await Component.InvokeAsync<CommonViewComponent>(new
+                                    {
+                                        name = "DepartmentId",
+                                        id = "DepartmentId",
+                                        entityId = Model.DepartmentId,
+                                        query = CommonDropdownConstants.GET_ALL_DEPARTMENTS,
+                                        parameters = new object[] { Model.FacultyId },
+                                        labelText = "Department",
+                                        isRequired = true,
+                                        isLabelRequired = true
+                                    })
+                                    )
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @(
+                                await Component.InvokeAsync<CommonViewComponent>(new
+                                {
+                                    name = "ProgramId",
+                                    id = "ProgramId",
+                                    entityId = Model.ProgramId,
+                                    query = CommonDropdownConstants.GET_ALL_PROGRAMS,
+                                    parameters = new object[] { Model.DepartmentId },
+                                    labelText = "Program",
+                                    isRequired = true,
+                                    isLabelRequired = true
+                                })
+                                )
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @(
+                                await Component.InvokeAsync<CommonViewComponent>(new
+                                {
+                                    name = "BatchId",
+                                    id = "BatchId",
+                                    entityId = Model.BatchId,
+                                    query = CommonDropdownConstants.GET_BATCH_BY_SESSION_PROGRAM,
+                                    parameters = new object[] { Model.SessionId, Model.ProgramId },
+                                    labelText = "Batch",
+                                    isRequired = true,
+                                    isLabelRequired = true
+                                })
+                                )
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">Semester</label>
+                            <select class="form-control" asp-for="SemesterId">
+                                <option value="0">Choose Option</option>
+                                <option value="1">1st Semester</option>
+                                <option value="2">2nd Semester</option>
+                                <option value="3">3rd Semester</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">Academic Semester</label>
+                            <select class="form-control" asp-for="AcademicSemesterId">
+                                <option value="0">Choose Option</option>
+                                <option value="1">Spring</option>
+                                <option value="2">Summer</option>
+                                <option value="3">Fall</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-header-title">Official Information</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">Class Roll No<span class="text-danger">*</span></label>
+                                <input type="text" asp-for="ClassRollNo" name="ClassRollNo" class="form-control disableInput">
+                                <span asp-validation-for="ClassRollNo" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">Date of Admission<span class="text-danger">*</span></label>
+                                <input type="date" asp-for="DateOfAdmission" name="DateOfAdmission" class="form-control disableInput">
+                                <span asp-validation-for="DateOfAdmission" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-header-title">Student's Information</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">Student's Name:</label>
+                            <input type="text" asp-for="StudentName" name="ApplicantName" class="form-control disableInput">
+                            <span asp-validation-for="StudentName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Date of Birth<span class="text-danger">*</span></label>
+                        @{
+                            if (Model.DateOfBirth != new DateTime())
+                            {
+                                <input type="datetime" asp-for="DateOfBirth" class="form-control" placeholder="Date of Birth">
+                            }
+                            else
+                            {
+                                <input type="datetime" value="" asp-for="DateOfBirth" class="form-control" placeholder="Date of Birth">
+                            }
+                        }
+                        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">Contact No:<span class="text-danger">*</span></label>
+                            <input type="text" asp-for="MobileNo" name="MobileNo" class="form-control">
+                            <span asp-validation-for="MobileNo" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">Email:<span class="text-danger">*</span></label>
+                            <input type="text" asp-for="Email" name="Email" class="form-control">
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">NID:</label>
+                            <input type="text" asp-for="NID" name="NID" class="form-control">
+                            <span asp-validation-for="NID" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @(
+                                await Component.InvokeAsync<CommonViewComponent>(new
+                                {
+                                    name = "GenderId",
+                                    id = "GenderId",
+                                    entityId = Model.GenderId,
+                                    query = CommonDropdownConstants.GET_LOOKUP_DATA_BY_TYPE,
+                                    parameters = new object[] { "gender" },
+                                    labelText = "Gender",
+                                    isRequired = true,
+                                    isLabelRequired = true
+                                })
+                                )
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @(
+                                await Component.InvokeAsync<CommonViewComponent>(new
+                                {
+                                    name = "ReligionId",
+                                    id = "ReligionId",
+                                    entityId = Model.ReligionId,
+                                    query = CommonDropdownConstants.GET_LOOKUP_DATA_BY_TYPE,
+                                    parameters = new object[] { "religion" },
+                                    labelText = "Religion",
+                                    isRequired = true,
+                                    isLabelRequired = true
+                                })
+                                )
+                            <span asp-validation-for="ReligionId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @(
+                                await Component.InvokeAsync<CommonViewComponent>(new
+                                {
+                                    name = "BloodGroupId",
+                                    id = "BloodGroupId",
+                                    entityId = Model.BloodGroupId,
+                                    query = CommonDropdownConstants.GET_LOOKUP_DATA_BY_TYPE,
+                                    parameters = new object[] { "bloodgroup" },
+                                    labelText = "BloodGroup",
+                                    isRequired = true,
+                                    isLabelRequired = true
+                                })
+                                )
+                            <span asp-validation-for="BloodGroupId" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-header-title">Parent's Information</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">Father's Name<span class="text-danger">*</span> </label>
+                            <input type="text" asp-for="FatherName" name="FatherName" class="form-control disableInput">
+                            <span asp-validation-for="FatherName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Mother's Name<span class="text-danger">*</span></label>
+                        <input type="text" asp-for="MotherName" name="MotherName" class="form-control disableInput">
+                        <span asp-validation-for="MotherName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">Father's Mobile No <span class="text-danger">*</span></label>
+                            <input type="text" asp-for="FatherMobileNo" name="FatherMobileNo" placeholder="Enter mobile number" class="form-control">
+                            <span asp-validation-for="FatherMobileNo" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Mother's Mobile No </label>
+                        <input type="text" asp-for="MotherMobileNo" name="MotherMobileNo" placeholder="Enter mobile number" class="form-control">
+                        <span asp-validation-for="MotherMobileNo" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-header-title">Contact Information</h3>
+            </div>
+            <div class="card-body">
+                <div style="font-size: 17px; font-weight: bold; color: #3160B9; padding-bottom: 10px;">
+                    Present Address
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @(
+                                await Component.InvokeAsync<CommonViewComponent>(new
+                                {
+                                    name = "DistrictId",
+                                    id = "DistrictId",
+                                    entityId = Model.DistrictId,
+                                    query = CommonDropdownConstants.GET_LOOKUP_DATA_BY_TYPE,
+                                    parameters = new object[] { "district" },
+                                    labelText = "District",
+                                    isRequired = true,
+                                    isLabelRequired = true
+                                })
+                                )
+                            <span asp-validation-for="DistrictId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">Village/House & Road No<span class="text-danger">*</span> </label>
+                            <input type="text" asp-for="VillageName" class="form-control disableInput">
+                            <span asp-validation-for="VillageName" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @(
+                                await Component.InvokeAsync<CommonViewComponent>(new
+                                {
+                                    name = "UpazillaId",
+                                    id = "UpazillaId",
+                                    entityId = Model.UpazillaId,
+                                    query = CommonDropdownConstants.GET_LOOKUP_DATA_BY_TYPE,
+                                    parameters = new object[] { "upazilla" },
+                                    labelText = "Upazilla",
+                                    isRequired = true,
+                                    isLabelRequired = true
+                                })
+                                )
+                        </div>
+                        <span asp-validation-for="UpazillaId" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">Post Office/Code<span class="text-danger">*</span> </label>
+                            <input type="text" asp-for="PostOffice" class="form-control disableInput">
+                            <span asp-validation-for="PostOffice" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-header-title">Educational Information</h3>
+            </div>
+
+            <div class="card-body">
+                <div>
+                    <table class="table table-striped" id="ExpTable" width="100%">
+                        <tbody id="tableBody">
+                            <tr>
+                                <th>Name of Exam</th>
+                                <th style="width:10%!important">Passing Year</th>
+                                <th>Name of Institution</th>
+                                <th style="width:12%!important">Roll No.</th>
+                                <th>Board/University</th>
+                                <th style="width:5%!important">CGPA/Grade</th>
+                                <th>Action</th>
+                            </tr>
+                            @for (int i = 0; i < Model.StudentEducationalInfos.Count; i++)
+                            {
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <select class="form-control" asp-for="@Model.StudentEducationalInfos[i].ExamId">
+                                                <option value="1">SSC</option>
+                                                <option value="2">HSC</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <input type="text" asp-for="@Model.StudentEducationalInfos[i].PassingYear" class="form-control">
+                                            <span asp-validation-for="@Model.StudentEducationalInfos[i].PassingYear" class="text-danger"></span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <input type="text" asp-for="@Model.StudentEducationalInfos[i].InstitutionName" class="form-control">
+                                            <span asp-validation-for="@Model.StudentEducationalInfos[i].InstitutionName" class="text-danger"></span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <input type="number" asp-for="@Model.StudentEducationalInfos[i].RollNumber" class="form-control">
+                                            @*<span asp-validation-for="TitleNameBN" class="text-danger"></span>*@
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <input type="text" asp-for="@Model.StudentEducationalInfos[i].BoardId" class="form-control">
+                                            @*<span asp-validation-for="TitleNameBN" class="text-danger"></span>*@
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <input type="text" asp-for="@Model.StudentEducationalInfos[i].ExamResult" class="form-control">
+                                            @*<span asp-validation-for="TitleNameBN" class="text-danger"></span>*@
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <a id="btnAdd-@i" class="btn btn-sm btn-info visible" onclick="addItem(this)">Add</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    @*<a id="btnAdd-@i" class="btn btn-sm btn-info visible" onclick="addItem(this)">Add</a>*@
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-header-title">Upload Photo & Signature</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label col-form-label text-right">@localizer[LocalizerConstant.PHOTO] <span class="text-danger">*</span></label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" asp-for="StudentImage" id="photoFile" accept="image/*">
+                                <label class="custom-file-label" for="Photo">Choose file</label>
+                                <span asp-validation-for="StudentImage" class="text-danger"></span>
+                            </div>
+                        </div>
+                        @if (Model.StudentImageUrl != null && Model.StudentName.Length > 0)
+                        {
+                            <img src="@Model.StudentImageUrl" alt="...">
+                        }
+                        <div id="photoPreview">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div>
+                                <p class="imgCaution">
+                                    Photo must be 300 X 300 pixels (width X height) and file size not more than 100 KB and Signature must be 300 X 80 pixels (width X height) and file size not more than 60 KB. Color Photo is a must. Black & White,
+                                    Monochrome or Grayscale photo or any image other than photo will not be accepted. This application is
+                                    capable to detect image with Facial Recognition. Please avoid to upload unacceptable photo.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="warning">
+            <div class="warning-text">
+                <div>
+                    <i class='fas fa-exclamation-circle' style='font-size:24px;color:#F2D022; padding-right:10px'></i>
+                </div>
+                Incomplete application will not be considered for admission. BSMRAAU authority reserves all rights to cancel candidature of any candidate without showing any reason.
+            </div>
+        </div>
+        <input type="hidden" id="hdnLastIndex" value="0" />
+        <div>
+            <button class="btnSubmit" id="btnSubmit" type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts
+{
+
+    <script>
+        $(document).ready(function () {
+
+        });
+
+        function addItem(btn) {
+            var table = document.getElementById('ExpTable');
+            var rows = table.getElementsByTagName('tr');
+            var rowOuterHtml = rows[rows.length - 1].outerHTML;
+            // Replace operation
+            var lastRowIndex = document.getElementById('hdnLastIndex').value;  // for change the last added row's attribute index
+            var nextRowIndex = eval(lastRowIndex) + 1;   // previous index replace by this index
+            document.getElementById('hdnLastIndex').value = nextRowIndex;
+            rowOuterHtml = rowOuterHtml.replaceAll('_' + lastRowIndex + '_', '_' + nextRowIndex + '_');
+            rowOuterHtml = rowOuterHtml.replaceAll('[' + lastRowIndex + ']', '[' + nextRowIndex + ']');
+            rowOuterHtml = rowOuterHtml.replaceAll('-' + lastRowIndex, '-' + nextRowIndex);
+            // Replace operation end
+            var newRow = table.insertRow();
+            newRow.innerHTML = rowOuterHtml;
+            //delete Button Visible and Invisible
+            var btnAddId = btn.id;          // Add Button Id
+            var btnDeleteId = btnAddId.replaceAll('btnAdd', 'btnRemove');
+            var dltBtn = document.getElementById(btnDeleteId);
+            dltBtn.classList.add('visible');
+            dltBtn.classList.remove('invisible');
+            var addBtn = document.getElementById(btnAddId);
+            addBtn.classList.remove('visible');
+            addBtn.classList.add('invisible');
+        }
+
+        $(function () {
+            $("#DateOfBirth").datepicker({
+                uiLibrary: 'bootstrap4',
+                footer: false,
+                size: 'default'
+                //format: 'dd/mm/yyyy'
+            });
+        });
+
+        $("#FacultyId").change(function () {
+            var cName = '@cName';
+            var facultyId = $('#FacultyId').val();
+            $("#DepartmentId").html('').append("<option Value=''>Choose Option</option>");
+
+            $.get("/common/dropdown/DepartmentsByFaculty", { FacultyId: facultyId }, function (data) {
+                $.each(data, function (index, row) {
+                    if (cName == 'en') {
+                        $("#DepartmentId").append("<option value='" + row.id + "'>" + row.departmentName + "</option>")
+
+                    } else {
+                        $("#DepartmentId").append("<option value='" + row.id + "'>" + row.departmentNameBN + "</option>")
+
+                    }
+
+                })
+            })
+        });
+
+        $("#DepartmentId").change(function () {
+            var cName = '@cName';
+            var departmentId = $('#DepartmentId').val();
+            $("#ProgramId").html('').append("<option Value=''>Choose Option</option>");
+
+            $.get("/common/dropdown/ProgramsByFaculty", { DepartmentId: departmentId }, function (data) {
+                $.each(data, function (index, row) {
+                    console.log(row);
+                    if (cName == 'en') {
+                        $("#ProgramId").append("<option value='" + row.id + "'>" + row.name + "</option>")
+
+                    } else {
+                        $("#ProgramId").append("<option value='" + row.id + "'>" + row.nameBN + "</option>")
+
+                    }
+
+                })
+            })
+        });
+
+        // Load Batch options according to ProgramId Change
+        $("#ProgramId").change(function () {
+            const cName = '@cName';
+            let admissionYearId = $('#AdmissionYear').val();
+            let programId = $('#ProgramId').val();
+            if (!admissionYearId) {
+                toastNotifyError("Please select admission year");
+                return;
+            }
+            $("#BatchId").html('').append("<option Value=''>Choose Option</option>");
+            $.get(`/academic/Batch/FilterBatchByProgramId?admissionYearId=${admissionYearId}&programId=${programId}`, function (data) {
+                $.each(data, function (index, row) {
+                    if (cName == 'en') {
+                        $("#BatchId").append("<option value='" + row.id + "'>" + row.batchName + "</option>")
+                    } else {
+                        $("#BatchId").append("<option value='" + row.id + "'>" + row.batchNameBN + "</option>")
+                    }
+                })
+            })
+        });
+
+
+        $("#photoFile").change(function () {
+            $(this).next('.custom-file-label').html($(this)[0].files[0].name);
+            $("#photoPreview").html("");
+            if (typeof (FileReader) != "undefined") {
+                $("#photoPreview").show();
+                var reader = new FileReader();
+                if (($(this)[0].files[0].size / 1000) <= 100) {
+                    reader.onload = function (e) {
+                        var image = new Image();
+                        image.src = e.target.result;
+                        image.onload = function () {
+                            if (image.width <= 300 && image.height <= 300) {
+                                $("#photoPreview").append("<img class='img-thumbnail' />");
+                                $("#photoPreview img").attr("src", e.target.result);
+                                $("#photoPreview img").attr("style", "height:200px;width: 200px");
+                                console.log($(this)[0])
+                            }
+                            else {
+                                $('#photoPreview').append(`<span class="text-danger">Photo must be 300 X 300 pixel</span>`);
+                                $("#photoFile").val('');
+                            }
+                        };
+                    }
+                }
+                else {
+                    $('#photoPreview').append(`<span class="text-danger">file size not more than 100 KB</span>`);
+                    $("#photoFile").val('');
+                }
+                reader.readAsDataURL($(this)[0].files[0]);
+            } else {
+                alert("This browser does not support FileReader.");
+            }
+        });
+
+    </script>
+
+}

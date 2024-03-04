@@ -148,6 +148,10 @@
         public const string GET_ALL_DEPARTMENTS = "SELECT Id, DepartmentName Name, DepartmentNameBN NameBN FROM dbo.Aca_Departments WHERE FacultyId = {0}";
 
         public const string GET_ALL_PROGRAMS = "SELECT Id, ProgramName Name, ProgramNameBN NameBN FROM dbo.Aca_Programs WHERE DepartmentId = {0}";
+
+        public const string GET_BATCH_BY_SESSION_PROGRAM = "SELECT Id, BatchName [Name], BatchNameBN [NameBN] FROM Aca_Batches WHERE SessionId = {0} AND ProgramId = {1}";
+
+        public const string GET_LOOKUP_DATA_BY_TYPE = "SELECT LD.Id, LD.Name, LD.NameBN FROM Com_LookupDetails LD, Com_Lookups L WHERE LD.LookupId = L.Id AND LOWER(L.Name) LIKE '%{0}%'";
         #endregion
 
         #region Common
