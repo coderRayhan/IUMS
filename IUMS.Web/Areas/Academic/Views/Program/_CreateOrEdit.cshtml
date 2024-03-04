@@ -119,12 +119,12 @@
         var cName = '@cName';
         var facultyId = $('#FacultyId').val();
         $("#DepartmentId").html('').append("<option Value=''>Choose Option</option>");
-        $.get("/Academic/Program/GetDepartmentsByFaculty", { facultyId: facultyId }, function (data) {
+        $.get("/Common/Dropdown/DepartmentsByFaculty", { facultyId: facultyId }, function (data) {
             $.each(data, function (index, row) {
                 if (cName == 'en') {
-                    $("#DepartmentId").append(`<option value='${row.id}'>${row.name}</option>`)
+                    $("#DepartmentId").append(`<option value='${row.id}'>${row.departmentName}</option>`)
                 } else {
-                    $("#DepartmentId").append(`<option value='${row.id}'>${row.nameBN}</option>`)
+                    $("#DepartmentId").append(`<option value='${row.id}'>${row.departmentNameBN}</option>`)
                 }
             })
         })
