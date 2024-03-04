@@ -47,6 +47,35 @@
                         </ul>
                     </li>
                 }
+                
+                @if (User.IsInRole("SuperAdmin"))
+                {
+                    <li class="nav-header">@localizer["Common"]</li>
+                    <li is-active-route asp-area="Admin" class="nav-item has-treeview">
+                        <a is-active-route asp-area="common" class="nav-link">
+                            <i class="nav-icon fas fa-user"></i>
+                            <p>
+                                @localizer["Common Setup"]
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a is-active-route asp-area="common" asp-controller="lookup" class="nav-link">
+                                    <i class="far fa-user-circle nav-icon"></i>
+                                    <p>@localizer["Lookup Master"]</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a is-active-route asp-area="common" asp-controller="lookupdetail" class="nav-link">
+                                    <i class="far fa-user-circle nav-icon"></i>
+                                    <p>@localizer["Lookup Detail"]</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                }
+
                 @if (User.IsInRole("SuperAdmin"))
                 {
                     <li class="nav-header">@localizer["Academic"]</li>
