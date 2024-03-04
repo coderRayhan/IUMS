@@ -10,6 +10,8 @@ public class StudentBasicInfoResponse
     public int RegistrationNumber { get; set; }
     public DateTime DateOfAdmission { get; set; }
     public int SessionId { get; set; }
+    public string SessionName { get; set; }
+    public string SessionNameBN { get; set; }
     public string StudentName { get; set; }
     public string MobileNo { get; set; }
     public string Email { get; set; }
@@ -27,8 +29,12 @@ public class StudentBasicInfoResponse
     public int UpazillaId { get; set; }
     public string PostOffice { get; set; }
     public int FacultyId { get; set; }
+    public string FacultyName { get; set; }
+    public string FacultyNameBN { get; set; }
     public int DepartmentId { get; set; }
     public int ProgramId { get; set; }
+    public string ProgramName { get; set; }
+    public string ProgramNameBN { get; set; }
     public int BatchId { get; set; } 
     public int SemesterId { get; set; }
     public string StudentImageUrl { get; set; }
