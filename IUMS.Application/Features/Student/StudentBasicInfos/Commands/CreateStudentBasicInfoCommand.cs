@@ -1,5 +1,6 @@
 ﻿using AspNetCoreHero.Results;
 using AutoMapper;
+using IUMS.Application.Features.Student.StudentBasicInfos.Queries;
 using IUMS.Application.Interfaces.Repositories;
 using IUMS.Application.Interfaces.Repositories.Student;
 using IUMS.Domain.Entities.Student;
@@ -10,7 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 namespace IUMS.Application.Features.Student.StudentBasicInfos.Commands;
-public sealed record CreateStudentBasicInfoCommand 
+public sealed class CreateStudentBasicInfoCommand 
     : IRequest<Result<int>>
 {
     public string ClassRollNo { get; set; }
@@ -44,7 +45,7 @@ public sealed record CreateStudentBasicInfoCommand
     public bool IsAdviserAssigned { get; set; }
     public bool IsActive { get; set; } = true;
     public int AcademicSemesterId { get; set; }
-    public List<StudentEducationalInfo> StudentEducationalInfos { get; set; } = new();
+    public List<StudentEducationalInfoResponse> StudentEducationalInfos { get; set; } = new();
 }
 
 internal sealed record CreateStudentBasicInfoCommandHandler(

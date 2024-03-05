@@ -23,7 +23,7 @@ internal sealed record GetDetailParentByLookupIdQueryHandler(
 
             using var connection = _dapperContext.CreateConnection();
 
-            var lookupDetailList = await connection.QueryAsync<LookupDetailResponse>(sql, request.Id);
+            var lookupDetailList = await connection.QueryAsync<LookupDetailResponse>(sql, new { request.Id });
             return Result<IEnumerable<LookupDetailResponse>>.Success(lookupDetailList);
         }
         catch (Exception ex)

@@ -12,6 +12,8 @@ public class StudentBasicInfoViewModel
     public int RegistrationNumber { get; set; }
     public DateTime DateOfAdmission { get; set; }
     public int SessionId { get; set; }
+    public string SessionName { get; set; }
+    public string SessionNameBN { get; set; }
     public string StudentName { get; set; }
     public string MobileNo { get; set; }
     public string Email { get; set; }
@@ -31,8 +33,14 @@ public class StudentBasicInfoViewModel
     public int FacultyId { get; set; }
     public int DepartmentId { get; set; }
     public int ProgramId { get; set; }
+    public string ProgramName { get; set; }
+    public string ProgramNameBN { get; set; }
     public int BatchId { get; set; }         // Student Running BatchId
+    public string BatchName { get; set; }
+    public string BatchNameBN { get; set; }
     public int SemesterId { get; set; }
+    public string SemesterName { get; set; }
+    public string SemesterNameBN { get; set; }
     public string StudentImageUrl { get; set; }
     public IFormFile StudentImage { get; set; }
     public int IsRegistered { get; set; }
@@ -40,5 +48,7 @@ public class StudentBasicInfoViewModel
     public bool IsAdviserAssigned { get; set; }
     public bool IsActive { get; set; } = true;
     public int AcademicSemesterId { get; set; }
+    public string AcademicSemesterName { get; set; }
+    public string AcademicSemesterNameBN { get; set; }
     public List<StudentEducationalInfoViewModel> StudentEducationalInfos { get; set; } = new();
 }

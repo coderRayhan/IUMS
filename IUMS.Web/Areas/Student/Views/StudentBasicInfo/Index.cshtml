@@ -200,7 +200,7 @@
     <div class="pageTitle">
         <h2>Admission Form</h2>
     </div>
-    <form asp-controller="AdmissionForm" method="post" asp-action="OnPostCreateOrEdit" enctype="multipart/form-data">
+    <form asp-controller="StudentBasicInfo" method="post" asp-action="OnPostCreateOrEdit" enctype="multipart/form-data">
         <input type="hidden" asp-for="Id" />
         <input type="hidden" asp-for="AcademicSemesterId" value="0" />
         <div class="card">
@@ -337,20 +337,18 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="form-label">Class Roll No<span class="text-danger">*</span></label>
-                                <input type="text" asp-for="ClassRollNo" name="ClassRollNo" class="form-control disableInput">
-                                <span asp-validation-for="ClassRollNo" class="text-danger"></span>
-                            </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">Class Roll No<span class="text-danger">*</span></label>
+                            <input type="text" asp-for="ClassRollNo" name="ClassRollNo" class="form-control disableInput">
+                            <span asp-validation-for="ClassRollNo" class="text-danger"></span>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="form-label">Date of Admission<span class="text-danger">*</span></label>
-                                <input type="date" asp-for="DateOfAdmission" name="DateOfAdmission" class="form-control disableInput">
-                                <span asp-validation-for="DateOfAdmission" class="text-danger"></span>
-                            </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">Date of Admission<span class="text-danger">*</span></label>
+                            <input type="date" asp-for="DateOfAdmission" name="DateOfAdmission" class="form-control disableInput">
+                            <span asp-validation-for="DateOfAdmission" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
@@ -455,7 +453,7 @@
                                     id = "BloodGroupId",
                                     entityId = Model.BloodGroupId,
                                     query = CommonDropdownConstants.GET_LOOKUP_DATA_BY_TYPE,
-                                    parameters = new object[] { "bloodgroup" },
+                                    parameters = new object[] { "blood group" },
                                     labelText = "BloodGroup",
                                     isRequired = true,
                                     isLabelRequired = true
@@ -617,7 +615,19 @@
                                     </td>
                                     <td>
                                         <div class="form-group">
-                                            <input type="text" asp-for="@Model.StudentEducationalInfos[i].BoardId" class="form-control">
+                                            @(
+                                                await Component.InvokeAsync<CommonViewComponent>(new
+                                                {
+                                                    name = $"StudentEducationalInfos[{i}].BoardId",
+                                                    id = $"BoardId__{i}",
+                                                    entityId = Model.StudentEducationalInfos[i].BoardId,
+                                                    query = CommonDropdownConstants.GET_LOOKUP_DATA_BY_TYPE,
+                                                    parameters = new object[] { "education board" },
+                                                    isRequired = true,
+                                                    isLabelRequired = false
+                                                })
+                                                )
+                                            @* <input type="text" asp-for="@Model.StudentEducationalInfos[i].BoardId" class="form-control"> *@
                                             @*<span asp-validation-for="TitleNameBN" class="text-danger"></span>*@
                                         </div>
                                     </td>
@@ -780,14 +790,14 @@
         // Load Batch options according to ProgramId Change
         $("#ProgramId").change(function () {
             const cName = '@cName';
-            let admissionYearId = $('#AdmissionYear').val();
+            let sessionId = $('#SessionId').val();
             let programId = $('#ProgramId').val();
-            if (!admissionYearId) {
-                toastNotifyError("Please select admission year");
+            if (!sessionId) {
+                toastNotifyError("Please select session");
                 return;
             }
             $("#BatchId").html('').append("<option Value=''>Choose Option</option>");
-            $.get(`/academic/Batch/FilterBatchByProgramId?admissionYearId=${admissionYearId}&programId=${programId}`, function (data) {
+            $.get(`/academic/Batch/FilterBatchByProgramId?sessionId=${sessionId}&programId=${programId}`, function (data) {
                 $.each(data, function (index, row) {
                     if (cName == 'en') {
                         $("#BatchId").append("<option value='" + row.id + "'>" + row.batchName + "</option>")
@@ -805,28 +815,28 @@
             if (typeof (FileReader) != "undefined") {
                 $("#photoPreview").show();
                 var reader = new FileReader();
-                if (($(this)[0].files[0].size / 1000) <= 100) {
+                // if (($(this)[0].files[0].size / 1000) <= 100) {
                     reader.onload = function (e) {
                         var image = new Image();
                         image.src = e.target.result;
                         image.onload = function () {
-                            if (image.width <= 300 && image.height <= 300) {
+                            // if (image.width <= 300 && image.height <= 300) {
                                 $("#photoPreview").append("<img class='img-thumbnail' />");
                                 $("#photoPreview img").attr("src", e.target.result);
                                 $("#photoPreview img").attr("style", "height:200px;width: 200px");
                                 console.log($(this)[0])
-                            }
-                            else {
-                                $('#photoPreview').append(`<span class="text-danger">Photo must be 300 X 300 pixel</span>`);
-                                $("#photoFile").val('');
-                            }
+                            // }
+                            // else {
+                            //     $('#photoPreview').append(`<span class="text-danger">Photo must be 300 X 300 pixel</span>`);
+                            //     $("#photoFile").val('');
+                            // }
                         };
                     }
-                }
-                else {
-                    $('#photoPreview').append(`<span class="text-danger">file size not more than 100 KB</span>`);
-                    $("#photoFile").val('');
-                }
+                // }
+                // else {
+                //     $('#photoPreview').append(`<span class="text-danger">file size not more than 100 KB</span>`);
+                //     $("#photoFile").val('');
+                // }
                 reader.readAsDataURL($(this)[0].files[0]);
             } else {
                 alert("This browser does not support FileReader.");

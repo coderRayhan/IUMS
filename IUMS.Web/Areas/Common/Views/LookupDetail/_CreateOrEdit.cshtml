@@ -114,7 +114,7 @@
         var lookupId = $('#LookupId').val();
         $("#ParentId").html('').append("<option Value=''>Choose Option</option>");
 
-        $.get("/academic/LookupDetail/GetParentByCommonLookup", { LookupId: lookupId }, function (data) {
+        $.get("/common/LookupDetail/GetParentByCommonLookup", { LookupId: lookupId }, function (data) {
             $.each(data, function (index, row) {
                 console.log(row);
                 if (cName == 'en') {

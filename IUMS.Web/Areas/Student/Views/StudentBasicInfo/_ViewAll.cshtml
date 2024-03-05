@@ -1,0 +1,86 @@
+﻿@using IUMS.Application.Constants
+@using IUMS.Web
+@using IUMS.Web.Areas.Student.Models
+@using Microsoft.AspNetCore.Localization
+
+@inject IHtmlLocalizer<SharedResource> localizer
+@model List<StudentBasicInfoViewModel>
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cName = requestCulture.RequestCulture.Culture.Name;
+    var sl = 0;
+}
+
+<div class="card">
+    <div class="card-body">
+        <table class="table table-striped table-hover table-bordered" id="studenListTable">
+            <thead>
+                <tr>
+                    <th>@localizer[LocalizerConstant.SL]</th>
+                    <th>@localizer[LocalizerConstant.CLASS_ROLL]</th>
+                    <th>@localizer["Registration Number"]</th>
+                    <th>@localizer[LocalizerConstant.NAME]</th>
+                    <th>@localizer[LocalizerConstant.ADMISSION_DATE]</th>
+                    <th>@localizer[LocalizerConstant.FATHER_NAME]</th>
+                    <th>@localizer["Session"]</th>
+                    <th>@localizer["Program"]</th>
+                    <th>@localizer["Semester"]</th>
+                    <th>@localizer["Academic Semester"]</th>
+                    <th>@localizer[LocalizerConstant.STATUS]</th>
+                    <th>@localizer[LocalizerConstant.ACTIONS]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="text-center">@sl++</td>
+                        <td>@item.ClassRollNo</td>
+                        <td>@item.RegistrationNumber</td>
+                        <td>@item.StudentName</td>
+                        <td>@item.DateOfAdmission</td>
+                        <td>@item.FatherName</td>
+                        <td>@item.SessionName</td>
+                        <td>@item.ProgramName</td>
+                        <td>@item.SemesterName</td>
+                        <td>@item.AcademicSemesterName</td>
+                        <td>
+                            @if (item.IsActive)
+                            {
+                                <label style="color:green; font-weight:900">Active</label>
+                            }
+                            else
+                            {
+                                <label style="color:red; font-weight:900">Inactive</label>
+                            }
+                        </td>
+                        <td text-right">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Action
+                                </button>
+                                <div class="dropdown-menu shadow animated--grow-in">
+                                    @{
+                                            <a asp-area="student" asp-controller="studentbasicinfo" asp-action="index" asp-route-id="@item.Id" class="dropdown-item"><i class="fas fa-pencil-alt"></i>  Edit</a>
+                                    }
+                                    <form id="form_delete_@item.Id" asp-area="student" asp-controller="studentbasicinfo" method="post" asp-action="OnPostDelete" asp-route-id="@item.Id" onsubmit="return jQueryModalDelete(this)">
+                                        <a href="javascript:$('#form_delete_@item.Id').submit();" class="dropdown-item"><i class="fas fa-trash-alt"></i>  Delete</a>
+                                    </form>
+                                    <form id="form_status_@item.Id" asp-area="student" asp-controller="studentBasicInfo" method="post" asp-action="UpdateStatus" asp-route-id="@item.Id" onsubmit="return jQueryModalStatus(this)">
+                                        <a href="javascript:$('#form_status_@item.Id').submit();" class="dropdown-item"><i class="fas fa-pencil-alt"></i>Change Status</a>
+                                    </form>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    $(document).ready(() => {
+        $(`#studenListTable`).dataTable();
+    });
+</script>

@@ -140,14 +140,14 @@ namespace IUMS.Web.Areas.Academic.Controllers
             return null;
         }
 
-        public async Task<IEnumerable<GetBatchByProgramResponse>> FilterBatchByProgramId(int admissionYearId, int programId)
+        public async Task<IEnumerable<GetBatchByProgramResponse>> FilterBatchByProgramId(int sessionId, int programId)
         {
-            var response = await _mediator.Send(new GetBatchByProgramQuery(admissionYearId, programId));
+            var response = await _mediator.Send(new GetBatchByProgramQuery(sessionId, programId));
             if (response.Succeeded)
             {
                 return response.Data;
             }
-            _notify.Error(_localizer[LocalizerConstant.NO_DATA_FOUND]);
+            _notify.Error(response.Message);
             return null;
         }
     }

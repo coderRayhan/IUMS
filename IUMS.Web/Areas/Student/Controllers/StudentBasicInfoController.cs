@@ -2,6 +2,8 @@
 using IUMS.Application.Constants;
 using IUMS.Application.Features;
 using IUMS.Application.Features.Student.StudentBasicInfos.Commands;
+using IUMS.Application.Features.Student.StudentBasicInfos.Queries;
+using IUMS.Domain.Entities.Academic;
 using IUMS.Infrastructure.Extensions;
 using IUMS.Web.Abstractions;
 using IUMS.Web.Areas.Student.Models;
@@ -9,6 +11,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace IUMS.Web.Areas.Student.Controllers;
@@ -22,14 +26,28 @@ public class StudentBasicInfoController : BaseController<StudentBasicInfoControl
         _userManager = userManager;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index(int id = 0)
     {
-        var model = new StudentBasicInfoViewModel();
+        if (id == 0)
+        {
+            var model = new StudentBasicInfoViewModel();
 
-        model.StudentEducationalInfos.Add(new StudentEducationalInfoViewModel());
-        model.DateOfAdmission = DateTime.Now;
-        model.DateOfBirth = new DateTime();
-        return View(model);
+            model.StudentEducationalInfos.Add(new StudentEducationalInfoViewModel());
+            model.DateOfAdmission = DateTime.Now;
+            model.DateOfBirth = new DateTime();
+            return View(model);
+        }
+        else
+        {
+            var response = await _mediator.Send(new StudentByIdQuery(id));
+            if (!response.Succeeded)
+            {
+                _notify.Error(response.Message);
+                return null;
+            }
+            var vModel = _mapper.Map<StudentBasicInfoViewModel>(response.Data);
+            return View(vModel);
+        }
     }
 
     [HttpPost]
@@ -96,5 +114,40 @@ public class StudentBasicInfoController : BaseController<StudentBasicInfoControl
             _notify.Error(ModelState.GetModelStateError());
             return View("Index", model);
         }
+    }
+
+    [HttpGet]
+    public IActionResult StudentList()
+    {
+        return View();
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> LoadAll(
+        int sessionId,
+        int batchId,
+        int semesterId)
+    {
+        var response = await _mediator.Send(new StudentListQuery(sessionId, batchId, semesterId));
+
+        if (!response.Succeeded)
+        {
+            _notify.Error(response.Message);
+            return null;
+        }
+
+        var studentList = _mapper.Map<List<StudentBasicInfoViewModel>>(response.Data);
+        return PartialView("_ViewAll", studentList);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> UpdateStatus(int id)
+    {
+        var response = await _mediator.Send(new UpdateStudenStatusCommand(id));
+        if (!response.Succeeded)
+            _notify.Error(response.Message);
+        else
+            _notify.Information("Status updated");
+        return RedirectToAction("StudentList");
     }
 }

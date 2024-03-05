@@ -23,7 +23,7 @@ namespace IUMS.Application.Features.Academic.Batch.Queries
         {
             try
             {
-                var sql = "SELECT B.Id, B.BatchName, B.BatchNameBN FROM dbo.Aca_Batches B WHERE B.ProgramId = @programId AND B.SessionId = @admissionYearId";
+                var sql = "SELECT B.Id, B.BatchName, B.BatchNameBN FROM dbo.Aca_Batches B WHERE B.ProgramId = @ProgramId AND B.SessionId = @SessionId";
 
                 using var connection = _context.CreateConnection();
 
