@@ -22,7 +22,7 @@
                 </li>
                 @if (User.IsInRole("SuperAdmin"))
                 {
-                    <li class="nav-header">@localizer["Admin"]</li>
+                    @* <li class="nav-header">@localizer["Admin"]</li> *@
                     <li is-active-route asp-area="Admin" class="nav-item has-treeview">
                         <a is-active-route asp-area="Admin" class="nav-link">
                             <i class="nav-icon fas fa-user"></i>
@@ -50,10 +50,10 @@
                 
                 @if (User.IsInRole("SuperAdmin"))
                 {
-                    <li class="nav-header">@localizer["Common"]</li>
+                    @* <li class="nav-header">@localizer["Common"]</li> *@
                     <li is-active-route asp-area="Admin" class="nav-item has-treeview">
                         <a is-active-route asp-area="common" class="nav-link">
-                            <i class="nav-icon fas fa-user"></i>
+                            <i class="nav-icon fas fa-cog"></i>
                             <p>
                                 @localizer["Common Setup"]
                                 <i class="right fas fa-angle-left"></i>
@@ -62,13 +62,13 @@
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a is-active-route asp-area="common" asp-controller="lookup" class="nav-link">
-                                    <i class="far fa-user-circle nav-icon"></i>
+                                    <i class="far fa-dot-circle-o nav-icon"></i>
                                     <p>@localizer["Lookup Master"]</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a is-active-route asp-area="common" asp-controller="lookupdetail" class="nav-link">
-                                    <i class="far fa-user-circle nav-icon"></i>
+                                    <i class="far fa-dot-circle-o nav-icon"></i>
                                     <p>@localizer["Lookup Detail"]</p>
                                 </a>
                             </li>
@@ -78,10 +78,10 @@
 
                 @if (User.IsInRole("SuperAdmin"))
                 {
-                    <li class="nav-header">@localizer["Academic"]</li>
+                    @* <li class="nav-header">@localizer["Academic"]</li> *@
                     <li is-active-route asp-area="Admin" class="nav-item has-treeview">
                         <a is-active-route asp-area="Admin" class="nav-link">
-                            <i class="nav-icon fas fa-user"></i>
+                            <i class="nav-icon fas fa-graduation-cap"></i>
                             <p>
                                 @localizer["Academic Setup"]
                                 <i class="right fas fa-angle-left"></i>
@@ -90,32 +90,38 @@
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a is-active-route asp-area="Academic" asp-controller="Session" class="nav-link">
-                                    <i class="far fa-user-circle nav-icon"></i>
+                                    <i class="far fa-dot-circle-o nav-icon"></i>
                                     <p>@localizer["Session"]</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a is-active-route asp-area="Academic" asp-controller="Faculty" class="nav-link">
-                                    <i class="far fa-user-circle nav-icon"></i>
+                                    <i class="far fa-dot-circle-o nav-icon"></i>
                                     <p>@localizer[LocalizerConstant.FACULTY]</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a is-active-route asp-area="Academic" asp-controller="Department" class="nav-link">
-                                    <i class="far fa-user-circle nav-icon"></i>
+                                    <i class="far fa-dot-circle-o nav-icon"></i>
                                     <p>@localizer[LocalizerConstant.DEPARTMENT]</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a is-active-route asp-area="Academic" asp-controller="Program" class="nav-link">
-                                    <i class="far fa-user-circle nav-icon"></i>
+                                    <i class="far fa-dot-circle-o nav-icon"></i>
                                     <p>@localizer[LocalizerConstant.PROGRAM]</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a is-active-route asp-area="Academic" asp-controller="Batch" class="nav-link">
-                                    <i class="far fa-user-circle nav-icon"></i>
+                                    <i class="far fa-dot-circle-o nav-icon"></i>
                                     <p>@localizer[LocalizerConstant.BATCH]</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a is-active-route asp-area="Academic" asp-controller="Course" class="nav-link">
+                                    <i class="far fa-dot-circle-o nav-icon"></i>
+                                    <p>@localizer[LocalizerConstant.COURSE]</p>
                                 </a>
                             </li>
                         </ul>
@@ -123,10 +129,10 @@
                 }
                 @if (User.IsInRole("SuperAdmin"))
                 {
-                    <li class="nav-header">@localizer["Student Management"]</li>
+                    @* <li class="nav-header">@localizer["Student Management"]</li> *@
                     <li is-active-route asp-area="Student" class="nav-item has-treeview">
                         <a is-active-route asp-area="Student" class="nav-link">
-                            <i class="nav-icon fas fa-user"></i>
+                            <i class="nav-icon fas fa-users"></i>
                             <p>
                                 @localizer[LocalizerConstant.STUDENT]
                                 <i class="right fas fa-angle-left"></i>
@@ -135,13 +141,13 @@
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a is-active-route asp-area="Student" asp-controller="StudentBasicInfo" class="nav-link">
-                                    <i class="far fa-user-circle nav-icon"></i>
+                                    <i class="far fa-dot-circle-o nav-icon"></i>
                                     <p>@localizer[LocalizerConstant.MENU_ADMISSION_FORM]</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a is-active-route asp-area="Student" asp-controller="StudentBasicInfo" asp-action="StudentList" class="nav-link">
-                                    <i class="far fa-user-circle nav-icon"></i>
+                                    <i class="far fa-dot-circle-o nav-icon"></i>
                                     <p>@localizer[LocalizerConstant.MENU_STUDENT_LIST]</p>
                                 </a>
                             </li>
@@ -149,7 +155,7 @@
                         </ul>
                     </li>
                 }
-                <li class="nav-header">@localizer["Master"]</li>
+                @* <li class="nav-header">@localizer["Master"]</li> *@
                 <li is-active-route asp-area="Utilities" class="nav-item has-treeview">
                     <a is-active-route asp-area="Utilities" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -163,29 +169,6 @@
                             <a is-active-route class="nav-link">
                                 <i class="far fa-file-archive nav-icon"></i>
                                 <p>@localizer["Document"]</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li is-active-route asp-area="Catalog" class="nav-item has-treeview">
-                    <a is-active-route asp-area="Catalog" class="nav-link">
-                        <i class="nav-icon fas fa-archive"></i>
-                        <p>
-                            @localizer["Catalog"]
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a is-active-route asp-area="Catalog" asp-controller="Product" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>@localizer["Product"]</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a is-active-route asp-area="Catalog" asp-controller="Brand" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>@localizer["Brand"]</p>
                             </a>
                         </li>
                     </ul>

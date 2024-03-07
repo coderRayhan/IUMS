@@ -48,6 +48,7 @@ namespace IUMS.Infrastructure.Extensions
             services.AddTransient<ILookupRepository, LookupRepository>();
             services.AddTransient<ILookupDetailRepository, LookupDetailRepository>();
             services.AddTransient<IStudentBasicInfoRepository, StudentBasicInfoRepository>();
+            services.AddTransient<ICourseRepository, CourseRepository>();
             services.AddTransient<IBrandCacheRepository, BrandCacheRepository>();
             services.AddTransient<ILogRepository, LogRepository>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();

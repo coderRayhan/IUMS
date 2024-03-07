@@ -7,8 +7,8 @@
 @{
     var requestCulture = Context.Features.Get<IRequestCultureFeature>();
     var cName = requestCulture.RequestCulture.Culture.Name;
-    var title = "Batch";
-    var menuUrl = "Academic > Batch";
+    var title = "Course";
+    var menuUrl = "Academic > Course";
 
 }
 @model BatchViewModel
@@ -80,7 +80,7 @@
             <button type="button" class="btn btn-dark" id="btnSearch">Search</button>  &nbsp;&nbsp;
 
             @{
-                <a onclick="jQueryModalGet('/academic/batch/OnGetCreateOrEdit','Batch')" class="btn btn-dark">
+                <a onclick="jQueryModalGet('/academic/course/OnGetCreateOrEdit','@title')" class="btn btn-dark">
                     <i class="fa fa-plus-square-o" aria-hidden="true"></i> &nbsp;&nbsp; Add New
                 </a>
             }
@@ -93,7 +93,7 @@
 
 
 @section Scripts
-    {
+{
     <script>
 
         //$(document).ready(function () {
@@ -105,13 +105,12 @@
         });
 
         function loadData() {
-            var facultyId = $('#FacultyId1').val();
-            var departmentId = $('#DepartmentId1').val();
             var programId = $('#ProgramId1').val();
 
-            $('#empTable').html('');
-            $('#viewAll').load('/academic/batch/LoadAll?FacultyId=' + facultyId + '&DepartmentId=' + departmentId + '&ProgramId=' + programId);
+            $('#viewAll').html('');
+            $('#viewAll').load(`/academic/course/LoadAll?ProgramId=${programId}`);
         }
+
         $("#FacultyId1").change(function () {
             var cName = '@cName';
             var facultyId = $('#FacultyId1').val();

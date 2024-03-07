@@ -1,0 +1,124 @@
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+@inject IHtmlLocalizer<SharedResource> localizer
+@using IUMS.Application.Constants
+@using IUMS.Web
+@using IUMS.Web.Areas.Academic.Models
+@using IUMS.Web.Extensions
+@using Microsoft.AspNetCore.Localization
+@{
+    var SLNo = 1;
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cName = requestCulture.RequestCulture.Culture.Name;
+    var title = "Course";
+}
+@model IEnumerable<CourseViewModel>
+<div class="card">
+    <div class="card-body table-responsive">
+        <table id="courseTable" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
+            <thead class="thead-dark">
+                <tr>
+                    <th width="5%">@localizer[LocalizerConstant.SL]</th>
+                    <th>@localizer[LocalizerConstant.MENU_FACULTY]</th>
+                    <th>@localizer[LocalizerConstant.DEPARTMENT]</th>
+                    <th>@localizer[LocalizerConstant.MENU_PROGRAM]</th>
+                    <th>@localizer[LocalizerConstant.MENU_COURSE]</th>
+                    <th>@localizer[LocalizerConstant.COURSE_CODE]</th>
+                    <th>@localizer[LocalizerConstant.COURSE_TYPE]</th>
+
+                    <th>@localizer[LocalizerConstant.CREDITHOUR]</th>
+                    <th>@localizer[LocalizerConstant.CONTACTTHOUR]</th>
+                    <th>@(cName == "en" ? "Total Class" : "মোট ক্লাস")</th>
+                    <th>@localizer[LocalizerConstant.STATUS]</th>
+                    <th> @localizer[LocalizerConstant.ACTIONS]</th>
+                </tr>
+            </thead>
+            <tbody id="courseTableBody">
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td align="center">
+
+                            @(cName == "en" ? SLNo.ToString() : ViewExtensions.ConvertToUniCode(SLNo))
+                            @{
+                                SLNo++;
+                            }
+
+                        </td>
+                        <td>
+                            @(cName == "en" ? item.FacultyName : item.FacultyNameBN)
+                        </td>
+                        <td>
+                            @(cName == "en" ? item.DepartmentName : item.DepartmentNameBN)
+                        </td>
+                        <td>
+                            @(cName == "en" ? item.ProgramName : item.ProgramNameBN)
+                        </td>
+                        <td>
+                            @item.CourseName
+                        </td>
+                        <td>
+                            @item.CourseCode
+                        </td>
+                        <td>
+                            @if(item.CourseTypeId == 1)
+                            {
+                                <span>Regular</span>
+                            }
+                            else
+                            {
+                                <span>Pre-Requisite</span>
+                            }
+                        </td>
+                        <td>
+                            @item.CreditHour
+                        </td>
+                        <td>
+                            @item.ConductHour
+                        </td>
+                        <td>
+                            @item.TotalClass
+                        </td>
+
+                        <td>
+                            @if (item.IsActive)
+                            {
+                                <button class="customActiveBtn">Active</button>
+                            }
+                            else
+                            {
+                                <button class="customInactiveBtn">Inactive</button>
+                            }
+                        </td>
+                        <td text-right">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Action
+                                </button>
+                                <div class="dropdown-menu shadow animated--grow-in">
+                                    @{
+                                        <a onclick="jQueryModalGet('/academic/course/OnGetCreateOrEdit?id=@item.Id','@title')" class="dropdown-item"><i class="fas fa-pencil-alt"></i>  Edit</a>
+                                    }
+
+                                    <form id="form_delete_@item.Id" asp-area="academic" asp-controller="course" method="post" asp-action="OnPostDelete" asp-route-id="@item.Id" onsubmit="return jQueryModalDelete(this)">
+                                        <a href="javascript:$('#form_delete_@item.Id').submit();" class="dropdown-item"><i class="fas fa-trash-alt"></i>  Delete</a>
+                                    </form>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        if ('@cName' == 'en') {
+            var res = true;
+        } else {
+            var res = false;
+        }
+        $("#courseTable").DataTable({ "ordering": res });
+    });
+</script>

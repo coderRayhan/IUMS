@@ -286,3 +286,10 @@ a:hover {
 .main-header {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle drop shadow */
 }
+
+.btnFormSave {
+    color: #ffffff;
+    background-color: #343a40;
+    border-color: #343a40;
+    box-shadow: none;
+}

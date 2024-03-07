@@ -26,8 +26,8 @@ function initTheme() {
     darkSwitch.checked = darkThemeSelected;
     if (darkThemeSelected) {
         document.body.setAttribute('data-theme', 'dark');
-        $('#navigationBar').addClass('navbar-dark').removeClass('navbar-light');
-        $('#sideBar').addClass('sidebar-dark-primary').removeClass('sidebar-light-primary');
+        //$('#navigationBar').addClass('navbar-dark').removeClass('navbar-light');
+        //$('#sideBar').addClass('sidebar-dark-primary').removeClass('sidebar-light-primary');
         $('.content-wrapper').attr('style', 'background-color: #111');
         $('.card').attr('style', 'background-color: #212121');
         $('.main-footer').attr('style', 'background-color: #212121');
@@ -39,8 +39,8 @@ function initTheme() {
     }
     else {
         document.body.removeAttribute('data-theme');
-        $('#sideBar').addClass('sidebar-light-primary').removeClass('sidebar-dark-primary');
-        $('#navigationBar').removeClass('navbar-dark').addClass('navbar-light');
+        //$('#sideBar').addClass('sidebar-light-primary').removeClass('sidebar-dark-primary');
+        //$('#navigationBar').removeClass('navbar-dark').addClass('navbar-light');
         $('.content-wrapper').attr('style', 'background-color: #f4f6f9');
         $('.card').attr('style', 'background-color: #ffffff');
         $('.main-footer').attr('style', 'background-color: #ffffff');

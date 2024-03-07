@@ -41,6 +41,7 @@ namespace AspNetCoreHero.Boilerplate.Infrastructure.DbContexts
         public DbSet<LookupDetail> LookupDetails { get; set; }
         public DbSet<StudentBasicInfo> StudentBasicInfos { get; set; }
         public DbSet<StudentEducationalInfo> StudentEducationalInfos { get; set; }
+        public DbSet<Course> Courses { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

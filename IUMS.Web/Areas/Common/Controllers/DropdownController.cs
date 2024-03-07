@@ -1,4 +1,5 @@
 ﻿using IUMS.Application.Constants;
+using IUMS.Application.Features.Academic.Courses.Queries;
 using IUMS.Application.Features.Academic.Department.Queries.GetFilteredDeptByFaculty;
 using IUMS.Application.Features.Common.Queries;
 using IUMS.Web.Abstractions;
@@ -27,5 +28,14 @@ public class DropdownController : BaseController<DropdownController>
         object[] parameterList = new object[] { departmentId };
         var list = await _mediator.Send(new CommonDropdownQuery(CommonDropdownConstants.GET_ALL_PROGRAMS, parameterList));
         return list.Data;
+    }
+
+    public async Task<IEnumerable<CourseByProgramResponse>> FilterCourseByProgram(int programId)
+    {
+        var res = await _mediator.Send(new CourseByProgramQuery(programId));
+        if (res.Succeeded)
+            return res.Data;
+        else
+            return null;
     }
 }

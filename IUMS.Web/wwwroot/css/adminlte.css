@@ -170,12 +170,12 @@ a {
     }
 
     a:not([href]) {
-        color: inherit;
+        /*color: inherit;*/
         text-decoration: none;
     }
 
         a:not([href]):hover {
-            color: inherit;
+            /*color: inherit;*/
             text-decoration: none;
         }
 
@@ -12320,7 +12320,7 @@ body:not(.layout-fixed).layout-navbar-fixed.text-sm .wrapper .main-sidebar {
 
     .layout-top-nav .wrapper .main-sidebar {
         bottom: inherit;
-        height: inherit;
+        /*height: inherit;*/
     }
 
     .layout-top-nav .wrapper .content-wrapper,
@@ -12450,7 +12450,7 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .main-header::bef
 }
 
 :not(.layout-fixed) .main-sidebar {
-    height: inherit;
+    /*height: inherit;*/
     min-height: 100%;
     position: absolute;
     top: 0;
