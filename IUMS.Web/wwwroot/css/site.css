@@ -293,3 +293,7 @@ a:hover {
     border-color: #343a40;
     box-shadow: none;
 }
+
+.btnFormSave:hover{
+    color:#fff !important;
+}
