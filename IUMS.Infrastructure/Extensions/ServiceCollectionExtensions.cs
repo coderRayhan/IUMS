@@ -4,7 +4,6 @@ using AspNetCoreHero.Boilerplate.Application.Interfaces.Repositories;
 using AspNetCoreHero.Boilerplate.Infrastructure.CacheRepositories;
 using AspNetCoreHero.Boilerplate.Infrastructure.DbContexts;
 using AspNetCoreHero.Boilerplate.Infrastructure.Repositories;
-using AutoMapper;
 using IUMS.Application.Interfaces.Contexts;
 using IUMS.Application.Interfaces.Repositories;
 using IUMS.Application.Interfaces.Repositories.Academic;
@@ -49,6 +48,7 @@ namespace IUMS.Infrastructure.Extensions
             services.AddTransient<ILookupDetailRepository, LookupDetailRepository>();
             services.AddTransient<IStudentBasicInfoRepository, StudentBasicInfoRepository>();
             services.AddTransient<ICourseRepository, CourseRepository>();
+            services.AddTransient<ICourseAssignRepository, CourseAssignRepository>();
             services.AddTransient<IBrandCacheRepository, BrandCacheRepository>();
             services.AddTransient<ILogRepository, LogRepository>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();

@@ -1,4 +1,4 @@
-﻿using AspNetCoreHero.Boilerplate.Application.Interfaces.Repositories;
+﻿using IUMS.Application.Interfaces.Repositories;
 using IUMS.Application.Interfaces.Repositories.Academic;
 using IUMS.Domain.Entities.Academic;
 using Microsoft.EntityFrameworkCore;

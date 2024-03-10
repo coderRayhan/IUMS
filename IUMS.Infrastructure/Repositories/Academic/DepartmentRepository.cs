@@ -1,12 +1,10 @@
-﻿using AspNetCoreHero.Boilerplate.Application.Interfaces.Repositories;
+﻿using IUMS.Application.Interfaces.Repositories;
 using IUMS.Application.Interfaces.Repositories.Academic;
 using IUMS.Domain.Entities.Academic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Distributed;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace IUMS.Infrastructure.Repositories.Academic

@@ -1,5 +1,5 @@
-﻿using AspNetCoreHero.Boilerplate.Application.Interfaces.Repositories;
-using AspNetCoreHero.Boilerplate.Infrastructure.DbContexts;
+﻿using AspNetCoreHero.Boilerplate.Infrastructure.DbContexts;
+using IUMS.Application.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;

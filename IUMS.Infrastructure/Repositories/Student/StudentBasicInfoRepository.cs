@@ -1,6 +1,5 @@
-﻿using AspNetCoreHero.Boilerplate.Application.Interfaces.Repositories;
+﻿using IUMS.Application.Interfaces.Repositories;
 using IUMS.Application.Interfaces.Repositories.Student;
-using IUMS.Domain.Entities.Common;
 using IUMS.Domain.Entities.Student;
 using IUMS.Infrastructure.CacheKeys;
 using Microsoft.EntityFrameworkCore;

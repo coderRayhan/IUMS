@@ -26,6 +26,7 @@ namespace AspNetCoreHero.Boilerplate.Application.Interfaces.Contexts
         DbSet<Program> Programs { get; set; }
         DbSet<Batch> Batches { get; set; }
         public DbSet<Course> Courses { get; set; }
+        public DbSet<CourseAssign> CourseAssigns { get; set; }
         #endregion
 
         #region Common

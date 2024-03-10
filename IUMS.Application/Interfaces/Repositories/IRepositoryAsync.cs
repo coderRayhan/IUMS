@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AspNetCoreHero.Boilerplate.Application.Interfaces.Repositories
+namespace IUMS.Application.Interfaces.Repositories
 {
     public interface IRepositoryAsync<T> where T : class
     {

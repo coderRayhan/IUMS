@@ -1,5 +1,4 @@
-﻿using AspNetCoreHero.Boilerplate.Application.Interfaces.Repositories;
-using AspNetCoreHero.Boilerplate.Application.Interfaces.Shared;
+﻿using AspNetCoreHero.Boilerplate.Application.Interfaces.Shared;
 using AspNetCoreHero.Boilerplate.Infrastructure.DbContexts;
 using IUMS.Application.Interfaces.Repositories;
 using System;
