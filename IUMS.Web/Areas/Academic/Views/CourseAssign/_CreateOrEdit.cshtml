@@ -78,4 +78,23 @@
             </div>
         </div>
     </div>
+    <div class="row px-2">
+        <div class="col-md-6">
+            <div class="form-group">
+                @(
+                    await Component.InvokeAsync<CommonViewComponent>(new
+                    {
+                        name = "BatchId",
+                        id = "BatchId",
+                        entityId = Model.BatchId,
+                        query = CommonDropdownConstants.GET_BATCH_BY_SESSION_PROGRAM,
+                        parameters = new object[] { Model.SessionId, Model.ProgramId },
+                        labelText = "Batch",
+                        isRequired = true,
+                        isLabelRequired = true
+                    })
+                    )
+            </div>
+        </div>
+    </div>
 </form>
