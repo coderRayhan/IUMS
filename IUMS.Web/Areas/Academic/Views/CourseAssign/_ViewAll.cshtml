@@ -1,2 +1,101 @@
-﻿@using IUMS.Web.Areas.Academic.Models;
-@model CourseAssignViewModel
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+@inject IHtmlLocalizer<SharedResource> localizer
+@using IUMS.Application.Constants
+@using IUMS.Web
+@using IUMS.Web.Areas.Academic.Models;
+@using Microsoft.AspNetCore.Localization
+@model IEnumerable<CourseAssignViewModel>
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cName = requestCulture.RequestCulture.Culture.Name;
+    var title = "Course Assign";
+}
+<div class="card">
+    <div class="card-body table-responsive">
+        <table id="courseAssignTable" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
+            <thead class="thead-dark">
+                <tr>
+                    <th>@localizer["Session"]</th>
+                    <th>@localizer[LocalizerConstant.MENU_FACULTY]</th>
+                    <th>@localizer[LocalizerConstant.MENU_DEPARTMENT]</th>
+                    <th>@localizer[LocalizerConstant.MENU_PROGRAM]</th>
+                    <th>@localizer[LocalizerConstant.BATCH]</th>
+                    <th>@localizer[LocalizerConstant.ACADEMIC_SEMESTER]</th>
+                    <th>@localizer[LocalizerConstant.COURSE]</th>
+                    <th>@localizer[LocalizerConstant.TOTAL_MARKS]</th>
+                    <th>@localizer[LocalizerConstant.CONTINUOUS_ASSESMENT]</th>
+                    <th>@localizer[LocalizerConstant.TERM_FINAL]</th>
+                    <th>@localizer[LocalizerConstant.PASS_MARK]</th>
+                    <th>@localizer[LocalizerConstant.ACTIONS]</th>
+
+                </tr>
+            </thead>
+            <tbody id="batchTableBody">
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @(cName == "en" ? item.SessionName : item.SessionNameBN)
+                        </td>
+                        <td>
+                            @(cName == "en" ? item.FacultyName : item.FacultyNameBN)
+                        </td>
+                        <td>
+                            @(cName == "en" ? item.DepartmentName : item.DepartmentNameBN)
+                        </td>
+                        <td>
+                            @(cName == "en" ? item.ProgramName : item.ProgramNameBN)
+                        </td>
+                        <td>
+                            @(cName == "en" ? item.BatchName : item.BatchNameBN)
+                        </td>
+                        <td>
+                            @(cName == "en" ? item.AcademicSemesterName : item.AcademicSemesterNameBN)
+                        </td>
+                        <td>
+                            @item.CourseName
+                        </td>
+                        <td>
+                            @item.TotalMarks
+                        </td>
+                        <td>
+                            @item.ContinuousAssesment
+                        </td>
+                        <td>
+                            @item.TermFinal
+                        </td>
+                        <td>
+                            @item.PassMark
+                        </td>
+                        <td text-right">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Action
+                                </button>
+                                <div class="dropdown-menu shadow animated--grow-in">
+                                    @{
+                                        <a onclick="jQueryModalGet('/academic/courseassign/OnGetCreateOrEdit?id=@item.Id','@title')" class="dropdown-item"><i class="fas fa-pencil-alt"></i>  Edit</a>
+                                    }
+                                    <form id="form_delete_@item.Id" asp-area="academic" asp-controller="courseassign" method="post" asp-action="OnPostDelete" asp-route-id="@item.Id" onsubmit="return jQueryModalDelete(this)">
+                                        <a href="javascript:$('#form_delete_@item.Id').submit();" class="dropdown-item"><i class="fas fa-trash-alt"></i>  Delete</a>
+                                    </form>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        if ('@cName' == 'en') {
+            var res = true;
+        } else {
+            var res = false;
+        }
+        $("#courseAssignTable").DataTable({ "ordering": res });
+    });
+</script>

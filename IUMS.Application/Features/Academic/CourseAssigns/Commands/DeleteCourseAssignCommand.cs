@@ -31,11 +31,12 @@ internal sealed record DeleteCourseAssignCommandHandler(
             await _repository.DeleteAsync(entity);
 
             await _unitOfWork.Commit(cancellationToken);
+
+            return Result<int>.Success();
         }
         catch (Exception ex)
         {
-
-            throw;
+            return Result<int>.Fail(ex.Message);
         }
         throw new NotImplementedException();
     }

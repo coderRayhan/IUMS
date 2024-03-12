@@ -14,7 +14,7 @@
         <input type="hidden" value="@cName" name="Local" />
         <div class="col-md-6">
             <div class="form-group">
-                <label class="form-label required">@localizer[LocalizerConstant.ACADEMIC_YEAR_NAME]:</label>
+                <label class="form-label required">@localizer[LocalizerConstant.NAME]:</label>
                 <input type="text" asp-for="SessionName" name="SessionName" class="form-control">
                 <span asp-validation-for="SessionName" class="text-danger"></span>
             </div>
@@ -25,14 +25,14 @@
             </div>
 
             <div class="form-group">
-                <label class="form-label required">@localizer[LocalizerConstant.ACADEMIC_YEAR_CODE]:</label>
+                <label class="form-label required">@localizer[LocalizerConstant.CODE]:</label>
                 <input type="text" asp-for="SessionCode" name="SessionCode" class="form-control">
                 <span asp-validation-for="SessionCode" class="text-danger"></span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label class="form-label required">@localizer[LocalizerConstant.ACADEMIC_YEAR_NAME] (@localizer[LocalizerConstant.BANGLA]):</label>
+                <label class="form-label required">@localizer[LocalizerConstant.NAME] (@localizer[LocalizerConstant.BANGLA]):</label>
                 <input type="text" asp-for="SessionNameBN" name="SessionNameBN" class="form-control">
                 <span asp-validation-for="SessionNameBN" class="text-danger"></span>
             </div>

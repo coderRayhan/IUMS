@@ -1,6 +1,8 @@
 ﻿using AspNetCoreHero.Abstractions.Domain;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace IUMS.Domain.Entities.Academic;
+[Table("Aca_CourseAssigns")]
 public class CourseAssign : AuditableEntity
 {
     public int SessionId { get; set; }

@@ -25,4 +25,6 @@ public class CourseAssignResponse
     public decimal TermFinal { get; set; }
     public decimal PassMark { get; set; }
     public int BatchId { get; set; }
+    public string BatchName { get; set; }
+    public string BatchNameBN { get; set; }
 }

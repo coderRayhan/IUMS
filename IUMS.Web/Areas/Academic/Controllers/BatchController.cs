@@ -127,10 +127,10 @@ namespace IUMS.Web.Areas.Academic.Controllers
             }
         }
 
-  
+
         public async Task<List<BatchViewModel>> GetOnlyBatchName()
         {
-             var response = await _mediator.Send(new GetAllBatchQuery(0, 0, 0));
+            var response = await _mediator.Send(new GetAllBatchQuery(0, 0, 0));
             if (response.Succeeded)
             {
                 var batchtList = _mapper.Map<List<BatchViewModel>>(response.Data);

@@ -4,9 +4,15 @@
 @using IUMS.Web.Views.Shared.Components.Common
 @using IUMS.Application.Constants
 @using IUMS.Web.Areas.Academic.Models;
+@using Microsoft.AspNetCore.Localization
 @model CourseAssignViewModel
 
-<form id="courseAssignForm" asp-area="Academic" asp-controller="CourseAssign" asp-action="OnPostCreateOrEdit" asp-route-id="@Model.Id" method="post" enctype="multipart/form-data">
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cName = requestCulture.RequestCulture.Culture.Name;
+}
+
+<form id="courseAssignForm" asp-area="Academic" asp-controller="CourseAssign" asp-action="OnPostCreateOrEdit" asp-route-id="@Model.Id" method="post" onsubmit="return jQueryModalPost(this);" enctype="multipart/form-data">
     <input type="hidden" asp-for="Id" />
     <div class="row px-2">
         <div class="col-md-6">
@@ -96,5 +102,153 @@
                     )
             </div>
         </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @(
+                    await Component.InvokeAsync<CommonViewComponent>(new
+                    {
+                        name = "CourseId",
+                        id = "CourseId",
+                        entityId = Model.CourseId,
+                        query = CommonDropdownConstants.GET_COURSE_BY_PROGRAM,
+                        parameters = new object[] { Model.ProgramId },
+                        labelText = "Course",
+                        isRequired = true,
+                        isLabelRequired = true
+                    })
+                    )
+            </div>
+        </div>
+    </div>
+    <div class="row px-2">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="form-label">Academic Semester</label>
+                <select class="form-control" asp-for="AcademicSemesterId">
+                    <option value="0">Choose Option</option>
+                    <option value="1">Spring</option>
+                    <option value="2">Summer</option>
+                    <option value="3">Fall</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="form-label">@localizer[LocalizerConstant.TOTAL_MARKS]</label>
+                <input class="form-control" asp-for="TotalMarks" />
+            </div>
+        </div>
+    </div>
+    <div class="row px-2">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="form-label">@localizer[LocalizerConstant.CONTINUOUS_ASSESMENT]</label>
+                <input class="form-control" asp-for="ContinuousAssesment" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="form-label">@localizer[LocalizerConstant.TERM_FINAL]</label>
+                <input class="form-control" asp-for="TermFinal" />
+            </div>
+        </div>
+    </div>
+    <div class="row px-2">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="form-label">@localizer[LocalizerConstant.PASS_MARK]</label>
+                <input class="form-control" asp-for="PassMark" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+            </div>
+        </div>
+    </div>
+    <div class="row px-2 ">
+        <button type="submit" class="btn btn col-12 btnFormSave">Save</button>
     </div>
 </form>
+<script type="text/javascript" language=javascript>
+    $.validator.unobtrusive.parse(document);
+</script>
+
+<script>
+    $(document).ready(function () {
+
+    });
+    $("#FacultyId").change(function () {
+        var cName = '@cName';
+        var facultyId = $('#FacultyId').val();
+        $("#DepartmentId").html('').append("<option Value=''>Choose Option</option>");
+
+        $.get("/common/dropdown/DepartmentsByFaculty", { FacultyId: facultyId }, function (data) {
+            $.each(data, function (index, row) {
+                if (cName == 'en') {
+                    $("#DepartmentId").append("<option value='" + row.id + "'>" + row.departmentName + "</option>")
+
+                } else {
+                    $("#DepartmentId").append("<option value='" + row.id + "'>" + row.departmentNameBN + "</option>")
+
+                }
+
+            })
+        })
+    });
+
+    $("#DepartmentId").change(function () {
+        var cName = '@cName';
+        var departmentId = $('#DepartmentId').val();
+        $("#ProgramId").html('').append("<option Value=''>Choose Option</option>");
+
+        $.get("/common/dropdown/ProgramsByFaculty", { DepartmentId: departmentId }, function (data) {
+            $.each(data, function (index, row) {
+                console.log(row);
+                if (cName == 'en') {
+                    $("#ProgramId").append("<option value='" + row.id + "'>" + row.name + "</option>")
+
+                } else {
+                    $("#ProgramId").append("<option value='" + row.id + "'>" + row.nameBN + "</option>")
+
+                }
+
+            })
+        })
+    });
+
+    // Load Batch options according to ProgramId Change
+    $("#ProgramId").change(function () {
+        const cName = '@cName';
+        let sessionId = $('#SessionId').val();
+        let programId = $('#ProgramId').val();
+        if (!sessionId) {
+            toastNotifyError("Please select session");
+            return;
+        }
+        $("#BatchId").html('').append("<option Value=''>Choose Option</option>");
+        $.get(`/academic/Batch/FilterBatchByProgramId?sessionId=${sessionId}&programId=${programId}`, function (data) {
+            $.each(data, function (index, row) {
+                if (cName == 'en') {
+                    $("#BatchId").append("<option value='" + row.id + "'>" + row.batchName + "</option>")
+                } else {
+                    $("#BatchId").append("<option value='" + row.id + "'>" + row.batchNameBN + "</option>")
+                }
+            })
+        })
+    });
+
+    $("#BatchId").change(function () {
+        let programId = $('#ProgramId').val();
+        if (!programId) {
+            toastNotifyError("Please select program");
+            return;
+        }
+        $("#CourseId").html('').append("<option Value=''>Choose Option</option>");
+        $.get(`/common/dropdown/FilterCourseByProgram?programId=${programId}`, function (data) {
+            $.each(data, function (index, row) {
+                $("#CourseId").append("<option value='" + row.id + "'>" + row.courseName + "</option>")
+            })
+        })
+    });
+
+</script>
