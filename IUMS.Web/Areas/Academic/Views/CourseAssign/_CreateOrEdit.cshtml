@@ -1,2 +1,81 @@
-﻿@using IUMS.Web.Areas.Academic.Models;
+﻿@*@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer*@
+@inject IHtmlLocalizer<SharedResource> localizer
+@using IUMS.Web
+@using IUMS.Web.Views.Shared.Components.Common
+@using IUMS.Application.Constants
+@using IUMS.Web.Areas.Academic.Models;
 @model CourseAssignViewModel
+
+<form id="courseAssignForm" asp-area="Academic" asp-controller="CourseAssign" asp-action="OnPostCreateOrEdit" asp-route-id="@Model.Id" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+    <div class="row px-2">
+        <div class="col-md-6">
+            <div class="form-group">
+                @(
+                    await Component.InvokeAsync<CommonViewComponent>(new
+                    {
+                        name = "SessionId",
+                        id = "SessionId",
+                        entityId = Model.SessionId,
+                        query = CommonDropdownConstants.GET_ALL_ACTIVE_SESSIONS,
+                        labelText = "SessionId",
+                        isRequired = true,
+                        isLabelRequired = true
+                    })
+                    )
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @(
+                    await Component.InvokeAsync<CommonViewComponent>(new
+                    {
+                        name = "FacultyId",
+                        id = "FacultyId",
+                        entityId = Model.FacultyId,
+                        query = CommonDropdownConstants.GET_ALL_FACULTIES,
+                        labelText = "Faculty",
+                        isRequired = true,
+                        isLabelRequired = true
+                    })
+                    )
+            </div>
+        </div>
+    </div>
+    <div class="row px-2">
+        <div class="col-md-6">
+            <div class="form-group">
+                @(
+                    await Component.InvokeAsync<CommonViewComponent>(new
+                    {
+                        name = "DepartmentId",
+                        id = "DepartmentId",
+                        entityId = Model.DepartmentId,
+                        query = CommonDropdownConstants.GET_ALL_DEPARTMENTS,
+                        parameters = new object[] { Model.FacultyId },
+                        labelText = "Department",
+                        isRequired = true,
+                        isLabelRequired = true
+                    })
+                    )
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @(
+                    await Component.InvokeAsync<CommonViewComponent>(new
+                    {
+                        name = "ProgramId",
+                        id = "ProgramId",
+                        entityId = Model.ProgramId,
+                        query = CommonDropdownConstants.GET_ALL_PROGRAMS,
+                        parameters = new object[] { Model.DepartmentId },
+                        labelText = "Program",
+                        isRequired = true,
+                        isLabelRequired = true
+                    })
+                    )
+            </div>
+        </div>
+    </div>
+</form>
