@@ -1,6 +1,7 @@
 ﻿using AspNetCoreHero.Boilerplate.Domain.Entities.Catalog;
 using IUMS.Domain.Entities.Academic;
 using IUMS.Domain.Entities.Common;
+using IUMS.Domain.Entities.Employees;
 using IUMS.Domain.Entities.Student;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -37,6 +38,10 @@ namespace AspNetCoreHero.Boilerplate.Application.Interfaces.Contexts
         #region Student
         DbSet<StudentBasicInfo> StudentBasicInfos { get; set; }
         DbSet<StudentEducationalInfo> StudentEducationalInfos { get; set; }
+        #endregion
+
+        #region Employee
+        public DbSet<Employee> Employees { get; set; }
         #endregion
 
         DbSet<Product> Products { get; set; }

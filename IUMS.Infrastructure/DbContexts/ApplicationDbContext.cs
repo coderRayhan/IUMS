@@ -5,6 +5,7 @@ using AspNetCoreHero.Boilerplate.Domain.Entities.Catalog;
 using AspNetCoreHero.EntityFrameworkCore.AuditTrail;
 using IUMS.Domain.Entities.Academic;
 using IUMS.Domain.Entities.Common;
+using IUMS.Domain.Entities.Employees;
 using IUMS.Domain.Entities.Student;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -43,6 +44,7 @@ namespace AspNetCoreHero.Boilerplate.Infrastructure.DbContexts
         public DbSet<StudentEducationalInfo> StudentEducationalInfos { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<CourseAssign> CourseAssigns { get; set; }
+        public DbSet<Employee> Employees { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
