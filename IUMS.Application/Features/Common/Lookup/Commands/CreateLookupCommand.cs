@@ -6,10 +6,6 @@ using IUMS.Application.Interfaces.Repositories.Common;
 using IUMS.Domain.Entities.Common;
 using MediatR;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -20,8 +16,8 @@ namespace IUMS.Application.Features.Common
         public string Code { get; set; } 
         public string Name { get; set; } 
         public string NameBN { get; set; } 
-        public int ParentId { get; set; } 
-        public string Status { get; set; }
+        public int ParentId { get; set; }
+        public string Status { get; set; } = "A";
     }
 
     public  class CreateLookupCommandHandler : IRequestHandler<CreateLookupCommand, Result<int>>

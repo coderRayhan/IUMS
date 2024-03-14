@@ -1,0 +1,484 @@
+﻿@using IUMS.Application.Constants
+@using IUMS.Web
+@using IUMS.Web.Areas.Employees.Models
+@using IUMS.Web.Views.Shared.Components.Common
+@using Microsoft.AspNetCore.Localization
+@inject IHtmlLocalizer<SharedResource> localizer
+@model EmployeeViewModel
+
+<style>
+    .card {
+        background-color: #FAFAFA !important;
+        border-radius: 0px !important;
+        border: 1px solid #D7E1F4 !important;
+        margin-bottom: 20px;
+    }
+
+    .card-header {
+        background-color: #D7E1F4 !important;
+        border-radius: 0px !important;
+        border: none;
+        padding: 10px;
+    }
+
+    .card-header-title {
+        color: #112140 !important;
+        font-family: 'Inter', sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        text-align: left !important;
+    }
+
+    .card-body {
+        padding-left: 35px !important;
+        padding-right: 35px !important;
+        padding-top: 20px;
+    }
+
+    .disableInput {
+        background: #F2F2F2;
+        border-radius: 5px;
+        border: none;
+        background: #B3B3B3;
+        font-family: 'Inter', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+    }
+
+    label {
+        font-family: 'Inter', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        color: #666666;
+    }
+
+    .pageTitle {
+        border-bottom: 2px solid #D7E1F4;
+        margin: 20px 0px;
+    }
+
+    select.form-control:first-child {
+        font-family: 'Inter',sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        color: #E6E6E6;
+    }
+
+    .inputMsg {
+        margin-top: 10px;
+        background-color: #FCF5CF !important;
+        border-radius: 10px;
+        border: none;
+        font-family: 'Inter', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        color: #112140;
+    }
+
+    .bodyTitle {
+        font-family: 'Inter', sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        color: #3160B9;
+    }
+
+    ::placeholder {
+        opacity: .3;
+    }
+
+    td {
+        border-bottom: 1px solid #B3B3B3;
+    }
+
+    .form-container {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    .btnFile {
+        width: 283px;
+        height: 40px;
+        font-size: 18px;
+        background-color: #3160B9;
+        color: white;
+        border-radius: 5px;
+        align-items: center;
+        margin-top: 10px;
+        display: block;
+        margin: auto;
+    }
+
+    .card-body img {
+        height: 280px;
+        width: 280px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+
+    .statement {
+        background: #F2F7FF;
+        border-radius: 10px;
+        font-weight: 500;
+        font-size: 16px !important;
+        color: #112140;
+        padding: 20px;
+        margin-left: 1px;
+        margin-right: 1px;
+        margin-right: 0px !important;
+    }
+
+    .statementCheck {
+        height: 30px !important;
+        width: 30px !important;
+        border-radius: 30px !important;
+        background: #333333;
+    }
+
+    .btnSubmit {
+        background: linear-gradient(12.31deg, #0157AE -71.06%, #000C3C 101.44%);
+        box-shadow: 0px 20px 25px -10px rgba(1, 49, 117, 0.3);
+        border-radius: 10px;
+        width: 100%;
+        height: 54px;
+        color: white;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 20px;
+        line-height: 19px;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .warning {
+        height: 48px;
+        background: #FCF5CF;
+        border-radius: 10px;
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+
+    .warning-text {
+        position: relative;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 600;
+        font-size: clamp(.5rem, 1.3vw, 1rem);
+        line-height: 16px;
+        color: #112140;
+        display: flex;
+        align-items: center;
+        margin-left: 15px;
+        padding-top: 8px;
+    }
+
+    .custom-file-label::after {
+        background-color: #3160B9;
+        color: white;
+    }
+
+    .select2Disable {
+        pointer-events: none;
+    }
+
+</style>
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cName = requestCulture.RequestCulture.Culture.Name;
+}
+
+<div class="form-container">
+    <div class="pageTitle">
+        <h2>Admission Form</h2>
+    </div>
+    <form asp-controller="Employee" method="post" asp-action="OnPostCreateOrEdit" asp-route-id="@Model.Id" enctype="multipart/form-data">
+        <input type="hidden" asp-for="Id" />
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-header-title">Official Information</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @(
+                                await Component.InvokeAsync<CommonViewComponent>(new
+                                {
+                                    name = "FacultyId",
+                                    id = "FacultyId",
+                                    entityId = Model.FacultyId,
+                                    query = CommonDropdownConstants.GET_ALL_FACULTIES,
+                                    labelText = "Faculty",
+                                    isRequired = true,
+                                    isLabelRequired = true
+                                })
+                                )
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @(
+                                await Component.InvokeAsync<CommonViewComponent>(new
+                                {
+                                    name = "DepartmentId",
+                                    id = "DepartmentId",
+                                    entityId = Model.DepartmentId,
+                                    query = CommonDropdownConstants.GET_ALL_DEPARTMENTS,
+                                    parameters = new object[] { Model.FacultyId },
+                                    labelText = "Department",
+                                    isRequired = true,
+                                    isLabelRequired = true
+                                })
+                                )
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">Employee Id</label>
+                            <input class="form-control" asp-for="EmpId" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">Teacher Short Code</label>
+                            <input class="form-control" asp-for="TeacherShortCode" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">Joining Date</label>
+                            <input class="form-control" type="date" asp-for="JoiningDate" />
+                        </div>
+                    </div>
+                    @* <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">Teacher Short Code</label>
+                            <input class="form-control" asp-for="TeacherShortCode" />
+                        </div>
+                    </div> *@
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-header-title">Personal Information</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label required">Full Name</label>
+                            <input type="text" asp-for="FullName" class="form-control">
+                            <span asp-validation-for="FullName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label required">Full Name Bangla</label>
+                            <input type="text" asp-for="FullNameBN" class="form-control">
+                            <span asp-validation-for="FullNameBN" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">Date of Birth</label>
+                            <input type="date" asp-for="DateOfBirth" class="form-control">
+                            <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">NID No</label>
+                            <input type="text" asp-for="NIDNo" class="form-control">
+                            <span asp-validation-for="NIDNo" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="text" asp-for="Email" class="form-control">
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">Phone Number</label>
+                            <input type="text" asp-for="PhoneNumber" class="form-control">
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @(
+                                await Component.InvokeAsync<CommonViewComponent>(new
+                                {
+                                    name = "GenderId",
+                                    id = "GenderId",
+                                    entityId = Model.GenderId,
+                                    query = CommonDropdownConstants.GET_LOOKUP_DATA_BY_TYPE,
+                                    parameters = new object[] { "gender" },
+                                    labelText = "Gender",
+                                    isRequired = true,
+                                    isLabelRequired = true
+                                })
+                                )
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @(
+                                await Component.InvokeAsync<CommonViewComponent>(new
+                                {
+                                    name = "ReligionId",
+                                    id = "ReligionId",
+                                    entityId = Model.ReligionId,
+                                    query = CommonDropdownConstants.GET_LOOKUP_DATA_BY_TYPE,
+                                    parameters = new object[] { "religion" },
+                                    labelText = "Religion",
+                                    isRequired = true,
+                                    isLabelRequired = true
+                                })
+                                )
+                            <span asp-validation-for="ReligionId" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @(
+                                await Component.InvokeAsync<CommonViewComponent>(new
+                                {
+                                    name = "BloodGroupId",
+                                    id = "BloodGroupId",
+                                    entityId = Model.BloodGroupId,
+                                    query = CommonDropdownConstants.GET_LOOKUP_DATA_BY_TYPE,
+                                    parameters = new object[] { "blood group" },
+                                    labelText = "BloodGroup",
+                                    isRequired = true,
+                                    isLabelRequired = true
+                                })
+                                )
+                            <span asp-validation-for="BloodGroupId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @(
+                                await Component.InvokeAsync<CommonViewComponent>(new
+                                {
+                                    name = "NationalityId",
+                                    id = "NationalityId",
+                                    entityId = Model.NationalityId,
+                                    query = CommonDropdownConstants.GET_LOOKUP_DATA_BY_TYPE,
+                                    parameters = new object[] { "nationality" },
+                                    labelText = "Nationality",
+                                    isRequired = true,
+                                    isLabelRequired = true
+                                })
+                                )
+                            <span asp-validation-for="NationalityId" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" id="hdnLastIndex" value="0" />
+        <div>
+            <button class="btnSubmit" id="btnSubmit" type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts
+{
+
+    <script>
+        $(document).ready(function () {
+
+        });
+
+        // $(function () {
+        //     $("#DateOfBirth").datepicker({
+        //         uiLibrary: 'bootstrap4',
+        //         footer: false,
+        //         size: 'default'
+        //         //format: 'dd/mm/yyyy'
+        //     });
+        // });
+
+        $("#FacultyId").change(function () {
+            var cName = '@cName';
+            var facultyId = $('#FacultyId').val();
+            $("#DepartmentId").html('').append("<option Value=''>Choose Option</option>");
+
+            $.get("/common/dropdown/DepartmentsByFaculty", { FacultyId: facultyId }, function (data) {
+                $.each(data, function (index, row) {
+                    if (cName == 'en') {
+                        $("#DepartmentId").append("<option value='" + row.id + "'>" + row.departmentName + "</option>")
+
+                    } else {
+                        $("#DepartmentId").append("<option value='" + row.id + "'>" + row.departmentNameBN + "</option>")
+
+                    }
+
+                })
+            })
+        });
+
+        $("#photoFile").change(function () {
+            $(this).next('.custom-file-label').html($(this)[0].files[0].name);
+            $("#photoPreview").html("");
+            if (typeof (FileReader) != "undefined") {
+                $("#photoPreview").show();
+                var reader = new FileReader();
+                // if (($(this)[0].files[0].size / 1000) <= 100) {
+                reader.onload = function (e) {
+                    var image = new Image();
+                    image.src = e.target.result;
+                    image.onload = function () {
+                        // if (image.width <= 300 && image.height <= 300) {
+                        $("#photoPreview").append("<img class='img-thumbnail' />");
+                        $("#photoPreview img").attr("src", e.target.result);
+                        $("#photoPreview img").attr("style", "height:200px;width: 200px");
+                        console.log($(this)[0])
+                        // }
+                        // else {
+                        //     $('#photoPreview').append(`<span class="text-danger">Photo must be 300 X 300 pixel</span>`);
+                        //     $("#photoFile").val('');
+                        // }
+                    };
+                }
+                // }
+                // else {
+                //     $('#photoPreview').append(`<span class="text-danger">file size not more than 100 KB</span>`);
+                //     $("#photoFile").val('');
+                // }
+                reader.readAsDataURL($(this)[0].files[0]);
+            } else {
+                alert("This browser does not support FileReader.");
+            }
+        });
+
+    </script>
+
+}

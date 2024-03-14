@@ -18,7 +18,7 @@ internal sealed record GetAllLookupDetailQueryHandler(
     {
         try
         {
-            var sql = "SELECT MD.Id, MD.Name, MD.NameBN, MD.Code, cl.Name AS LookupName, cl.NameBN AS LookupNameBN, MD1.Name AS ParentsName FROM dbo.Com_LookupDetails AS MD LEFT JOIN dbo.Com_LookupDetails AS MD1 ON MD.ParentId = MD1.Id LEFT JOIN dbo.Com_Lookups AS cl ON MD.LookupId = cl.Id ORDER BY MD.CreatedOn DESC";
+            var sql = "SELECT MD.Id, MD.Name, MD.NameBN, MD.Code, cl.Name AS LookupName, cl.NameBN AS LookupNameBN, MD1.Name AS ParentsName, MD.Status FROM dbo.Com_LookupDetails AS MD LEFT JOIN dbo.Com_LookupDetails AS MD1 ON MD.ParentId = MD1.Id LEFT JOIN dbo.Com_Lookups AS cl ON MD.LookupId = cl.Id ORDER BY MD.CreatedOn DESC";
 
             using var connection = _context.CreateConnection();
 

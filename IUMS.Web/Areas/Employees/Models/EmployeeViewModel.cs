@@ -1,14 +1,16 @@
-﻿using AspNetCoreHero.Abstractions.Domain;
-using IUMS.Domain.Entities.Academic;
-using System;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
 
-namespace IUMS.Domain.Entities.Employees;
-[Table("Emp_Employees")]
-public class Employee : AuditableEntity
+namespace IUMS.Web.Areas.Employees.Models;
+
+public class EmployeeViewModel
 {
+    public int Id { get; set; }
     public int FacultyId { get; set; }
+    public string FacultyName { get; set; }
+    public string FacultyNameBN { get; set; }
     public int DepartmentId { get; set; }
+    public string DepartmentName { get; set; }
+    public string DepartmentNameBN { get; set; }
     public string EmpId { get; set; }
     public string TeacherShortCode { get; set; }
     public string FullName { get; set; }
@@ -20,10 +22,16 @@ public class Employee : AuditableEntity
     public DateTime? JoiningDate { get; set; }
     public bool Status { get; set; }
     public int NationalityId { get; set; }
+    public string NationalityName { get; set; }
+    public string NationalityNameBN { get; set; }
     public int GenderId { get; set; }
+    public string GenderName { get; set; }
+    public string GenderNameBN { get; set; }
     public int ReligionId { get; set; }
+    public string ReligionName { get; set; }
+    public string ReligionNameBN { get; set; }
     public int BloodGroupId { get; set; }
+    public string BloodGroup { get; set; }
+    public string BloodGroupBN { get; set; }
     public string EmployeePhotoUrl { get; set; }
-    public virtual Faculty Faculty { get; set; }
-    public virtual Department Department { get; set; }
 }

@@ -1,0 +1,83 @@
+﻿@using IUMS.Application.Constants
+@using IUMS.Web
+@using IUMS.Web.Areas.Employees.Models
+@using Microsoft.AspNetCore.Localization
+@inject IHtmlLocalizer<SharedResource> localizer
+
+@model List<EmployeeViewModel>
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cName = requestCulture.RequestCulture.Culture.Name;
+    var sl = 0;
+}
+
+<div class="card">
+    <div class="card-body table-responsive">
+        <table class="table table-bordered table-striped" id="employeeTable">
+            <thead class="thead-dark">
+                <tr>
+                    <th>@localizer[LocalizerConstant.SL]</th>
+                    <th>@localizer[LocalizerConstant.EMPLOYEE_ID]</th>
+                    <th>@localizer[LocalizerConstant.NAME]</th>
+                    <th>@localizer[LocalizerConstant.FACULTY]</th>
+                    <th>@localizer[LocalizerConstant.DEPARTMENT]</th>
+                    <th>@localizer[LocalizerConstant.GENDER]</th>
+                    <th>@localizer[LocalizerConstant.BLOOD_GROUP]</th>
+                    <th>@localizer[LocalizerConstant.EMAIL]</th>
+                    <th>@localizer[LocalizerConstant.PHONE_NUMBER]</th>
+                    <th>@localizer[LocalizerConstant.STATUS]</th>
+                    <th>@localizer[LocalizerConstant.ACTIONS]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    sl++;
+                    <tr>
+                        <td>@sl</td>
+                        <td>@item.EmpId</td>
+                        <td>@(cName == "en" ? item.FullName : item.FullNameBN)</td>
+                        <td>@(cName == "en" ? item.FacultyName : item.FacultyNameBN)</td>
+                        <td>@(cName == "en" ? item.DepartmentName : item.DepartmentNameBN)</td>
+                        <td>@(cName == "en" ? item.GenderName : item.GenderNameBN)</td>
+                        <td>@(cName == "en" ? item.BloodGroup : item.BloodGroupBN)</td>
+                        <td>@item.Email</td>
+                        <td>@item.PhoneNumber</td>
+                        <td>
+                            @if (item.Status)
+                            {
+                                <span class="badge badge-success">Active</span>
+                            }
+                            else
+                            {
+                                <span class="badge badge-danger">Inactive</span>
+                            }
+                        </td>
+                        <td class="text-right">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Action
+                                </button>
+                                <div class="dropdown-menu shadow animated--grow-in">
+                                    @{
+                                        <a asp-area="Employees" asp-controller="Employee" asp-action="index" asp-route-id="@item.Id" class="dropdown-item"><i class="fas fa-pencil-alt"></i>  Edit</a>
+                                    }
+                                    <form id="form_delete_@item.Id" asp-area="Employees" asp-controller="Employee" method="post" asp-action="OnPostDelete" asp-route-id="@item.Id" onsubmit="return jQueryModalDelete(this)">
+                                        <a href="javascript:$('#form_delete_@item.Id').submit();" class="dropdown-item"><i class="fas fa-trash-alt"></i>  Delete</a>
+                                    </form>
+                                    <form id="form_status_@item.Id" asp-area="Employees" asp-controller="employee" method="post" asp-action="UpdateStatus" asp-route-id="@item.Id" onsubmit="return jQueryModalStatus(this)">
+                                        <a href="javascript:$('#form_status_@item.Id').submit();" class="dropdown-item"><i class="fas fa-pencil-alt"></i>Change Status</a>
+                                    </form>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    $(`#employeeTable`).dataTable();
+</script>

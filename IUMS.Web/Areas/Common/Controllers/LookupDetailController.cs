@@ -44,7 +44,6 @@ public class LookupDetailController : BaseController<LookupDetailController>
             if (response.Succeeded)
             {
                 var lookupDetailViewModel = _mapper.Map<LookupDetailViewModel>(response.Data);
-                lookupDetailViewModel.Status = lookupDetailViewModel.Status == "A" ? "true" : "false";
                 return new JsonResult(new { isValid = true, html = await _viewRenderer.RenderViewToStringAsync("_CreateOrEdit", lookupDetailViewModel) });
             }
             return new JsonResult(new { isValid = false });

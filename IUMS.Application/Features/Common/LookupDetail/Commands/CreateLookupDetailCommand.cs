@@ -20,7 +20,7 @@ public sealed record CreateLookupDetailCommand
     public int ParentId { get; set; }
     public string ParentsName { get; set; }
     public string Description { get; set; }
-    public string Status { get; set; }
+    public string Status { get; set; } = "A";
 }
 
 public class CreateLookupDetailCommandHandler 

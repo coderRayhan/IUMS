@@ -1,0 +1,117 @@
+﻿@inject IHtmlLocalizer<SharedResource> localizer
+@using IUMS.Application.Constants
+@using IUMS.Web
+@using IUMS.Web.Views.Shared.Components.Common
+@using Microsoft.AspNetCore.Localization
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cName = requestCulture.RequestCulture.Culture.Name;
+    var title = "Employee List";
+    var menuUrl = "Employee > Employee List";
+
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <h3>@title</h3>
+        <small>@menuUrl</small>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    @(
+                        await Component.InvokeAsync<CommonViewComponent>(new
+                        {
+                            name = "FacultyId",
+                            id = "FacultyId",
+                            entityId = 0,
+                            query = CommonDropdownConstants.GET_ALL_FACULTIES,
+                            labelText = "Faculty",
+                            isRequired = false,
+                            isLabelRequired = true
+                        })
+                        )
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @(
+                        await Component.InvokeAsync<CommonViewComponent>(new
+                        {
+                            name = "DepartmentId",
+                            id = "DepartmentId",
+                            entityId = 0,
+                            query = CommonDropdownConstants.GET_ALL_DEPARTMENTS,
+                            parameters = new object[] { 0 },
+                            labelText = "Department",
+                            isRequired = false,
+                            isLabelRequired = true
+                        })
+                        )
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @(
+                        await Component.InvokeAsync<CommonViewComponent>(new
+                        {
+                            name = "GenderId",
+                            id = "GenderId",
+                            entityId = 0,
+                            query = CommonDropdownConstants.GET_LOOKUP_DATA_BY_TYPE,
+                            parameters = new object[] { "gender" },
+                            labelText = "Gender",
+                            isRequired = false,
+                            isLabelRequired = true
+                        })
+                        )
+                </div>
+            </div>
+        </div>
+        <div class="text-right mt-2">
+            <button type="button" class="btn btn-success" id="btnSearch">Search</button>  &nbsp;&nbsp;
+        </div>
+    </div>
+</div>
+<div id="viewAll">
+</div>
+
+@section Scripts {
+    <script>
+        $("#FacultyId").change(function () {
+            var cName = '@cName';
+            var facultyId = $('#FacultyId').val();
+            $("#DepartmentId").html('').append("<option Value=''>Choose Option</option>");
+
+            $.get("/common/dropdown/DepartmentsByFaculty", { FacultyId: facultyId }, function (data) {
+                $.each(data, function (index, row) {
+                    if (cName == 'en') {
+                        $("#DepartmentId").append("<option value='" + row.id + "'>" + row.departmentName + "</option>")
+
+                    } else {
+                        $("#DepartmentId").append("<option value='" + row.id + "'>" + row.departmentNameBN + "</option>")
+
+                    }
+
+                })
+            })
+        });
+
+        function loadData() {
+            let facultyId = $(`#FacultyId`).val();
+            let departmentId = $(`#DepartmentId`).val();
+            let genderId = $(`#GenderId`).val();
+
+            $(`body`).removeClass('loaded');
+            $(`#viewAll`).load(`/Employees/Employee/LoadAll?facultyId=${facultyId}&departmentId=${departmentId}&genderId=${genderId}`);
+            $(`body`).addClass('loaded');
+        }
+
+        $(`#btnSearch`).click(() => {
+            loadData();
+        });
+    </script>
+}
