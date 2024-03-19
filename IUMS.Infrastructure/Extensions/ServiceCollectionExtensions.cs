@@ -9,12 +9,14 @@ using IUMS.Application.Interfaces.Repositories;
 using IUMS.Application.Interfaces.Repositories.Academic;
 using IUMS.Application.Interfaces.Repositories.Common;
 using IUMS.Application.Interfaces.Repositories.Employees;
+using IUMS.Application.Interfaces.Repositories.LMS;
 using IUMS.Application.Interfaces.Repositories.Student;
 using IUMS.Infrastructure.DbContexts;
 using IUMS.Infrastructure.Interceptors;
 using IUMS.Infrastructure.Repositories.Academic;
 using IUMS.Infrastructure.Repositories.Common;
 using IUMS.Infrastructure.Repositories.Employees;
+using IUMS.Infrastructure.Repositories.LMS;
 using IUMS.Infrastructure.Repositories.Student;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
@@ -51,7 +53,16 @@ namespace IUMS.Infrastructure.Extensions
             services.AddTransient<IStudentBasicInfoRepository, StudentBasicInfoRepository>();
             services.AddTransient<ICourseRepository, CourseRepository>();
             services.AddTransient<ICourseAssignRepository, CourseAssignRepository>();
+            services.AddTransient<ITeacherAssignRepository, TeacherAssignRepository>();
             services.AddTransient<IEmployeeRepository, EmployeeRepository>();
+
+            services.AddTransient<IChapterClassRepository, ChapterClassRepository>();
+            services.AddTransient<ICourseChapterRepository, CourseChapterRepository>();
+            services.AddTransient<ICourseExamRepository, CourseExamRepository>();
+            services.AddTransient<ICourseMasterRepository, CourseMasterRepository>();
+            services.AddTransient<ICourseQuestionRepository, CourseQuestionRepository>();
+            services.AddTransient<IQuestionOptionRepository, QuestionOptionRepository>();
+
             services.AddTransient<IBrandCacheRepository, BrandCacheRepository>();
             services.AddTransient<ILogRepository, LogRepository>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();

@@ -151,6 +151,8 @@
 
         public const string GET_BATCH_BY_SESSION_PROGRAM = "SELECT Id, BatchName [Name], BatchNameBN [NameBN] FROM Aca_Batches WHERE SessionId = {0} AND ProgramId = {1}";
         public const string GET_COURSE_BY_PROGRAM = "SELECT Id, CONCAT(CourseCode, ' - ', CourseName) Name FROM Aca_Courses WHERE ProgramId = @ProgramId";
+
+        public const string GET_TEACHER = "SELECT Id, CONCAT(EmpId, ' -- ', FullName) [Name], FullNameBN NameBN FROM Emp_Employees";
         #endregion
 
         #region Common

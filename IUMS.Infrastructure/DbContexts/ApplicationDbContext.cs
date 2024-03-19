@@ -1,18 +1,15 @@
-﻿using AspNetCoreHero.Abstractions.Domain;
-using AspNetCoreHero.Boilerplate.Application.Interfaces.Contexts;
+﻿using AspNetCoreHero.Boilerplate.Application.Interfaces.Contexts;
 using AspNetCoreHero.Boilerplate.Application.Interfaces.Shared;
 using AspNetCoreHero.Boilerplate.Domain.Entities.Catalog;
-using AspNetCoreHero.EntityFrameworkCore.AuditTrail;
 using IUMS.Domain.Entities.Academic;
 using IUMS.Domain.Entities.Common;
 using IUMS.Domain.Entities.Employees;
+using IUMS.Domain.Entities.LMS;
 using IUMS.Domain.Entities.Student;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System.Data;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace AspNetCoreHero.Boilerplate.Infrastructure.DbContexts
 {
@@ -45,6 +42,16 @@ namespace AspNetCoreHero.Boilerplate.Infrastructure.DbContexts
         public DbSet<Course> Courses { get; set; }
         public DbSet<CourseAssign> CourseAssigns { get; set; }
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<TeacherAssign> TeacherAssigns { get; set; }
+        public DbSet<CourseMaster> CourseMasters { get; set; }
+        public DbSet<CourseChapter> CourseChapters { get; set; }
+        public DbSet<CourseOutcome> CourseOutcomes { get; set; }
+        public DbSet<CourseFAQ> CourseFAQs { get; set; }
+        public DbSet<ChapterClass> ChapterClasses { get; set; }
+        public DbSet<CourseQuestion> CourseQuestions { get; set; }
+        public DbSet<ExamQuestion> ExamQuestions { get; set; }
+        public DbSet<QuestionOption> QuestionOptions { get; set; }
+        public DbSet<CourseExam> CourseExams { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

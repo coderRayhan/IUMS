@@ -2,6 +2,7 @@
 using IUMS.Domain.Entities.Academic;
 using IUMS.Domain.Entities.Common;
 using IUMS.Domain.Entities.Employees;
+using IUMS.Domain.Entities.LMS;
 using IUMS.Domain.Entities.Student;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -28,6 +29,7 @@ namespace AspNetCoreHero.Boilerplate.Application.Interfaces.Contexts
         DbSet<Batch> Batches { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<CourseAssign> CourseAssigns { get; set; }
+        public DbSet<TeacherAssign> TeacherAssigns { get; set; }
         #endregion
 
         #region Common
@@ -42,6 +44,18 @@ namespace AspNetCoreHero.Boilerplate.Application.Interfaces.Contexts
 
         #region Employee
         public DbSet<Employee> Employees { get; set; }
+        #endregion
+
+        #region LMS
+        public DbSet<CourseMaster> CourseMasters { get; set; }
+        public DbSet<CourseChapter> CourseChapters { get; set; }
+        public DbSet<CourseOutcome> CourseOutcomes { get; set; }
+        public DbSet<CourseFAQ> CourseFAQs { get; set; }
+        public DbSet<ChapterClass> ChapterClasses { get; set; }
+        public DbSet<CourseQuestion> CourseQuestions { get; set; }
+        public DbSet<ExamQuestion> ExamQuestions { get; set; }
+        public DbSet<QuestionOption> QuestionOptions { get; set; }
+        public DbSet<CourseExam> CourseExams { get; set; }
         #endregion
 
         DbSet<Product> Products { get; set; }

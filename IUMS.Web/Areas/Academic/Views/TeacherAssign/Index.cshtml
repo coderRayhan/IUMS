@@ -1,0 +1,59 @@
+﻿@inject IHtmlLocalizer<SharedResource> localizer
+@using IUMS.Application.Constants
+@using IUMS.Web
+@using IUMS.Web.Areas.Academic.Models
+@using IUMS.Web.Views.Shared.Components.Common
+@using Microsoft.AspNetCore.Localization
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cName = requestCulture.RequestCulture.Culture.Name;
+    var title = "Teacher Assign";
+    var menuUrl = "Academic > Teacher Assign";
+
+}
+@model TeacherAssignViewModel
+
+<div class="row">
+    <div class="col-md-6">
+        <h3>@title</h3>
+        <small>@menuUrl</small>
+    </div>
+</div>
+
+@* <div class="card">
+    <div class="card-body"> *@
+        <div>
+        </div>
+        <div class="text-right mt-2">
+            <button type="button" class="btn btn-dark" id="btnSearch">Search</button>  &nbsp;&nbsp;
+
+            @{
+                <a onclick="jQueryModalGet('/academic/teacherassign/OnGetCreateOrEdit','@title')" class="btn btn-dark">
+                    <i class="fa fa-plus-square-o" aria-hidden="true"></i> &nbsp;&nbsp; Add New
+                </a>
+            }
+
+        </div>
+@*     </div>
+</div> *@
+<div id="viewAll">
+</div>
+
+
+@section Scripts
+{
+    <script>
+
+        //$(document).ready(function () {
+        //    $("#batchTable").DataTable();
+        //});
+
+        $('#btnSearch').on('click', function () {
+            loadData();
+        });
+
+        function loadData() {
+            $('#viewAll').load('/academic/teacherAssign/LoadAll');
+        }
+    </script>
+}
