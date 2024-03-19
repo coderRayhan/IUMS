@@ -35,7 +35,7 @@ namespace IUMS.Application.Features
             try
             {
                 var list = await Repository.GetListAsync();
-                if (list.Any(l=> l.SessionId == request.SessionId && l.ProgramId == request.ProgramId))
+                if (list.Any(l=> l.SessionId == request.SessionId && l.ProgramId == request.ProgramId && l.BatchName == request.BatchName))
                 {
                     return Result<int>.Fail("Same Batch Already Exits In Academic year");
                 }
