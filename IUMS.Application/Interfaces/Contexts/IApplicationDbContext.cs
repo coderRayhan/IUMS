@@ -56,6 +56,10 @@ namespace AspNetCoreHero.Boilerplate.Application.Interfaces.Contexts
         public DbSet<ExamQuestion> ExamQuestions { get; set; }
         public DbSet<QuestionOption> QuestionOptions { get; set; }
         public DbSet<CourseExam> CourseExams { get; set; }
+        public DbSet<StudentEvaluation> StudentEvaluations { get; set; }
+        public DbSet<StudentEvaluationDetail> StudentEvaluationDetails { get; set; }
+        public DbSet<HostConfig> HostConfigs { get; set; }
+        public DbSet<ZoomClass> ZoomClasses { get; set; }
         #endregion
 
         DbSet<Product> Products { get; set; }

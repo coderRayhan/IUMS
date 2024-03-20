@@ -33,6 +33,8 @@
     <Folder Include="Areas\Common\Data\" />
     <Folder Include="Areas\Dashboard\Data\" />
     <Folder Include="Areas\Dashboard\Models\" />
+    <Folder Include="Areas\LMS\Data\" />
+    <Folder Include="Areas\LMS\Views\" />
     <Folder Include="Areas\Settings\Data\" />
     <Folder Include="Areas\Settings\Models\" />
     <Folder Include="Areas\Settings\Views\" />

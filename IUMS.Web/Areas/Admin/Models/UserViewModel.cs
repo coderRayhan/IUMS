@@ -1,4 +1,6 @@
-﻿namespace AspNetCoreHero.Boilerplate.Web.Areas.Admin.Models
+﻿using IUMS.Domain.Enums;
+
+namespace AspNetCoreHero.Boilerplate.Web.Areas.Admin.Models
 {
     public class UserViewModel
     {
@@ -9,7 +11,8 @@
         public bool IsActive { get; set; } = true;
         public string Password { get; set; }
         public string ConfirmPassword { get; set; }
-
+        public int EmpId { get; set; }
+        public EmployeeType EmployeeType { get; set; }
         public byte[] ProfilePicture { get; set; }
         public bool EmailConfirmed { get; set; }
         public string Id { get; set; }

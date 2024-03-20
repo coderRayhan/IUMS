@@ -13,6 +13,9 @@ public class CourseResponse
     public int ProgramId { get; set; }
     public string ProgramName { get; set; }
     public string ProgramNameBN { get; set; }
+    public int SessionId { get; set; }
+    public string SessionName { get; set; }
+    public string SessionNameBN { get; set; }
     public int FacultyId { get; set; }
     public string FacultyName { get; set; }
     public string FacultyNameBN { get; set; }

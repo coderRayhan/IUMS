@@ -1,4 +1,7 @@
 ﻿@using AspNetCoreHero.Boilerplate.Web.Areas.Admin.Models
+@using IUMS.Application.Constants
+@using IUMS.Domain.Enums
+@using IUMS.Web.Views.Shared.Components.Common
 @model UserViewModel
 <form id="create-form" method="post" asp-area="Admin" asp-controller="User" asp-action="OnPostCreate" onsubmit="return jQueryModalPost(this);">
     <div class="form-group row">
@@ -36,6 +39,32 @@
             <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                @(
+                    await Component.InvokeAsync<CommonViewComponent>(new
+                    {
+                        name = "EmpId",
+                        id = "EmpId",
+                        entityId = Model.EmpId,
+                        query = CommonDropdownConstants.GET_TEACHER,
+                        labelText = "Employee",
+                        isRequired = true,
+                        isLabelRequired = true
+                    })
+                    )
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="form-label">Employee Type</label>
+                <select asp-for="EmployeeType" class="form-control" asp-items="@Html.GetEnumSelectList<EmployeeType>()">
+                    <option value="0">Choose Option</option>
+                </select>
+            </div>
+        </div>
+    </div>
     <div class="form-group justify-content-between" style="margin-bottom: 0px !important">
         <button type="submit" class="btn btn-success">Save</button>
         <button type="submit" class="btn btn-default close-button" data-dismiss="modal">Cancel</button>
@@ -43,4 +72,10 @@
 </form>
 <script type="text/javascript" language=javascript>
     $.validator.unobtrusive.parse(document);
+</script>
+<script>
+    $('#EmpId').select2({
+        theme: 'bootstrap4',
+        placeholder: 'Select Employee'
+    });
 </script>
