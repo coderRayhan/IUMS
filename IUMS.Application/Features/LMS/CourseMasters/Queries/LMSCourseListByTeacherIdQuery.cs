@@ -20,7 +20,7 @@ namespace IUMS.Application.Features.LMS.CourseMasters.Queries
 		{
 			try
 			{
-                var sql = "SELECT CM.Id, C.ProgramName, C.BatchName, C.SemesterName, C.CourseCode, C.CourseName, CM.CourseObjective, CM.CourseOutline, CM.CourseAssignId FROM LMS_CourseMasters CM INNER JOIN vwLMSCourseDetails C ON CM.CourseAssignId = C.CourseAssignId WHERE 1 = 1 AND CM.TeacherId = @TeacherId ORDER BY CM.Id DESC";
+                var sql = "SELECT CM.Id, C.ProgramName, C.BatchName, C.CourseCode, C.CourseName, CM.CourseObjective, CM.CourseOutline, CM.CourseAssignId, CASE C.AcademicSemesterId WHEN 1 THEN 'Spring' WHEN 2 THEN 'Fall' ELSE 'Summer' END AcademicSemesterName FROM LMS_CourseMasters CM INNER JOIN vwLMSCourseDetails C ON CM.CourseAssignId = C.CourseAssignId WHERE 1 = 1 AND CM.TeacherId = @TeacherId ORDER BY CM.Id DESC";
 
                 using var connection = _dapper.CreateConnection();
 

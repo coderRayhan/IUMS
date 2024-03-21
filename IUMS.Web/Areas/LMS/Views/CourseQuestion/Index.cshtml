@@ -1,0 +1,94 @@
+﻿@using IUMS.Application.Constants
+@using IUMS.Web.Areas.LMS.Models
+@using Microsoft.AspNetCore.Localization;
+@model CourseQuestionViewModel
+@{
+	var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+	var cName = requestCulture.RequestCulture.Culture.Name;
+}
+<style>
+	label {
+		color: #666666;
+	}
+
+	.courseInfoDiv {
+		/*display:block;*/
+		background-color: azure;
+		color: #112140;
+		border-radius: 10px;
+	}
+
+		.courseInfoDiv label {
+			color: #112140;
+			font-weight: 700;
+			font-size: 18px;
+		}
+</style>
+<div class="row px-2">
+	<div class="col-md-6">
+		<h3>Course Question</h3>
+	</div>
+	<div class="col-md-6">
+		<div class="pull-right">
+			<a onclick="jQueryModalGet('/LMS/CourseQuestion/OnGetCreateOrEdit?courseMasterId=@Model.CourseMasterId','Question Setup')" class="btn btn-dark">
+				<i class="fa fa-plus-square-o" aria-hidden="true"></i> &nbsp;&nbsp; Add New
+			</a>
+			<a class="btn btn-info" onclick="reportGenerateById('8', 'LmsCourseQuestionReport', 'pdf', @Model.CourseMasterId)"><i class="fa fa-print" aria-hidden="true"></i> &nbsp;Report &nbsp;</a>
+		</div>
+	</div>
+</div>
+<div class="card">
+	<div class="card-body courseInfoDiv">
+		<div class="row px-2" id="courseInfoDiv">
+			<div class="col-md-6">
+				<div>
+					<input type="hidden" asp-for="CourseMasterId" id="courseMaster" />
+					@localizer["Session"]: <label>@(cName == "en" ? Model.SessionName : Model.SessionNameBN)</label>
+				</div>
+				<div>
+					@localizer[LocalizerConstant.FACULTY] : <label>@(cName == "en" ? Model.FacultyName : Model.FacultyNameBN)</label>
+				</div>
+				<div>
+					@localizer[LocalizerConstant.DEPARTMENT] : <label>@(cName == "en" ? Model.DepartmentName : Model.DepartmentNameBN)</label>
+				</div>
+				<div>
+					@localizer[LocalizerConstant.PROGRAM] : <label>@(cName == "en" ? Model.ProgramName : Model.ProgramNameBN)</label>
+				</div>
+				<div>
+					@localizer[LocalizerConstant.PART] : <label>@Model.PartName</label>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div>
+					@localizer[LocalizerConstant.COURSE_CODE] : <label>@Model.CourseCode</label>
+				</div>
+				<div>
+					@localizer[LocalizerConstant.COURSE_TITLE] : <label>@Model.CourseName</label>
+				</div>
+				<div>
+					@localizer[LocalizerConstant.CONTACTTHOUR] : <label>@Model.ConductHour</label>
+				</div>
+				<div>
+					@localizer[LocalizerConstant.CREDITHOUR] : <label>@Model.CreditHour</label>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="viewAll"></div>
+@section Scripts {
+	<script>
+		$(document).ready(() => {
+			loadData();
+		});
+		function loadData() {
+			let courseMasterId = $('#courseMaster').val();
+			//$.get(`/LMS/CourseQuestion/LoadAll?CourseMasterId=${courseMasterId}`, (res) => {
+			//	var encodedStr = res.replace(/[\u00A0-\u9999<>\&]/g, i => '&#'+i.charCodeAt(0)+';');
+			//	document.getElementById('viewAll').innerHTML = encodedStr;
+			//	console.log(encodedStr);
+			//});
+			$('#viewAll').load(`/LMS/CourseQuestion/LoadAll?CourseMasterId=${courseMasterId}`);
+		}
+	</script>
+}

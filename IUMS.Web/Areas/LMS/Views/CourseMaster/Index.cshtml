@@ -1,0 +1,56 @@
+﻿@using IUMS.Web
+@using IUMS.Web.Areas.LMS.Models
+@using Microsoft.AspNetCore.Localization;
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+@model CourseMasterViewModel
+@{
+	var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+	var cName = requestCulture.RequestCulture.Culture.Name;
+	var title = "Course Master";
+	var menuUrl = "LMS > Course Master";
+}
+<style>
+	label {
+		color: #666666;
+	}
+
+	.ajax-loader {
+		display: none;
+		background-color: rgba(255,255,255,0.7);
+		position: absolute;
+		z-index: +100 !important;
+		width: 100%;
+		height: 100%;
+	}
+
+		.ajax-loader img {
+			position: relative;
+			top: 50%;
+			left: 50%;
+		}
+</style>
+<div class="row px-2">
+	<div class="col-md-6">
+		<h3>@title</h3>
+		<small>@menuUrl</small>
+	</div>
+	<div class="col-md-6">
+		<div class="pull-right">
+			<a tabindex="1" href="/LMS/CourseMaster/CreateOrEdit" class="btn btn-dark">
+				<i class="fa fa-plus-square"></i> Create
+			</a>
+		</div>
+	</div>
+</div>
+<div id="viewAll"></div>
+@section Scripts {
+	<script>
+		$(document).ready(() => {
+			loadData();
+		});
+
+		loadData = () => {
+			$('#viewAll').load(`/LMS/CourseMaster/LoadAll`);
+		}
+	</script>
+}

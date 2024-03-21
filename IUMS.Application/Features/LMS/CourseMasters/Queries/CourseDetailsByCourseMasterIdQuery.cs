@@ -17,7 +17,7 @@ namespace IUMS.Application.Features.LMS.CourseMasters.Queries
 		{
 			try
 			{
-				var sql = "SELECT CourseMasterId, AdmissionYearId, AdmissionYearName, AdmissionYearNameBN, FacultyId, FacultyName, FacultyNameBN, DepartmentId, DepartmentName, DepartmentNameBN, ProgramId, ProgramName, ProgramNameBN, BatchId, BatchName, BatchNameBN, SemesterId, SemesterName, SemesterNameBN, CourseId, CourseName, CourseCode, ConductHour, CreditHour FROM vwLMSCourseDetails WHERE CourseMasterId = @CourseMasterId";
+				var sql = "SELECT CourseMasterId, SessionId, SessionName, SessionNameBN, FacultyId, FacultyName, FacultyNameBN, DepartmentId, DepartmentName, DepartmentNameBN, ProgramId, ProgramName, ProgramNameBN, BatchId, BatchName, BatchNameBN, AcademicSemesterId, CASE AcademicSemesterId WHEN 1 THEN 'Spring' WHEN 2 THEN 'Fall' ELSE 'Summer' END AcademicSemesterName, CourseId, CourseName, CourseCode, ConductHour, CreditHour FROM vwLMSCourseDetails WHERE CourseMasterId = @CourseMasterId";
 
 				using var connection = _dapper.CreateConnection();
 

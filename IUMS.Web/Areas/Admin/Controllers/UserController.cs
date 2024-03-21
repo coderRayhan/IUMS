@@ -61,6 +61,8 @@ namespace AspNetCoreHero.Boilerplate.Web.Areas.Admin.Controllers
                     FirstName = userModel.FirstName,
                     LastName = userModel.LastName,
                     EmailConfirmed = true,
+                    EmpId = userModel.EmpId,
+                    EmployeeType = userModel.EmployeeType,
                 };
                 var result = await _userManager.CreateAsync(user, userModel.Password);
                 if (result.Succeeded)

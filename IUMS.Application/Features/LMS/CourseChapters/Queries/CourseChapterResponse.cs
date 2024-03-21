@@ -13,7 +13,7 @@ public class CourseChapterResponse
     public decimal Duration { get; set; }
     [StringLength(500)]
     public string Description { get; set; }
-    public List<ChapterClassResponse> ChapterClasses { get; set; }
+    public List<ChapterClassResponse> ChapterClasses { get; set; } = new();
 }
 public class GetChapterListByCourseMasterResponse
 {

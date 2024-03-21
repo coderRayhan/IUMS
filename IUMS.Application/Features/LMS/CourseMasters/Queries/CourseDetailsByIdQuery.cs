@@ -20,7 +20,7 @@ namespace IUMS.Application.Features.LMS.CourseMasters.Queries
 		{
 			try
 			{
-                var sql = "SELECT C.Id, S.SessionName, S.SessionNameBN, F.FacultyName, F.FacultyNameBN, D.DepartmentName, D.DepartmentNameBN, P.ProgramName, P.ProgramNameBN, C.CourseCode, C.CourseName, C.CreditHour, C.ConductHour, C.TotalClass, CT.Name CourseTypeName, CT.NameBN CourseTypeNameBN FROM Aca_CourseAssigns AS CA INNER JOIN Aca_Sessions AS S ON CA.SessionId = S.Id INNER JOIN Aca_Faculties AS F ON CA.FacultyId = F.Id INNER JOIN Aca_Departments AS D ON CA.DepartmentId = D.Id INNER JOIN Aca_Programs AS P ON CA.ProgramId = P.Id INNER JOIN Aca_Courses AS C ON CA.CourseId = C.Id INNER JOIN Com_LookupDetails AS CT ON C.CourseTypeId = CT.Id WHERE CA.Id =  @Id";
+                var sql = "SELECT C.Id, S.SessionName, S.SessionNameBN, F.FacultyName, F.FacultyNameBN, D.DepartmentName, D.DepartmentNameBN, P.ProgramName, P.ProgramNameBN, C.CourseCode, C.CourseName, C.CreditHour, C.ConductHour, C.TotalClass FROM Aca_CourseAssigns AS CA INNER JOIN Aca_Sessions AS S ON CA.SessionId = S.Id INNER JOIN Aca_Faculties AS F ON CA.FacultyId = F.Id INNER JOIN Aca_Departments AS D ON CA.DepartmentId = D.Id INNER JOIN Aca_Programs AS P ON CA.ProgramId = P.Id INNER JOIN Aca_Courses AS C ON CA.CourseId = C.Id WHERE CA.Id = @Id";
 
                 using var connection = _dapper.CreateConnection();
 

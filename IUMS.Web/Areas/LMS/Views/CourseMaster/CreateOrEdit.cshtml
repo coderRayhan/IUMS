@@ -1,0 +1,677 @@
+﻿@using IUMS.Application.Constants
+@using IUMS.Web
+@using IUMS.Web.Areas.LMS.Models
+@using IUMS.Web.Views.Shared.Components.Common
+@using Microsoft.AspNetCore.Localization
+
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cName = requestCulture.RequestCulture.Culture.Name;
+}
+@model CourseMasterViewModel
+
+<style>
+    .card {
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 20px;
+        border-radius: 7px;
+    }
+
+    .title {
+        color: #012766;
+        font-family: 'Inter', sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 26px;
+        /*padding: 10px 0px 0px 15px;*/
+        margin-left: 15px;
+        margin: 10px 15px 0px 15px;
+        border-bottom: solid 1px #D7E1F4;
+    }
+
+    .form-control[readonly] {
+        color: #112140;
+        background-color: #D7E1F4;
+        font-weight: 600;
+        font-size: 18px;
+    }
+
+    .table {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    small {
+        height: 48px;
+        background: #FCF5CF;
+        border-radius: 10px;
+        color: #112140;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 600;
+        padding: 5px;
+    }
+
+    .iconStyle {
+        font-size: 15px;
+        color: #F2D022;
+        padding-right: 10px
+    }
+</style>
+<div class="wrapper">
+    <form method="post" asp-area="LMS" asp-controller="CourseMaster" asp-action="OnPostCreateOrEdit" enctype="multipart/form-data">
+        <div class="card">
+            <div class="card-title">
+                <div class="title">
+                    @localizer[LocalizerConstant.ASSIGN_COURSE]
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row mt-2 px-2">
+                    <div class="col-md-4 form-group">
+                        <input type="hidden" asp-for="TeacherId" />
+                        @(
+                            await Component.InvokeAsync<CommonViewComponent>(new
+                            {
+                                name = "SessionId",
+                                id = "SessionId",
+                                entityId = Model.SessionId,
+                                query = CommonDropdownConstants.GET_LMS_SESSION_BY_TEACHER,
+                                parameters = new object[] { Model.TeacherId },
+                                labelText = "SessionId",
+                                isRequired = true,
+                                isLabelRequired = true
+                            })
+                            )
+                    </div>
+                    <div class="col-md-4 form-group">
+                        @(
+                            await Component.InvokeAsync<CommonViewComponent>(new
+                            {
+                                name = "FacultyId",
+                                id = "FacultyId",
+                                entityId = Model.FacultyId,
+                                query = CommonDropdownConstants.GET_LMS_FACULTY_BY_TEACHER,
+                                parameters = new object[] { Model.TeacherId, Model.SessionId },
+                                labelText = "Faculty",
+                                isRequired = true,
+                                isLabelRequired = true
+                            })
+                            )
+                    </div>
+                    <div class="col-md-4 form-group">
+                        @(
+                            await Component.InvokeAsync<CommonViewComponent>(new
+                            {
+                                name = "DepartmentId",
+                                id = "DepartmentId",
+                                entityId = Model.DepartmentId,
+                                query = CommonDropdownConstants.GET_LMS_DEPARTMENT_BY_TEACHER,
+                                parameters = new object[] { Model.TeacherId, Model.FacultyId },
+                                labelText = "Department",
+                                isRequired = true,
+                                isLabelRequired = true
+                            })
+                            )
+                    </div>
+                </div>
+
+                <div class="row px-2">
+                    <div class="col-md-4 form-group">
+                        @(
+                            await Component.InvokeAsync<CommonViewComponent>(new
+                            {
+                                name = "ProgramId",
+                                id = "ProgramId",
+                                entityId = Model.ProgramId,
+                                query = CommonDropdownConstants.GET_LMS_PROGRAM_BY_TEACHER,
+                                parameters = new object[] { Model.TeacherId, Model.FacultyId, Model.DepartmentId },
+                                labelText = "Program",
+                                isRequired = true,
+                                isLabelRequired = true
+                            })
+                            )
+                    </div>
+                    <div class="col-md-4 form-group">
+                        @(
+                            await Component.InvokeAsync<CommonViewComponent>(new
+                            {
+                                name = "BatchId",
+                                id = "BatchId",
+                                entityId = Model.BatchId,
+                                query = CommonDropdownConstants.GET_LMS_BATCH_BY_TEACHER,
+                                parameters = new object[] { Model.TeacherId, Model.ProgramId },
+                                labelText = "Batch",
+                                isRequired = true,
+                                isLabelRequired = true
+                            })
+                            )
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <div class="form-group">
+                            <label class="form-label">Academic Semester</label>
+                            <select class="form-control" asp-for="AcademicSemesterId">
+                                <option value="0">Choose Option</option>
+                                <option value="1">Spring</option>
+                                <option value="2">Summer</option>
+                                <option value="3">Fall</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row px-2">
+                    <div class="col-md-8">
+                        <label class="form-label required">@localizer[LocalizerConstant.COURSE_TITLE]</label>
+                        <select asp-for="CourseAssignId" class="form-control select2bs4" id="CourseId">
+                        </select>
+                        <span asp-validation-for="CourseAssignId" class="text-danger"></span>
+                        @*@(await Component.InvokeAsync<CourseByProgramViewComponent>(new { selectedId = "CourseId", courseId = Model.CourseId, programId = Model.ProgramId, labelclass = "text-right", isRequired = true }))*@
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-title">
+                <div class="title">
+                    @localizer[LocalizerConstant.COURSE_DETAILS]
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row px-2">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">@localizer[LocalizerConstant.COURSE_CODE]:</label>
+                            <input class="form-control" id="courseCode" readonly />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">@localizer[LocalizerConstant.COURSE_TITLE]:</label>
+                            <input class="form-control" id="courseTitle" readonly />
+                        </div>
+                    </div>
+                </div>
+                <div class="row px-2">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">@localizer[LocalizerConstant.CREDITHOUR]:</label>
+                            <input class="form-control" id="creditHour" readonly />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">@localizer[LocalizerConstant.CONTACTTHOUR]:</label>
+                            <input class="form-control" id="conductHour" readonly />
+                        </div>
+                    </div>
+                    @* <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="form-label">@localizer[LocalizerConstant.COURSE_TYPE]:</label>
+                            <input class="form-control" id="courseType" readonly />
+                        </div>
+                    </div> *@
+                </div>
+                <div class="row px-2 card">
+                    <div class="form-group col-md-12 card-body">
+                        <label class="form-label required">@localizer[LocalizerConstant.COURSE_OBJECTIVE]:</label>
+                        <textarea class="form-control d-none" asp-for="CourseObjective" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="row px-2 card">
+                    <div class="form-group col-md-12 card-body">
+                        <label class="form-label required">@localizer[LocalizerConstant.COURSE_OUTLINE]:</label>
+                        <textarea class="form-control d-none" asp-for="CourseOutline" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="row px-2">
+                    <div class="col-md-6 form-group">
+                        <label class="form-label">@localizer["Text Book:"]</label>
+                        <input class="form-control" asp-for="TextBook" />
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label class="form-label">@localizer["Reference Book:"]</label>
+                        <input class="form-control" asp-for="ReferenceBook" />
+                    </div>
+                    @* <div class="form-group col-md-4">
+                        <input type="hidden" id="realCourseId" value="0" />
+                        <label class="form-label">@localizer[LocalizerConstant.PART]:</label>
+                        <select asp-for="PartId" class="form-control">
+                            <option value="0">Choose Option</option>
+                        </select>
+                    </div> *@
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-title">
+                <div class="title">
+                    @localizer["Add Chapters"]
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row px-2">
+                    <table id="chapterTable" class="table table-responsive">
+                        <thead class="thead-dark text-center">
+                            <tr>
+                                <th width="5%" class="required">Chapter No.</th>
+                                <th width="30%" class="required">Chapter Title</th>
+                                <th width="12%" class="required">Duration (in minutes)</th>
+                                <th width="55%">Chapter Description</th>
+                                <th width="10%"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="chapterTableBody">
+                            @for (int i = 0; i < Model.CourseChapters.Count; i++)
+                            {
+                                <tr>
+                                    <td>
+                                        <input type="hidden" asp-for="CourseChapters[i].Id" />
+                                        <input type="number" asp-for="CourseChapters[i].ChapterNo" value="1" class="form-control" readonly />
+                                    </td>
+                                    <td>
+                                        <input class="form-control" asp-for="CourseChapters[i].Title" />
+                                        <span asp-validation-for="CourseChapters[i].Title" class="text-danger"></span>
+                                    </td>
+                                    <td>
+                                        <input class="form-control" asp-for="CourseChapters[i].Duration" />
+                                        <span asp-validation-for="CourseChapters[i].Duration" class="text-danger"></span>
+                                    </td>
+                                    <td>
+                                        <input class="form-control" asp-for="CourseChapters[i].Description" />
+                                    </td>
+                                    <td id="ChapterAddRemovetd__@i">
+                                        <button class="addItem" type="button" onclick="addItem(this, 'chapterTable')" id="btnAdd__@i" style="margin-right: 5px;"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                        <button class="rmvItem" type="button" onclick="onDeleteItem(this, '#chapterTableBody')" id="btnRemove__@i" data-index="id__@i"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-title">
+                <div class="title">
+                    @localizer["Course Outcomes"]
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row px-2">
+                    <table id="outcomeTable" class="table">
+                        @*todo table-responsive*@
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Serial</th>
+                                <th>Details</th>
+                                <th width="10%"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="outcomeTableBody">
+                            @for (int i = 0; i < Model.CourseOutcomes.Count; i++)
+                            {
+                                <tr>
+                                    <td width="5%">
+                                        <input type="number" asp-for="CourseOutcomes[i].Serial" class="form-control" value="1" readonly />
+                                        <span asp-validation-for="CourseOutcomes[i].Serial" class="text-danger"></span>
+                                    </td>
+                                    <td>
+                                        <input type="hidden" asp-for="CourseOutcomes[i].Id" />
+                                        <input class="form-control" asp-for="CourseOutcomes[i].Outcome" />
+                                        <span asp-validation-for="CourseOutcomes[i].Outcome" class="text-danger"></span>
+                                    </td>
+                                    <td id="outcomeAddRemovetd__@i">
+                                        <button class="addItem" type="button" onclick="addItem(this, 'outcomeTable')" id="btnAdd__@i" style="margin-right: 5px;"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                        <button class="rmvItem" type="button" onclick="onDeleteItem(this, '#outcomeTableBody')" id="btnRemove__@i" data-index="id__@i"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-title">
+                <div class="title">
+                    @localizer["Course FAQ"]
+                </div>
+            </div>
+            <div class="card-body">
+                <div id="questionFaqDiv">
+                    @for (int i = 0; i < Model.CourseFAQs.Count; i++)
+                    {
+                        <div class="faqContainer">
+                            <div class="row px-2">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label class="form-label">Question @(i + 1):</label>
+                                        <input class="form-control" asp-for="@Model.CourseFAQs[i].Question" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row px-2">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="form-label">Answer @(i + 1):</label>
+                                        <textarea class="form-control" asp-for="@Model.CourseFAQs[i].Answer" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        @*<input type="hidden" id="hdnId" value="@i" />*@
+                    }
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button type="button" onclick="appendDiv()" class="btn btn-outline-dark"><i class="fa fa-lg fa-plus-square"></i>&nbsp;&nbsp; ADD MORE QUESTIONS</button>
+                </div>
+            </div>
+        </div>
+        <button type="submit" style="width:100%" class="btn btn-dark">Save</button>
+    </form>
+</div>
+@section Scripts {
+    <script type="text/javascript" language=javascript>
+        $.validator.unobtrusive.parse(document);
+        $(document).ready(() => {
+            $("#CourseId").select2({
+                placeholder: "Select Course",
+                theme: "bootstrap4"
+            }
+            );
+
+            $('#CourseOutline').richText({
+                height: 150,
+                urls: false,
+                table: false,
+                imageUpload: false,
+                fileUpload: false,
+                videoEmbed: false,
+                removeStyles: false,
+                code: false,
+                maxlength: 3000,
+                lengthIncludeHTML: true,
+            });
+            $('#CourseObjective').richText({
+                height: 150,
+                urls: false,
+                table: false,
+                imageUpload: false,
+                fileUpload: false,
+                videoEmbed: false,
+                removeStyles: false,
+                code: false,
+                maxlength: 3000,
+                lengthIncludeHTML: true,
+            });
+        })
+
+        $('#SessionId').change(() => {
+            var cName = '@cName';
+            var sessionId = $('#SessionId').val();
+            let program = $("#ProgramId").val();
+            $("#FacultyId").html('').append("<option Value=''>Choose Option</option>");
+
+            $.get("/common/DropDown/FacultyListFromTeacherAssign", { teacherId: @Model.TeacherId, SessionId: sessionId }, function (data) {
+                $.each(data, function (index, row) {
+                    if (cName == 'en') {
+                        $("#FacultyId").append("<option value='" + row.id + "'>" + row.name + "</option>")
+                    } else {
+                        $("#FacultyId").append("<option value='" + row.id + "'>" + row.nameBN + "</option>")
+                    }
+                })
+            });
+            if (program) {
+                loadBatch();
+            }
+        });
+
+        // Faculty onchange event handler
+        $("#FacultyId").change(function () {
+            var cName = '@cName';
+            var facultyId = $('#FacultyId').val();
+            $("#DepartmentId").html('').append("<option Value=''>Choose Option</option>");
+            $.get("/common/Dropdown/DepartmentListFromTeacherAssign", { teacherId: @Model.TeacherId, facultyId: facultyId }, function (data) {
+                $.each(data, function (index, row) {
+                    if (cName == 'en') {
+                        $("#DepartmentId").append("<option value='" + row.id + "'>" + row.name + "</option>")
+                    } else {
+                        $("#DepartmentId").append("<option value='" + row.id + "'>" + row.nameBN + "</option>")
+                    }
+                })
+            })
+        });
+
+        // Department onchange event handler
+        $("#DepartmentId").change(function () {
+            var cName = '@cName';
+            var facultyId = $('#FacultyId').val();
+            var departmentId = $('#DepartmentId').val();
+            $("#ProgramId").html('').append("<option Value=''>Choose Option</option>");
+            $.get("/common/dropdown/ProgramListFromTeacherAssign", { teacherId: @Model.TeacherId, facultyId: facultyId, departmentId: departmentId }, function (data) {
+                $.each(data, function (index, row) {
+                    if (cName == 'en') {
+                        $("#ProgramId").append("<option value='" + row.id + "'>" + row.name + "</option>")
+                    } else {
+                        $("#ProgramId").append("<option value='" + row.id + "'>" + row.nameBN + "</option>")
+                    }
+                })
+            })
+        });
+        $("#ProgramId").change(function () {
+            loadBatch();
+        });
+
+        //calling loadCourse() on semester change
+        $("#AcademicSemesterId").change(() => {
+            loadCourse();
+        });
+
+        //load batch by admission year and programid
+        var loadBatch = () => {
+            const cName = '@cName';
+            let programId = $('#ProgramId').val();
+            $("#BatchId").html('').append("<option Value=''>Choose Option</option>");
+            $.get(`/common/dropdown/BatchListFromTeacherAssign?teacherId=${@Model.TeacherId}&programId=${programId}`, function (data) {
+                $.each(data, function (index, row) {
+                    if (cName == 'en') {
+                        $("#BatchId").append("<option value='" + row.id + "'>" + row.name + "</option>")
+                    } else {
+                        $("#BatchId").append("<option value='" + row.id + "'>" + row.nameBN + "</option>")
+                    }
+                })
+            })
+        }
+
+        //load course by faculty, department and programid
+        loadCourse = () => {
+            var choose = '@localizer[LocalizerConstant.CHOOSE_OPTION]';
+            var course = '@Model.CourseId';
+            let facultyId = $("#FacultyId").val();
+            let departmentId = $("#DepartmentId").val();
+            let programId = $("#ProgramId").val();
+            let batchId = $("#BatchId").val();
+            let academicSemesterId = $('#AcademicSemesterId').val();
+            if (!facultyId) {
+                toastNotifyError('Please select faculty');
+                return;
+            }
+            if (!departmentId) {
+                toastNotifyError('Please select department');
+                return;
+            }
+            if (!programId) {
+                toastNotifyError('Please select program');
+                return;
+            }
+            $("#CourseId").html('').append("<option Value=''>" + choose + "</option>");
+            $.get("/common/dropdown/CourseAssignListFromTeacherAssignByTeacher", { teacherId: @Model.TeacherId, facultyId: facultyId, departmentId: departmentId, programId: programId, batchId: batchId, academicSemesterId: academicSemesterId }, (data) => {
+                $.each(data, (index, value) => {
+                    if (parseInt(course) == value.id)
+                        $("#CourseId").append(`<option selected value="${value.id}">${value.name}</option>`);
+                    else
+                        $("#CourseId").append(`<option value="${value.id}">${value.name}</option>`);
+                })
+            })
+        }
+
+        // course onchange event handler
+        $('#CourseId').change(() => {
+            let courseId = $('#CourseId').val();
+            $.ajax({
+                method: 'POST',
+                url: `/LMS/CourseMaster/GetCourseData/${courseId}`,
+                success: function (data) {
+                    $('#courseCode').val(data.courseCode);
+                    $('#courseTitle').val(data.courseName);
+                    $('#creditHour').val(data.creditHour);
+                    $('#conductHour').val(data.conductHour);
+                    $("#realCourseId").val(data.id);
+                }
+            });
+        });
+
+        var getPartData = () => {
+            $("#PartId").html("").append(`<option value="0">Choose Option</option>`);
+            var admissionYearId = $('#AdmissionYearId').val();
+            var facultyId = $('#FacultyId').val();
+            var departmentId = $('#DepartmentId').val();
+            var programId = $('#ProgramId').val();
+            var courseId = $('#realCourseId').val();
+            var batchId = $("#BatchId").val();
+            var semesterId = $("#SemesterId").val();
+            var teacherId = $('#TeacherId').val();
+            $.get("/common/dropdown/GetPartListFromTeacherAssign", {
+                TeacherId: teacherId, admissionYearId: admissionYearId, FacultyId: facultyId,
+                DepartmentId: departmentId, ProgramId: programId, BatchId: batchId, SemesterId: semesterId, courseId: courseId
+            }, (data) => {
+                $.each(data, (index, value) => {
+                    console.log(value);
+                    $("#PartId").append(`<option value="${value.id}">${value.name}</option>`);
+
+                })
+            })
+        };
+
+        $('#BatchId').change(() => {
+            var choose = '@localizer[LocalizerConstant.CHOOSE_OPTION]';
+            const cName = '@cName';
+            let admissionYearId = $('#AdmissionYearId').val();
+            let facultyId = $("#FacultyId").val();
+            let departmentId = $("#DepartmentId").val();
+            let programId = $("#ProgramId").val();
+            let batchId = $("#BatchId").val();
+            if (!facultyId) {
+                toastNotifyError('Please select faculty');
+                return;
+            }
+            if (!departmentId) {
+                toastNotifyError('Please select department');
+                return;
+            }
+            if (!programId) {
+                toastNotifyError('Please select program');
+                return;
+            }
+            $("#SemesterId").html('').append("<option Value=''>" + choose + "</option>");
+            $.get("/common/dropdown/GetRunningSemesterListByAdmissionYear", { AdmissionYearId: admissionYearId, FacultyId: facultyId, DepartmentId: departmentId, ProgramId: programId, BatchId: batchId }, (data) => {
+                $.each(data, (index, value) => {
+                    if (cName == "en")
+                        $("#SemesterId").append(`<option value="${value.id}">${value.name}</option>`);
+                    else
+                        $("#SemesterId").append(`<option value="${value.id}">${value.nameBN}</option>`);
+                })
+            })
+        })
+
+        // function to append new row in table
+        function addItem(btn, tableId) {
+            var table = document.getElementById(tableId);
+            var rows = table.getElementsByTagName('tr');
+            var rowOuterHtml = rows[rows.length - 1].outerHTML;
+            var lastRowIndex = rows.length - 2;
+            var nextRowIndex = eval(lastRowIndex) + 1;
+            rowOuterHtml = rowOuterHtml.replaceAll(`[${lastRowIndex}]`, `[${nextRowIndex}]`);
+            rowOuterHtml = rowOuterHtml.replaceAll(`__${lastRowIndex}`, `__${nextRowIndex}`);
+            rowOuterHtml = rowOuterHtml.replaceAll(`(${lastRowIndex})`, `(${nextRowIndex})`);
+            rowOuterHtml = rowOuterHtml.replaceAll(`z${lastRowIndex}__`, `z${nextRowIndex}__`);
+            rowOuterHtml = rowOuterHtml.replaceAll(`_${lastRowIndex}`, `_${nextRowIndex}`);
+            var newRow = table.insertRow();
+            newRow.innerHTML = rowOuterHtml;
+
+            if (tableId == 'chapterTable') {
+                $(`#CourseChapters_${nextRowIndex}__ChapterNo`).val(eval(parseInt(nextRowIndex) + 1))
+                $(`#CourseChapters_${nextRowIndex}__Id`).val(0);
+                $(`#ChapterAddRemovetd__${lastRowIndex}`).hide();
+            }
+            else if (tableId == 'outcomeTable') {
+                let serial = $(`#CourseOutcomes_${lastRowIndex}__Serial`).val();
+                $(`#CourseOutcomes_${nextRowIndex}__Serial`).val(parseInt(serial) + 1)
+                $(`#CourseOutcomes_${nextRowIndex}__Id`).val(0);
+                $(`#outcomeAddRemovetd__${lastRowIndex}`).hide();
+            }
+        }
+
+        //function to delete row from details table
+        function onDeleteItem(el, tableBodyId) {
+            var rowCount = $(tableBodyId).children().length;
+            var idIndex = $(el).attr('id').split('__')[1];
+            var prevIndex = idIndex - 1;
+            if (tableBodyId == '#chapterTableBody') {
+                var id = `#CourseChapters_${idIndex}__Id`;
+                if ($(id).val() < 1) {
+                    if (rowCount > 1) {
+                        $(el).closest("tr").remove();
+                        $(`#ChapterAddRemovetd__${prevIndex}`).show();
+                    }
+                    else {
+                        toastNotifyError("This row can not be deleted");
+                        return false;
+                    }
+                }
+            }
+            else if (tableBodyId == '#outcomeTableBody') {
+                var id = `#CourseOutcomes_${idIndex}__Id`;
+                if ($(id).val() < 1) {
+                    if (rowCount > 1) {
+                        $(el).closest("tr").remove();
+                        $(`#outcomeAddRemovetd__${prevIndex}`).show();
+                    }
+                    else {
+                        toastNotifyError("This row can not be deleted");
+                        return false;
+                    }
+                }
+            }
+        }
+
+
+        //function to append FAQ div
+        function appendDiv() {
+            var elements = $('.faqContainer');
+            let divCount = elements.length;
+            let html = `
+                                                <div class="faqContainer">
+                                                    <div class="row px-2">
+                                                        <div class="col-md-8">
+                                                            <div class="form-group">
+                                                                <label class="form-label">Question ${divCount + 1}:</label>
+                                                                <input class="form-control" id="CourseFAQs_${divCount}__Question" name="CourseFAQs[${divCount}].Question" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row px-2">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                            <label class="form-label">Answer ${divCount + 1}:</label>
+                                                            <textarea class="form-control" id="CourseFAQs_${divCount}__Answer" name="CourseFAQs[${divCount}].Answer" rows="3"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                               <hr />
+                                        `
+            $('#questionFaqDiv').append(html);
+        }
+    </script>
+}

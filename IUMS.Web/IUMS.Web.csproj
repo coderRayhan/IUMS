@@ -34,13 +34,13 @@
     <Folder Include="Areas\Dashboard\Data\" />
     <Folder Include="Areas\Dashboard\Models\" />
     <Folder Include="Areas\LMS\Data\" />
-    <Folder Include="Areas\LMS\Views\" />
     <Folder Include="Areas\Settings\Data\" />
     <Folder Include="Areas\Settings\Models\" />
     <Folder Include="Areas\Settings\Views\" />
     <Folder Include="Areas\Student\Data\" />
     <Folder Include="Log\" />
     <Folder Include="Views\Shared\Components\Menu\" />
+    <Folder Include="wwwroot\lms\" />
   </ItemGroup>
 
   <ItemGroup>

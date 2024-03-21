@@ -7,6 +7,7 @@ using AspNetCoreHero.Results;
 using AutoMapper;
 using IUMS.Application.Features.LMS.CourseChapters.Queries;
 using IUMS.Application.Features.LMS.CourseOutcomes.Queries;
+using IUMS.Application.Interfaces.Contexts;
 using IUMS.Application.Interfaces.Repositories;
 using IUMS.Application.Interfaces.Repositories.LMS;
 using IUMS.Domain.Entities.LMS;
@@ -25,11 +26,12 @@ namespace IUMS.Application.Features.LMS.CourseMasters.Queries
         public string ThumbnailUrl { get; set; }
 		public string TextBook { get; set; }
 		public string ReferenceBook { get; set; }
-		public List<CourseChapterResponse> CourseChapters { get; set; }
-        public List<CourseOutcomeResponse> CourseOutcomes { get; set; }
-        public List<CourseFAQResponse> CourseFAQs { get; set; }
+		public List<CourseChapterResponse> CourseChapters { get; set; } = new();
+        public List<CourseOutcomeResponse> CourseOutcomes { get; set; } = new();
+        public List<CourseFAQResponse> CourseFAQs { get; set; } = new();
     }
     internal sealed record CreateCourseMasterCommandHandler(
+        IDapperContext _dapper,
         ICourseMasterRepository _repository, 
         IMapper _mapper, 
         IUnitOfWork _unitOfWork) : IRequestHandler<CreateCourseMasterCommand, Result<int>>
@@ -38,8 +40,8 @@ namespace IUMS.Application.Features.LMS.CourseMasters.Queries
         {
             try
             {
-                var allCourse = await _repository.GetListAsync();
-                if (allCourse.Any(ac => ac.CourseAssignId == request.CourseAssignId))
+                //var allCourse = await _repository.GetListAsync();
+                if (await _dapper.IsExist("LMS_CourseMasters", new string[] {"CourseAssignId"}, new {request.CourseAssignId}))
                     return Result<int>.Fail("Course exists");
                 var mappedEntity = _mapper.Map<CourseMaster>(request);
                 await _repository.InsertAsync(mappedEntity);

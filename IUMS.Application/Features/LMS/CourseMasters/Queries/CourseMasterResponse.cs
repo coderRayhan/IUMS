@@ -3,7 +3,7 @@ using IUMS.Application.Features.LMS.CourseOutcomes.Queries;
 using System.Collections.Generic;
 
 namespace IUMS.Application.Features.LMS.CourseMasters.Queries;
-public class CourseMasterResponse
+public class CourseMasterResponse : CommonProperties
 {
     public int CourseAssignId { get; set; }
     public int PartId { get; set; }

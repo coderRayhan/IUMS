@@ -15,7 +15,7 @@ namespace IUMS.Domain.Entities.LMS
 		public decimal Mark { get; set; }
 		public string Answer { get; set; }
 		public bool IsChaperQuestion { get; set; }
-		public List<QuestionOption> QuestionOptions { get; set; }
+		public List<QuestionOption> QuestionOptions { get; set; } = new();
         public virtual CourseMaster CourseMaster { get; set; }
     }
 }

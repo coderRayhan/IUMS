@@ -10,5 +10,5 @@ public class CourseChapterViewModel
     public string Title { get; set; }
     public decimal Duration { get; set; } = 0;
     public string Description { get; set; }
-    public List<ChapterClassViewModel> ChapterClasses { get; set; }
+    public List<ChapterClassViewModel> ChapterClasses { get; set; } = new();
 }

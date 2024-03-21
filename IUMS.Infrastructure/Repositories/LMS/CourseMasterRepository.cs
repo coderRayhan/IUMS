@@ -10,6 +10,12 @@ namespace IUMS.Infrastructure.Repositories.LMS;
 public class CourseMasterRepository : ICourseMasterRepository
 {
     private readonly IRepositoryAsync<CourseMaster> _repository;
+
+    public CourseMasterRepository(IRepositoryAsync<CourseMaster> repository)
+    {
+        _repository = repository;
+    }
+
     public IQueryable<CourseMaster> CourseMasters => _repository.Entities;
 
     public async Task DeleteAsync(CourseMaster courseMaster)

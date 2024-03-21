@@ -1,0 +1,509 @@
+﻿@using IUMS.Application.Constants
+@using IUMS.Web
+@using IUMS.Web.Areas.LMS.Models
+@using Microsoft.AspNetCore.Localization
+@model CourseMasterViewModel
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cName = requestCulture.RequestCulture.Culture.Name;
+    var lastChaper = Model.CourseChapters.Count() - 1;
+    var lastOut = Model.CourseOutcomes.Count() - 1;
+}
+<style>
+    .card {
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 20px;
+        border-radius: 7px;
+    }
+
+    .title {
+        color: #012766;
+        font-family: 'Inter', sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 26px;
+        /*padding: 10px 0px 0px 15px;*/
+        margin-left: 15px;
+        margin: 10px 15px 0px 15px;
+        border-bottom: solid 1px #D7E1F4;
+    }
+
+    .form-control[readonly] {
+        color: #112140;
+        background-color: #D7E1F4;
+        font-weight: 600;
+        font-size: 18px;
+    }
+
+    .table {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .modal-content {
+        width: 100%;
+    }
+
+    .courseInfoDiv {
+        /*display:block;*/
+        background-color: azure;
+        color: #112140;
+        border-radius: 10px;
+    }
+
+        .courseInfoDiv label {
+            /*display:block;*/
+            color: #112140;
+            font-weight: 700;
+            font-size: 18px;
+        }
+</style>
+<div class="card">
+    <div class="card-body courseInfoDiv">
+        <div class="row px-2" id="courseInfoDiv">
+            <div class="col-md-6">
+                <div>
+                    @localizer["Session"]: <label>@(cName == "en" ? Model.SessionName : Model.SessionNameBN)</label>
+                </div>
+                <div>
+                    @localizer[LocalizerConstant.FACULTY]: <label>@(cName == "en" ? Model.FacultyName : Model.FacultyNameBN)</label>
+                </div>
+                <div>
+                    @localizer[LocalizerConstant.DEPARTMENT]: <label>@(cName == "en" ? Model.DepartmentName : Model.DepartmentNameBN)</label>
+                </div>
+                <div>
+                    @localizer[LocalizerConstant.PROGRAM]: <label>@(cName == "en" ? Model.ProgramName : Model.ProgramNameBN)</label>
+                </div>
+            </div>
+            <div class="col-md-6 p-1">
+                <div>
+                    @localizer[LocalizerConstant.COURSE_CODE]: <label>@Model.CourseCode</label>
+                </div>
+                <div>
+                    @localizer[LocalizerConstant.COURSE_TITLE]: <label>@Model.CourseName</label>
+                </div>
+                <div>
+                    @localizer[LocalizerConstant.CONTACTTHOUR]: <label>@Model.ConductHour</label>
+                </div>
+                <div>
+                    @localizer[LocalizerConstant.CREDITHOUR]: <label>@(cName == "en" ? Model.CreditHour : Model.CreditHour)</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<form method="post" asp-area="LMS" asp-controller="CourseMaster" asp-action="OnPostCreateOrEdit" enctype="multipart/form-data">
+    <div class="card">
+        <div class="card-body">
+            <div class="row px-2">
+                <div class="col-md-4">
+                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="CourseAssignId" />
+                    <input type="hidden" asp-for="PartId" />
+                    <div class="form-group">
+                        <label class="form-label">@localizer[LocalizerConstant.COURSE_CODE]</label>
+                        <input asp-for="CourseCode" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label class="form-label">@localizer[LocalizerConstant.COURSE_TITLE]</label>
+                        <input asp-for="CourseName" class="form-control" readonly />
+                    </div>
+                </div>
+            </div>
+            <div class="row px-2 card">
+                <div class="col-md-12 card-body">
+                    <div class="form-group">
+                        <label class="form-label">@localizer[LocalizerConstant.COURSE_OBJECTIVE]</label>
+                        <textarea class="form-control d-none" rows="2" asp-for="CourseObjective"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row px-2 card">
+                <div class="col-md-12 card-body">
+                    <div class="form-group">
+                        <label class="form-label">@localizer[LocalizerConstant.COURSE_OUTLINE]</label>
+                        <textarea class="form-control d-none" rows="2" asp-for="CourseOutline"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row px-2">
+                <div class="form-group col-md-6">
+                    <label class="form-label">@localizer[LocalizerConstant.TEXT_BOOK]:</label>
+                    <input class="form-control" asp-for="TextBook" />
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="form-label">@localizer[LocalizerConstant.REFERENCE_BOOK]:</label>
+                    <input class="form-control" asp-for="ReferenceBook" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-title">
+            <div class="title">
+                @localizer[LocalizerConstant.CHAPTER]
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row px-2">
+                <table id="chapterTable" class="table table-responsive">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th width="5%" class="required">Chapter No.</th>
+                            <th width="30%" class="required">Chapter Title</th>
+                            <th width="12%" class="required">Duration (in minutes)</th>
+                            <th width="55%">Chapter Description</th>
+                            <th width="10%"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="chapterTableBody">
+                        @for (int i = 0; i < Model.CourseChapters.Count; i++)
+                        {
+                            <tr>
+                                <td>
+                                    <input type="hidden" asp-for="CourseChapters[i].Id" />
+                                    <input class="form-control" asp-for="CourseChapters[i].ChapterNo" readonly />
+                                    <span asp-validation-for="CourseChapters[i].ChapterNo" class="text-danger"></span>
+                                </td>
+                                <td>
+                                    <input class="form-control" asp-for="CourseChapters[i].Title" />
+                                    <span asp-validation-for="CourseChapters[i].Title" class="text-danger"></span>
+                                </td>
+                                <td>
+                                    <input class="form-control" asp-for="CourseChapters[i].Duration" />
+                                    <span asp-validation-for="CourseChapters[i].Duration" class="text-danger"></span>
+                                </td>
+                                <td>
+                                    <input class="form-control" asp-for="CourseChapters[i].Description" />
+                                </td>
+                                <td id="ChapterAddRemovetd__@i" class="ChapterAddRemovetd">
+                                    <button class="addItem" type="button" onclick="addItem(this, 'chapterTable')" id="btnAdd__@i" style="margin-right: 5px;"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                    <button class="rmvItem" type="button" onclick="onDeleteChapter(this, '#chapterTableBody')" id="btnRemove__@i" data-index="id__@i"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="title">
+            @(cName == "en" ? "Course Outcome" : "কোর্সের ফলাফল")
+        </div>
+        <div class="card-body">
+            <div class="row px-2">
+                <table id="outcomeEditTable" class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Serial</th>
+                            <th>Details</th>
+                            <th width="10%"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="outcomeEditTableBody">
+                        @for (int i = 0; i < Model.CourseOutcomes.Count; i++)
+                        {
+                            <tr>
+                                <td width="10%">
+                                    <input asp-for="CourseOutcomes[i].Serial" class="form-control" readonly />
+                                </td>
+                                <td>
+                                    <input type="hidden" asp-for="CourseOutcomes[i].Id" />
+                                    <input class="form-control" asp-for="CourseOutcomes[i].Outcome" />
+                                </td>
+                                <td id="outcomeAddRemovetd__@i" class="outcomeAddRemovetd">
+                                    <button class="addItem" type="button" onclick="addItem(this, 'outcomeEditTable')" id="btnAdd__@i" style="margin-right: 5px;"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                    <button class="rmvItem" type="button" onclick="onDeleteOutline(this, '#outcomeEditTableBody')" id="btnRemove__@i" data-index="id__@i"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-title">
+            <div class="title">
+                @(cName == "en" ? "Course FAQ" : "কোর্স FAQs")
+            </div>
+        </div>
+        <div class="card-body">
+            <div id="questionFaqDiv">
+                @for (int i = 0; i < Model.CourseFAQs.Count; i++)
+                {
+                    <div class="faqContainer">
+                        <div class="row px-2">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <input type="hidden" asp-for="@Model.CourseFAQs[i].Id" />
+                                    <label class="form-label">Question @(i + 1):</label>
+                                    <input class="form-control" asp-for="@Model.CourseFAQs[i].Question" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row px-2">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="form-label">Answer @(i + 1):</label>
+                                    <textarea class="form-control" asp-for="@Model.CourseFAQs[i].Answer" rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    @*<input type="hidden" id="hdnId" value="@i" />*@
+                }
+            </div>
+            <div class="d-flex justify-content-center">
+                <button type="button" onclick="appendDiv()" class="btn btn-outline-primary"><i class="fa fa-lg fa-plus-square"></i>&nbsp;&nbsp; ADD MORE QUESTIONS</button>
+            </div>
+        </div>
+    </div>
+    <button type="submit" style="width:100%" class="btn customBtn">Save</button>
+</form>
+<script>
+    $(document).ready(() => {
+        $(".ChapterAddRemovetd").hide();
+        $(".outcomeAddRemovetd").hide();
+        let videoUrl = '@Model.VideoUrl';
+        let thumbnailUrl = '@Model.ThumbnailUrl';
+        if (videoUrl) {
+            $('#customFileLabel').html('');
+            $('#customFileLabel').html(videoUrl);
+        }
+        if (thumbnailUrl) {
+            $('#customThumbnailLabel').html('');
+            $('#customThumbnailLabel').html(thumbnailUrl);
+        }
+
+        $('#CourseOutline').richText({
+            height: 150,
+            urls: false,
+            table: false,
+            imageUpload: false,
+            fileUpload: false,
+            videoEmbed: false,
+            removeStyles: false,
+            code: false,
+            maxlength: 3000,
+            lengthIncludeHTML: true,
+        });
+        $('#CourseObjective').richText({
+            height: 150,
+            urls: false,
+            table: false,
+            imageUpload: false,
+            fileUpload: false,
+            videoEmbed: false,
+            removeStyles: false,
+            code: false,
+            maxlength: 3000,
+            lengthIncludeHTML: true,
+        });
+
+        $(`#ChapterAddRemovetd__@lastChaper`).show();
+        $(`#outcomeAddRemovetd__@lastOut`).show();
+    });
+    function addItem(btn, tableId) {
+        var table = document.getElementById(tableId);
+        var rows = table.getElementsByTagName('tr');
+        var rowOuterHtml = rows[rows.length - 1].outerHTML;
+        var lastRowIndex = rows.length - 2;
+        var nextRowIndex = eval(lastRowIndex) + 1;
+        rowOuterHtml = rowOuterHtml.replaceAll('_' + lastRowIndex, '_' + nextRowIndex);
+        rowOuterHtml = rowOuterHtml.replaceAll('[' + lastRowIndex + ']', '[' + nextRowIndex + ']');
+        rowOuterHtml = rowOuterHtml.replaceAll('__' + lastRowIndex, '__' + nextRowIndex);
+        rowOuterHtml = rowOuterHtml.replaceAll('z' + lastRowIndex + '__', 'z' + nextRowIndex + '__');
+        var newRow = table.insertRow();
+        newRow.innerHTML = rowOuterHtml;
+        if (tableId === 'outcomeEditTable') {
+            $(`#CourseOutcomes_${nextRowIndex}__Id`).val(0);
+            $(`#CourseOutcomes_${nextRowIndex}__Serial`).val(nextRowIndex + 1);
+            $(`#CourseOutcomes_${nextRowIndex}__Outcome`).val('');
+            $(`#outcomeAddRemovetd__${lastRowIndex}`).hide();
+        }
+        else if (tableId === 'chapterTable') {
+            $(`#CourseChapters_${nextRowIndex}__Id`).val(0);
+            $(`#CourseChapters_${nextRowIndex}__ChapterNo`).val(nextRowIndex + 1);
+            $(`#CourseChapters_${nextRowIndex}__Title`).val('');
+            $(`#CourseChapters_${nextRowIndex}__Duration`).val(0);
+            $(`#CourseChapters_${nextRowIndex}__Description`).val('');
+            $(`#ChapterAddRemovetd__${lastRowIndex}`).hide();
+        }
+    }
+    function onDeleteOutline(el) {
+        var rowCount = $('#outcomeEditTableBody').children().length;
+        var idIndex = $(el).attr('id').split('__')[1];
+        var id = `#CourseOutcomes_${idIndex}__Id`;
+        var prevIndex = idIndex - 1;
+        if (rowCount < 2) {
+            toastNotifyError("This row can not be deleted");
+            return false;
+        } else {
+            if ($(id).val() > 0) {
+                Swal.fire({
+                    title: 'Do you want to delete this?',
+                    showCancelButton: true,
+                    confirmButtonText: `Delete`,
+                    icon: 'warning',
+
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        try {
+                            $.ajax({
+                                type: 'POST',
+                                url: '/LMS/CourseMaster/DeleteCourseOutcome?Id=' + $(id).val(),
+                                data: { id: $(id).val() },
+                                contentType: false,
+                                processData: false,
+                                success: function (res) {
+                                    Swal.fire('Deleted!', '', 'success');
+                                    $(el).closest("tr").remove();
+                                    $(`#outcomeAddRemovetd__${prevIndex}`).attr("style", "");
+                                },
+                                error: function (err) {
+                                    console.log(err)
+                                }
+                            })
+                        } catch (ex) {
+                            console.log(ex)
+                        }
+                    }
+                })
+            } else {
+                $(el).closest("tr").remove();
+                $(`#outcomeAddRemovetd__${prevIndex}`).attr("style", "");
+            }
+        }
+
+
+        return false;
+    }
+
+    function onDeleteChapter(el) {
+        var rowCount = $('#chapterTableBody').children().length;
+        var idIndex = $(el).attr('id').split('__')[1];
+        var id = `#CourseChapters_${idIndex}__Id`;
+        var prevIndex = idIndex - 1;
+
+        if (rowCount < 2) {
+            toastNotifyError("This row can not be deleted");
+            return false;
+        } else {
+            if ($(id).val() > 0) {
+                Swal.fire({
+                    title: 'Do you want to delete this?',
+                    showCancelButton: true,
+                    confirmButtonText: `Delete`,
+                    icon: 'warning',
+
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        try {
+                            $.ajax({
+                                type: 'POST',
+                                url: '/LMS/CourseChapter/DeleteChapter?Id=' + $(id).val(),
+                                data: { id: $(id).val() },
+                                contentType: false,
+                                processData: false,
+                                success: function (res) {
+                                    Swal.fire('Deleted!', '', 'success');
+                                    $(el).closest("tr").remove();
+                                    $(`#ChapterAddRemovetd__${prevIndex}`).attr("style", "");
+
+                                },
+                                error: function (err) {
+                                    console.log(err)
+                                }
+                            })
+                        } catch (ex) {
+                            console.log(ex)
+                        }
+                    }
+                })
+            } else {
+                $(el).closest("tr").remove();
+                $(`#ChapterAddRemovetd__${prevIndex}`).attr("style", "");
+            }
+        }
+        return false;
+    }
+
+
+    function appendDiv() {
+        var elements = $('.faqContainer');
+        let divCount = elements.length;
+        let html = `
+                                                            <div class="faqContainer">
+                                                                <div class="row px-2">
+                                                                    <div class="col-md-8">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label">Question ${divCount + 1}:</label>
+                                                                                                            <input class="form-control" id="CourseFAQs_${divCount}__Question" name="CourseFAQs[${divCount}].Question" />
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row px-2">
+                                                                    <div class="col-md-12">
+                                                                        <div class="form-group">
+                                                                                            <label class="form-label">Answer ${divCount + 1}:</label>
+                                                                                                    <textarea class="form-control" id="CourseFAQs_${divCount}__Answer" name="CourseFAQs[${divCount}].Answer" rows="3"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <hr />
+                                                        `
+        $('#questionFaqDiv').append(html);
+    }
+
+    // function documentFileCheck(el) {
+    // 	let fileName = el.files[0].name;
+    // 	let extension = fileName.substr(fileName.lastIndexOf('.') + 1);
+    // 	if (extension != 'mp4') {
+    // 		toastNotifyError('Uploaded file should be video!');
+    // 		$(el).val('');
+    // 		return;
+    // 	}
+    // 	if (typeof (FileReader) != "undefined") {
+    // 		let reader = new FileReader();
+    // 		//if (($(el)[0].files[0].size / 1000000) > 2) {
+    // 		//	toastNotifyError('File size exceeded!');
+    // 		//	$(el).val('');
+    // 		//	return;
+    // 		//}
+    // 		reader.readAsDataURL($(el)[0].files[0]);
+    // 	} else {
+    // 		alert("This browser does not support FileReader.");
+    // 	}
+    // 	$('#customFileLabel').html('');
+    // 	$('#customFileLabel').html($(el).val());
+    // }
+
+    // function thumbnailFileCheck(el) {
+    // 	debugger;
+    // 	let fileName = el.files[0].name;
+    // 	let extension = fileName.substr(fileName.lastIndexOf('.') + 1);
+    // 	if (extension == 'jpg' || extension == 'jpeg' || extension == 'png') {
+    // 		if (typeof (FileReader) != "undefined") {
+    // 			let reader = new FileReader();
+    // 			//if (($(el)[0].files[0].size / 1000000) > 2) {
+    // 			//	toastNotifyError('File size exceeded!');
+    // 			//	$(el).val('');
+    // 			//	return;
+    // 			//}
+    // 			reader.readAsDataURL($(el)[0].files[0]);
+    // 		} else {
+    // 			alert("This browser does not support FileReader.");
+    // 		}
+    // 		$('#customThumbnailLabel').html('');
+    // 		$('#customThumbnailLabel').html($(el).val());
+    // 		return;
+    // 	}
+    // 	toastNotifyError('Uploaded file should be image!');
+    // 	$(el).val('');
+    // }
+</script>

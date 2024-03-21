@@ -1,0 +1,98 @@
+﻿@using IUMS.Web.Areas.LMS.Models
+@model CourseQuestionViewModel
+<style>
+	.ML__keyboard {
+		z-index: 200000 !important;
+		position: fixed;
+	}
+
+	.b-shadow {
+		box-shadow: rgba(0, 0, 0, 0.20) 3px 3px 20px;
+		border-radius: 7px;
+	}
+</style>
+<div id="mcqPart" class="questionPart card b-shadow" style="padding:0px 30px">
+	@*<div class="card-body">*@
+	<div class="row px-2">
+		<div class="form-group col-md-12">
+			<label></label>
+			<math-field style="width:100%"></math-field>
+		</div>
+	</div>
+	<div class="row px-2 mt-2 card b-shadow" style="padding:10px">
+		<div class="form-group col-md-12">
+			<input type="hidden" asp-for="Id" />
+			<label class="form-label">Question:</label>
+			<textarea class="form-control" asp-for="Question" rows="3"></textarea>
+			@*<math-field style="z-index:100;"></math-field>*@
+		</div>
+	</div>
+	<div class="row px-2">
+		<div class="form-group col-md-6">
+			<label class="form-label">Mark:</label>
+			<input class="form-control" asp-for="Mark" pattern="^(?!0+$)([1-9][0-9]*|0\.[0-9]+|[1-9][0-9]*\.[0-9]+)?$" />
+		</div>
+	</div>
+	<hr />
+	<div>
+		<table id="optionTable" class="table table-bordered table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th>SL</th>
+					<th>
+						Options
+					</th>
+					<th>Answer</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody id="tbody">
+				@for (int i = 0; i < Model.QuestionOptions.Count; i++)
+				{
+					<tr>
+						<td id="sl_@i">
+							@(i + 1)
+						</td>
+						<td>
+							<input type="hidden" asp-for="QuestionOptions[i].Id">
+							<input type="hidden" asp-for="QuestionOptions[i].CourseQuestionId">
+							<input class="form-control" asp-for="QuestionOptions[i].Option" />
+						</td>
+						<td>
+							<input type="checkbox" class="form-control" asp-for="QuestionOptions[i].IsAnswer" />
+						</td>
+						<td>
+							<button class="addItem" type="button" onclick="addItem(this)" id="btnAdd__@i" style="margin-right: 5px;"><i class="fa fa-plus" aria-hidden="true"></i></button>
+							<button class="rmvItem" type="button" onclick="onDeleteItem(this)" id="btnRemove__@i" data-index="id__@i"><i class="fa fa-minus" aria-hidden="true"></i></button>
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+</div>
+
+@*</div>*@
+<button type="submit" class="btn btn-dark" style="width:100%" id="mcqSubmit">Save</button>
+<script>
+	$(document).ready(() => {
+		$('#Question').richText({
+			height: 150,
+			urls: false,
+			table: false,
+			imageUpload: false,
+			fileUpload: false,
+			videoEmbed: false,
+			removeStyles: false,
+			code: false,
+			maxlength: 3000,
+			lengthIncludeHTML: true,
+		})
+	})
+	$("#mcqSubmit").click(function () {
+		if (parseFloat($("#Mark").val()) == 0.00) {
+			toastNotifyError('Mark can not be  0.00');
+			return false;
+		}
+	});
+</script>

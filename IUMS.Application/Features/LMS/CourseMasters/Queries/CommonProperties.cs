@@ -20,6 +20,9 @@ public class CommonProperties
     public int SemesterId { get; set; }
     public string SemesterName { get; set; }
     public string SemesterNameBN { get; set; }
+    public int AcademicSemesterId { get; set; }
+    public string AcademicSemesterName { get; set; }
+    public string AcademicSemesterNameBN { get; set; }
     public int CourseId { get; set; }
     public string CourseName { get; set; }
     public string CourseNameBN { get; set; }

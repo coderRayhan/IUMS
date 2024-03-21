@@ -1,0 +1,259 @@
+﻿@using IUMS.Application.Constants
+@using IUMS.Application.Enums
+@using IUMS.Web.Areas.LMS.Models
+@using Microsoft.AspNetCore.Localization;
+
+@inject IHtmlLocalizer<SharedResource> localizer
+@model CourseQuestionViewModel
+@{
+	var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+	var cName = requestCulture.RequestCulture.Culture.Name;
+}
+<style>
+	.questionPart {
+		background-color: azure;
+		padding: 15px;
+		border-radius: 10px;
+	}
+</style>
+<div class="card">
+	<div class="card-body" style="background-color:azure;">
+		<div class="row px-2" id="courseInfoDiv">
+			<div class="col-md-4">
+				<div>
+					@localizer["Session"]: <label>@(cName == "en" ? Model?.SessionName : Model?.SessionNameBN)</label>
+				</div>
+				<div>
+					@localizer[LocalizerConstant.FACULTY]: <label>@(cName == "en" ? Model?.FacultyName : Model?.FacultyNameBN)</label>
+				</div>
+
+			</div>
+			<div class="col-md-4">
+				<div>
+					@localizer[LocalizerConstant.DEPARTMENT]: <label>@(cName == "en" ? Model?.DepartmentName : Model?.DepartmentNameBN)</label>
+				</div>
+				<div>
+					@localizer[LocalizerConstant.PROGRAM]: <label>@(cName == "en" ? Model?.ProgramName : Model?.ProgramNameBN)</label>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div>
+					@localizer[LocalizerConstant.COURSE_TITLE]: <label>@Model?.CourseName</label>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="card">
+	<div class="card-body">
+		<div class="wrapper">
+			<form asp-area="LMS" asp-controller="CourseQuestion" asp-action="OnPostCreateOrEdit" onsubmit="return jQueryPostQuestion(this)" enctype="multipart/form-data">
+				<div class="row px-2">
+					<div class="col-md-6">
+						<input type="hidden" asp-for="CourseMasterId" />
+						<label class="form-label">Question Type:</label>
+						<select class="form-control" asp-for="QuestionTypeId" asp-items="Html.GetEnumSelectList<QuestionType>()" onchange="changeDivOnChange()">
+							<option value="0">@localizer[LocalizerConstant.CHOOSE_OPTION]</option>
+						</select>
+					</div>
+					<div class="col-md-4 offset-md-2">
+						<div class="form-group">
+							<label class="form-label">Exam Perticipation Type:</label><br />
+							<input type="radio" asp-for="IsWritten" id="rdnOnline" name="perticipationType" value="Online" />
+							<label for="rdnOnline">Online</label>
+							<input type="radio" id="rdnWritten" asp-for="IsWritten" name="perticipationType" class="ml-4" value="Written" />
+							<label for="rdnWritten">Written</label>
+							<input type="hidden" asp-for="CourseChapterId" />
+							<input type="hidden" asp-for="Id" />
+						</div>
+					</div>
+				</div>
+				<hr />
+				<div id="loadQuestion">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<script>
+	$("#CourseId").select2({
+		placeholder: "Select Course",
+		theme: "bootstrap4"
+	}
+	);
+
+	$("#FacultyId").change(function () {
+		var cName = '@cName';
+		var facultyId = $('#FacultyId').val();
+		$("#DepartmentId").html('').append("<option Value=''>Choose Option</option>");
+
+		$.get("/common/dropdown/DepartmentsByFaculty", { FacultyId: facultyId }, function (data) {
+			$.each(data, function (index, row) {
+				if (cName == 'en') {
+					$("#DepartmentId").append("<option value='" + row.id + "'>" + row.departmentName + "</option>")
+
+				} else {
+					$("#DepartmentId").append("<option value='" + row.id + "'>" + row.departmentNameBN + "</option>")
+
+				}
+
+			})
+		})
+	});
+
+	$("#DepartmentId").change(function () {
+		var cName = '@cName';
+		var departmentId = $('#DepartmentId').val();
+		$("#ProgramId").html('').append("<option Value=''>Choose Option</option>");
+
+		$.get("/common/dropdown/ProgramsByFaculty", { DepartmentId: departmentId }, function (data) {
+			$.each(data, function (index, row) {
+				console.log(row);
+				if (cName == 'en') {
+					$("#ProgramId").append("<option value='" + row.id + "'>" + row.name + "</option>")
+
+				} else {
+					$("#ProgramId").append("<option value='" + row.id + "'>" + row.nameBN + "</option>")
+
+				}
+
+			})
+		})
+	});
+
+	// Load Batch options according to ProgramId Change
+	$("#ProgramId").change(function () {
+		const cName = '@cName';
+		let sessionId = $('#SessionId').val();
+		let programId = $('#ProgramId').val();
+		if (!sessionId) {
+			toastNotifyError("Please select session");
+			return;
+		}
+		$("#BatchId").html('').append("<option Value=''>Choose Option</option>");
+		$.get(`/academic/Batch/FilterBatchByProgramId?sessionId=${sessionId}&programId=${programId}`, function (data) {
+			$.each(data, function (index, row) {
+				if (cName == 'en') {
+					$("#BatchId").append("<option value='" + row.id + "'>" + row.batchName + "</option>")
+				} else {
+					$("#BatchId").append("<option value='" + row.id + "'>" + row.batchNameBN + "</option>")
+				}
+			})
+		})
+	});
+
+	$("#BatchId").change(function () {
+		let programId = $('#ProgramId').val();
+		if (!programId) {
+			toastNotifyError("Please select program");
+			return;
+		}
+		$("#CourseId").html('').append("<option Value=''>Choose Option</option>");
+		$.get(`/common/dropdown/FilterCourseByProgram?programId=${programId}`, function (data) {
+			$.each(data, function (index, row) {
+				$("#CourseId").append("<option value='" + row.id + "'>" + row.courseName + "</option>")
+			})
+		})
+	});
+
+
+	function addItem(btn) {
+		var table = document.getElementById('optionTable');
+		var rows = table.getElementsByTagName('tr');
+		var rowOuterHtml = rows[rows.length - 1].outerHTML;
+		var lastRowIndex = rows.length - 2;
+		var nextRowIndex = eval(lastRowIndex) + 1;
+		rowOuterHtml = rowOuterHtml.replaceAll('_' + lastRowIndex, '_' + nextRowIndex);
+		rowOuterHtml = rowOuterHtml.replaceAll('[' + lastRowIndex + ']', '[' + nextRowIndex + ']');
+		rowOuterHtml = rowOuterHtml.replaceAll('__' + lastRowIndex, '__' + nextRowIndex);
+		rowOuterHtml = rowOuterHtml.replaceAll('z' + lastRowIndex + '__', 'z' + nextRowIndex + '__');
+		var newRow = table.insertRow();
+		newRow.innerHTML = rowOuterHtml;
+		$(`#sl_${nextRowIndex}`).html(nextRowIndex + 1);
+		$(`#QuestionOptions_${nextRowIndex}__Id`).val(0);
+		$(`#QuestionOptions_${nextRowIndex}__Option`).val();
+		$(`#QuestionOptions_${nextRowIndex}__IsAnswer`).val(false);
+	}
+
+	function onDeleteItem(el) {
+		debugger;
+		var rowCount = $('#tbody').children().length;
+		var idIndex = $(el).attr('id').split('__')[1];
+		var id = `#QuestionOptions_${idIndex}__Id`;
+		if ($(id).val() < 1) {
+			if (rowCount > 1) {
+				$(el).closest("tr").remove();
+			}
+			else {
+				toastNotifyError("This row can not be deleted");
+				return false;
+			}
+		}
+		Swal.fire({
+			title: 'Do you want to delete this?',
+			showCancelButton: true,
+			confirmButtonText: `Delete`,
+			icon: 'warning',
+
+		}).then((result) => {
+
+			if (result.isConfirmed) {
+				try {
+					$.ajax({
+						type: 'POST',
+						url: '/LMS/CourseQuestion/DeleteQuestionOption?Id=' + $(id).val(),
+						data: { id: $(id).val() },
+						contentType: false,
+						processData: false,
+						success: function (res) {
+							Swal.fire('Deleted!', '', 'success');
+							$(el).closest("tr").remove();
+
+						},
+						error: function (err) {
+							console.log(err)
+						}
+					})
+				} catch (ex) {
+					console.log(ex)
+				}
+			}
+		})
+		return false;
+	}
+
+	function changeDivOnChange() {
+		var questionType = $('#QuestionTypeId').val();
+		var id = $('#Id').val();
+		$('#loadQuestion').load(`/LMS/CourseQuestion/RenderQuestion?questionType=${questionType}&id=${id}`, () => {
+			if (questionType == 0) {
+				$('#loadQuestion').html('');
+			}
+		});
+	}
+
+	jQueryPostQuestion = form => {
+		try {
+			$.ajax({
+				type: 'POST',
+				url: form.action,
+				data: new FormData(form),
+				contentType: false,
+				processData: false,
+				success: function (res) {
+					if (res.isValid) {
+						$('#Question-modal').modal('hide');
+						$('#form-modal').modal('hide');
+						//window.location.reload();
+					}
+				},
+				error: function (err) {
+					console.log(err)
+				}
+			})
+			return false;
+		} catch (ex) {
+			console.log(ex)
+		}
+	}
+</script>

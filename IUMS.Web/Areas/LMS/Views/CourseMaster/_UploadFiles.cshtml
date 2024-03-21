@@ -1,0 +1,173 @@
+﻿@using IUMS.Application.Constants
+@using IUMS.Web
+@using IUMS.Web.Areas.LMS.Models
+@using Microsoft.AspNetCore.Localization
+@model CourseMasterViewModel
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cName = requestCulture.RequestCulture.Culture.Name;
+}
+<style>
+    .card {
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 20px;
+        border-radius: 7px;
+    }
+
+    .title {
+        color: #012766;
+        font-family: 'Inter', sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 26px;
+        /*padding: 10px 0px 0px 15px;*/
+        margin-left: 15px;
+        margin: 10px 15px 0px 15px;
+        border-bottom: solid 1px #D7E1F4;
+    }
+
+    .form-control[readonly] {
+        color: #112140;
+        background-color: #D7E1F4;
+        font-weight: 600;
+        font-size: 18px;
+    }
+
+
+    .modal-content {
+        width: 100%;
+    }
+
+    .courseInfoDiv {
+        /*display:block;*/
+        background-color: azure;
+        color: #112140;
+        border-radius: 10px;
+    }
+
+        .courseInfoDiv label {
+            /*display:block;*/
+            color: #112140;
+            font-weight: 700;
+            font-size: 18px;
+        }
+</style>
+<div class="card">
+    <div class="card-body courseInfoDiv">
+        <div class="row px-2" id="courseInfoDiv">
+            <div class="col-md-6">
+                <div>
+                    @localizer["Session"]: <label>@(cName == "en" ? Model.SessionName : Model.SessionNameBN)</label>
+                </div>
+                <div>
+                    @localizer[LocalizerConstant.FACULTY]: <label>@(cName == "en" ? Model.FacultyName : Model.FacultyNameBN)</label>
+                </div>
+                <div>
+                    @localizer[LocalizerConstant.DEPARTMENT]: <label>@(cName == "en" ? Model.DepartmentName : Model.DepartmentNameBN)</label>
+                </div>
+                <div>
+                    @localizer[LocalizerConstant.PROGRAM]: <label>@(cName == "en" ? Model.ProgramName : Model.ProgramNameBN)</label>
+                </div>
+            </div>
+            @*<div class="col-md-1"></div>*@
+            <div class="col-md-6 p-1">
+                <div>
+                    @localizer[LocalizerConstant.COURSE_CODE]: <label>@Model.CourseCode</label>
+                </div>
+                <div>
+                    @localizer[LocalizerConstant.COURSE_TITLE]: <label>@Model.CourseName</label>
+                </div>
+                <div>
+                    @localizer[LocalizerConstant.CONTACTTHOUR]: <label>@Model.ConductHour</label>
+                </div>
+                <div>
+                    @localizer[LocalizerConstant.CREDITHOUR]: <label>@(cName == "en" ? Model.CreditHour : Model.CreditHour)</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<form method="post" asp-area="LMS" asp-controller="CourseMaster" asp-action="PostUploadFiles" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="CourseAssignId" />
+    <div class="card">
+        <div class="card-body row">
+            <div class="form-group col-md-6">
+                <label class="form-label">Video clip <small><i class='fas fa-sm fa-exclamation-circle iconStyle'></i>mp4/avi/mkv</small></label>
+                <div class="custom-file">
+                    <label id="customFileLabel" class="custom-file-label">Select Video...</label>
+                    <input type="file" asp-for="Video" onchange="documentFileCheck(this)" class="form-control custom-file-input" />
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="form-label">Video Thumbnail <small><i class='fas fa-sm fa-exclamation-circle iconStyle'></i>jpg/jpeg/png</small></label>
+                <div>
+                    @if (Model.ThumbnailUrl is null)
+                    {
+                        <img src="~/images/no_image.png" id="profilePreview" width="150">
+                    }
+                    else
+                    {
+                        <img src="@Model.ThumbnailUrl" alt="..." id="profilePreview" width="150">
+                    }
+                </div>
+                <div style="margin-top: 5px">
+                    <label for="customFile" class="btn btn-outline-secondary">
+                        Select Thumbnail...
+                    </label>
+                    <input accept=".png,.jpg,.jpeg,.gif,.tif" tabindex="9"
+                           asp-for="@Model.Thumbnail"
+                           type="file" style="display: none"
+                           id="customFile">
+                </div>
+            </div>
+            <button type="submit" style="width:100%" class="btn customBtn">Save</button>
+        </div>
+    </div>
+
+</form>
+<script>
+    $(document).ready(() => {
+        let videoUrl = '@Model.VideoUrl';
+        if (videoUrl) {
+            $('#customFileLabel').html('');
+            $('#customFileLabel').html(videoUrl);
+        }
+    });
+    $("#customFile").change(function () {
+        //$("#photoPreview").html("");
+        if (typeof (FileReader) != "undefined") {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                var image = new Image();
+                image.src = e.target.result;
+                image.onload = function () {
+                    document.getElementById('profilePreview').src = e.target.result;
+                    return;
+                };
+            }
+            reader.readAsDataURL($(this)[0].files[0]);
+        } else {
+            alert("This browser does not support FileReader.");
+        }
+    });
+
+    //funtion for file validation
+    function documentFileCheck(el) {
+        let fileName = el.files[0].name;
+        let extension = fileName.substr(fileName.lastIndexOf('.') + 1);
+        if (extension == 'mp4' || extension == 'avi' || extension == 'mkv') {
+            if (typeof (FileReader) != "undefined") {
+                let reader = new FileReader();
+                reader.readAsDataURL($(el)[0].files[0]);
+            } else {
+                alert("This browser does not support FileReader.");
+            }
+            $('#customFileLabel').html('');
+            $('#customFileLabel').html(fileName);
+            return;
+        }
+        toastNotifyError('Uploaded file should be video!');
+        $(el).val('');
+    }
+</script>

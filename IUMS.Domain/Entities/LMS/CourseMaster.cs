@@ -21,9 +21,9 @@ namespace IUMS.Domain.Entities.LMS
         public string TextBook { get; set; }
         [StringLength(200)]
         public string ReferenceBook { get; set; }
-        public List<CourseChapter> CourseChapters { get; set; }
-        public List<CourseOutcome> CourseOutcomes { get; set; }
-        public List<CourseFAQ> CourseFAQs { get; set; }
+        public List<CourseChapter> CourseChapters { get; set; } = new();
+        public List<CourseOutcome> CourseOutcomes { get; set; } = new();
+        public List<CourseFAQ> CourseFAQs { get; set; } = new();
         public virtual CourseAssign CourseAssign { get; set; }
     }
 }

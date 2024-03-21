@@ -13,7 +13,7 @@ public class CourseChapter : AuditableEntity
     public string Title { get; set; }
     public decimal Duration { get; set; }
     public string Description { get; set; }
-    public List<ChapterClass> ChapterClasses { get; set; }
+    public List<ChapterClass> ChapterClasses { get; set; } = new();
     public virtual CourseMaster CourseMaster { get; set; }
 }
 

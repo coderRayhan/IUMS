@@ -17,7 +17,7 @@ public class CourseMasterViewModel : CommonProperties
     public string ThumbnailUrl { get; set; }
     public string TextBook { get; set; }
     public string ReferenceBook { get; set; }
-    public List<CourseChapterViewModel> CourseChapters { get; set; }
-    public List<CourseOutcomeViewModel> CourseOutcomes { get; set; }
-    public List<CourseFAQViewModel> CourseFAQs { get; set; }
+    public List<CourseChapterViewModel> CourseChapters { get; set; } = new();
+    public List<CourseOutcomeViewModel> CourseOutcomes { get; set; } = new();
+    public List<CourseFAQViewModel> CourseFAQs { get; set; } = new();
 }
