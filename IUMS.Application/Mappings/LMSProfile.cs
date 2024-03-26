@@ -40,5 +40,7 @@ public class LMSProfile : Profile
         CreateMap<CourseQuestion, CreateCourseQuestionCommand>().ReverseMap();
         CreateMap<CourseQuestion, CourseQuestionResponse>().ReverseMap();
         CreateMap<CourseQuestion, UpdateCourseQuestionCommand>().ReverseMap();
+
+        CreateMap<QuestionOption, QuestionOptionResponse>().ReverseMap();
     }
 }

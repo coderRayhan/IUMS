@@ -33,5 +33,7 @@ public class LMSViewModelProfile : Profile
         CreateMap<CourseQuestionViewModel, CourseQuestionResponse>().ReverseMap();
         CreateMap<CourseQuestionViewModel, CreateCourseQuestionCommand>().ReverseMap();
         CreateMap<CourseQuestionViewModel, UpdateCourseQuestionCommand>().ReverseMap();
+
+        CreateMap<QuestionOptionViewModel, QuestionOptionResponse>().ReverseMap();
     }
 }
