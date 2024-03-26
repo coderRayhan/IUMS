@@ -195,6 +195,42 @@
                         </ul>
                     </li>
                 }
+                
+                @if (User.IsInRole("Teacher") || User.IsInRole("Admin"))
+                {
+                    @* <li class="nav-header">@localizer["Student Management"]</li> *@
+                    <li is-active-route asp-area="LMS" class="nav-item has-treeview">
+                        <a is-active-route asp-area="LMS" class="nav-link">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>
+                                @localizer["LMS"]
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            @if (User.IsInRole("Teacher"))
+                            {
+                                <li class="nav-item">
+                                    <a is-active-route asp-area="LMS" asp-controller="CourseMaster" class="nav-link">
+                                        <i class="far fa-dot-circle-o nav-icon"></i>
+                                        <p>@localizer["Course Setup"]</p>
+                                    </a>
+                                </li>
+                            }
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item">
+                                    <a is-active-route asp-area="LMS" asp-controller="HostConfig" class="nav-link">
+                                        <i class="far fa-dot-circle-o nav-icon"></i>
+                                        <p>@localizer["Host Config"]</p>
+                                    </a>
+                                </li>
+                            }
+                           
+                            
+                        </ul>
+                    </li>
+                }
                 @* <li class="nav-header">@localizer["Master"]</li> *@
                 <li is-active-route asp-area="Utilities" class="nav-item has-treeview">
                     <a is-active-route asp-area="Utilities" class="nav-link">
